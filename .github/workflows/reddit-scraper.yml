@@ -1,0 +1,164 @@
+name: Elite Reddit Scraper
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_count:
+        description: 'Number of influencers to scrape'
+        required: true
+        default: '2500'
+        type: string
+      gateway_provider:
+        description: 'Gateway provider to use'
+        required: true
+        default: 'scraperapi'
+        type: choice
+        options:
+        - scraperapi
+        - scrapfly
+        - brightdata
+        - direct
+  schedule:
+    # Run automatically every 7 days at 2 AM UTC (optional)
+    - cron: '0 2 * * 0'
+
+jobs:
+  scrape-reddit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360  # 6 hours max runtime
+    
+    steps:
+    - name: 📥 Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: 🐍 Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+    
+    - name: 📦 Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+        echo "✅ Dependencies installed successfully"
+    
+    - name: 🔧 Configure environment
+      run: |
+        echo "GATEWAY_PROVIDER=${{ github.event.inputs.gateway_provider || 'scraperapi' }}" >> $GITHUB_ENV
+        echo "TARGET_COUNT=${{ github.event.inputs.target_count || '2500' }}" >> $GITHUB_ENV
+        echo "SCRAPE_KEY=${{ secrets.SCRAPE_KEY }}" >> $GITHUB_ENV
+        echo "🔑 Environment configured"
+    
+    - name: 📊 Check previous progress
+      run: |
+        if [ -f "elite_scraper_progress.json" ]; then
+          echo "🔄 Found previous progress file"
+          python3 -c "import json; data=json.load(open('elite_scraper_progress.json')); print(f'Previous session: {data.get(\"total_scraped\", 0)} accounts scraped')"
+        else
+          echo "🆕 Starting fresh scraping session"
+        fi
+    
+    - name: 🚀 Run Elite Reddit Scraper
+      run: |
+        echo "🏆 Starting Elite Reddit Scraper..."
+        echo "Gateway: $GATEWAY_PROVIDER"
+        echo "Target: $TARGET_COUNT accounts"
+        echo "API Key: $(echo $SCRAPE_KEY | cut -c1-8)..."
+        
+        # Create logs directory
+        mkdir -p logs
+        
+        # Run the scraper with timeout and error handling
+        timeout 21600 python3 Great_Scraper3_Optimized.py || {
+          exit_code=$?
+          if [ $exit_code -eq 124 ]; then
+            echo "⏰ Scraper reached 6-hour timeout - saving progress"
+          else
+            echo "❌ Scraper exited with code $exit_code"
+          fi
+          exit $exit_code
+        }
+      
+    - name: 📋 Display Results Summary
+      if: always()
+      run: |
+        echo "📊 SCRAPING SESSION SUMMARY"
+        echo "=========================="
+        
+        if [ -f "reddit_elite_influencers.csv" ]; then
+          row_count=$(($(wc -l < reddit_elite_influencers.csv) - 1))
+          echo "✅ CSV Export: $row_count elite influencers found"
+          
+          # Show file size
+          file_size=$(ls -lh reddit_elite_influencers.csv | awk '{print $5}')
+          echo "📁 File size: $file_size"
+          
+          # Show top 10 accounts
+          echo "🏆 TOP 10 ACCOUNTS:"
+          head -11 reddit_elite_influencers.csv | tail -10 | while IFS=, read username url tier karma rest; do
+            echo "  u/$username ($tier tier) - $karma karma"
+          done
+        else
+          echo "⚠️ No CSV file found - scraping may have failed"
+        fi
+        
+        if [ -f "elite_scraper.log" ]; then
+          echo "📋 Log file size: $(ls -lh elite_scraper.log | awk '{print $5}')"
+          echo "🔍 Last 20 log lines:"
+          tail -20 elite_scraper.log
+        fi
+        
+        if [ -f "elite_scraper_progress.json" ]; then
+          echo "💾 Progress file exists - can resume later"
+          python3 -c "import json; data=json.load(open('elite_scraper_progress.json')); print(f'Progress: {data.get(\"total_scraped\", 0)} accounts processed')"
+        fi
+    
+    - name: 📤 Upload Results as Artifacts
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: reddit-scraper-results-${{ github.run_number }}
+        path: |
+          reddit_elite_influencers.csv
+          backup_reddit_elite_influencers.csv
+          elite_scraper_progress.json
+          elite_scraper.log
+          interrupted_reddit_elite_influencers.csv
+          error_reddit_elite_influencers.csv
+        retention-days: 30
+        if-no-files-found: warn
+    
+    - name: 💾 Commit Results to Repository (Optional)
+      if: success() && github.ref == 'refs/heads/main'
+      run: |
+        # Configure git
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Add and commit results
+        git add reddit_elite_influencers.csv elite_scraper_progress.json
+        git commit -m "🤖 Auto-update: Reddit scraper results $(date +%Y-%m-%d)" || echo "No changes to commit"
+        git push || echo "Push failed - continuing anyway"
+    
+    - name: 📊 Performance Metrics
+      if: always()
+      run: |
+        echo "⏱️ PERFORMANCE METRICS"
+        echo "====================="
+        
+        if [ -f "elite_scraper.log" ]; then
+          # Extract metrics from log
+          total_requests=$(grep -c "request" elite_scraper.log || echo "0")
+          echo "📡 Total API requests: $total_requests"
+          
+          # Check for rate limiting
+          rate_limits=$(grep -c "Rate limited" elite_scraper.log || echo "0")
+          echo "⚠️ Rate limit hits: $rate_limits"
+          
+          # Check for errors
+          errors=$(grep -c "ERROR" elite_scraper.log || echo "0")
+          echo "❌ Errors encountered: $errors"
+        fi
+        
+        echo "🏁 Workflow completed at $(date)"
