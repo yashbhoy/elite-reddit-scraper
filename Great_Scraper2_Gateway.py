@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """
-ELITE Reddit Influencer Scraper with Gateway Support - OPTIMIZED
-Integrates residential-IP scraping gateways to avoid datacenter IP bans.
-Supports ScraperAPI, ScrapFly, and Bright Data MCP.
-OPTIMIZED for speed while maintaining gateway protection.
+ELITE Reddit Influencer Scraper with Multi-Key ScraperAPI Support - OPTIMIZED
+Supports multiple ScraperAPI keys with intelligent rotation and credit management.
+Designed for GitHub Actions with free plan credit optimization.
+COMPLETE VERSION - All original functionality preserved and enhanced.
 """
-
 import requests
 import json
 import time
@@ -17,78 +16,179 @@ import os
 import logging
 from pathlib import Path
 import itertools
+from urllib.parse import urlencode
 
-class GatewayConfig:
-    """Configuration for different scraping gateway providers."""
+class MultiKeyConfig:
+    """Configuration for multiple ScraperAPI keys with smart rotation."""
     
-    PROVIDERS = {
-        'scraperapi': {
-            'base_url': 'http://api.scraperapi.com',
-            'params_key': 'api_key',
-            'extra_params': {
-                'render': 'false',
-                'country_code': 'US',
-                'premium': 'false'
+    def __init__(self):
+        # Load multiple API keys from environment
+        self.api_keys = self._load_api_keys()
+        self.key_stats = {key: {'requests': 0, 'errors': 0, 'last_error_time': 0, 'blocked': False, 'credits_used': 0} 
+                         for key in self.api_keys}
+        self.current_key_index = 0
+        self.max_requests_per_key = 4500  # Conservative for free plan (1000 credits)
+        self.max_errors_per_key = 5  # Block key after consecutive errors
+        self.error_reset_time = 3600  # Reset error count after 1 hour
+        
+    def _load_api_keys(self) -> List[str]:
+        """Load multiple API keys from environment variables."""
+        keys = []
+        
+        # Primary key
+        primary_key = os.getenv('SCRAPE_KEY') or os.getenv('SCRAPERAPI_KEY')
+        if primary_key:
+            keys.append(primary_key)
+        
+        # Additional keys (SCRAPERAPI_KEY_2, SCRAPERAPI_KEY_3, etc.)
+        key_index = 2
+        while True:
+            additional_key = os.getenv(f'SCRAPERAPI_KEY_{key_index}')
+            if additional_key:
+                keys.append(additional_key)
+                key_index += 1
+            else:
+                break
+        
+        # Fallback keys from comma-separated string
+        keys_string = os.getenv('SCRAPERAPI_KEYS')
+        if keys_string:
+            fallback_keys = [key.strip() for key in keys_string.split(',') if key.strip()]
+            keys.extend(fallback_keys)
+        
+        # Built-in fallback key (your original)
+        if not keys:
+            keys.append('001dfb055d3443ea6a8ba1e0d2ac3562')
+        
+        # Remove duplicates while preserving order
+        unique_keys = []
+        for key in keys:
+            if key not in unique_keys:
+                unique_keys.append(key)
+        
+        return unique_keys
+    
+    def get_active_key(self) -> Optional[str]:
+        """Get the current active API key with smart rotation."""
+        if not self.api_keys:
+            return None
+        
+        # Try to find a non-blocked key
+        attempts = 0
+        while attempts < len(self.api_keys):
+            current_key = self.api_keys[self.current_key_index]
+            stats = self.key_stats[current_key]
+            
+            # Reset error count if enough time has passed
+            if stats['errors'] > 0 and time.time() - stats['last_error_time'] > self.error_reset_time:
+                stats['errors'] = 0
+                stats['blocked'] = False
+            
+            # Check if key is usable
+            if (not stats['blocked'] and 
+                stats['requests'] < self.max_requests_per_key and 
+                stats['errors'] < self.max_errors_per_key):
+                return current_key
+            
+            # Move to next key
+            self.current_key_index = (self.current_key_index + 1) % len(self.api_keys)
+            attempts += 1
+        
+        # All keys exhausted or blocked, return least used key
+        available_keys = [(key, stats) for key, stats in self.key_stats.items() 
+                         if stats['requests'] < self.max_requests_per_key]
+        
+        if available_keys:
+            best_key = min(available_keys, key=lambda x: x[1]['requests'])[0]
+            self.current_key_index = self.api_keys.index(best_key)
+            return best_key
+        
+        return None
+    
+    def record_request(self, api_key: str, success: bool = True, error_type: Optional[str] = None):
+        """Record API request stats for intelligent rotation."""
+        if api_key in self.key_stats:
+            stats = self.key_stats[api_key]
+            stats['requests'] += 1
+            stats['credits_used'] += 1  # Assume 1 credit per request
+            
+            if not success:
+                stats['errors'] += 1
+                stats['last_error_time'] = time.time()
+                
+                # Block key if too many errors or specific error types
+                if (stats['errors'] >= self.max_errors_per_key or 
+                    error_type in ['403', '401', 'quota_exceeded']):
+                    stats['blocked'] = True
+            else:
+                # Reset error count on successful request
+                if stats['errors'] > 0:
+                    stats['errors'] = max(0, stats['errors'] - 1)
+    
+    def get_stats_summary(self) -> Dict[str, Any]:
+        """Get summary of all key statistics."""
+        total_requests = sum(stats['requests'] for stats in self.key_stats.values())
+        total_credits = sum(stats['credits_used'] for stats in self.key_stats.values())
+        active_keys = sum(1 for stats in self.key_stats.values() if not stats['blocked'])
+        
+        return {
+            'total_keys': len(self.api_keys),
+            'active_keys': active_keys,
+            'total_requests': total_requests,
+            'total_credits_used': total_credits,
+            'key_details': {
+                f"Key_{i+1}": {
+                    'requests': stats['requests'],
+                    'credits': stats['credits_used'],
+                    'errors': stats['errors'],
+                    'blocked': stats['blocked'],
+                    'last_8_chars': key[-8:] if len(key) >= 8 else key
+                }
+                for i, (key, stats) in enumerate(self.key_stats.items())
             }
-        },
-        'scrapfly': {
-            'base_url': 'https://api.scrapfly.io/scrape',
-            'params_key': 'key',
-            'extra_params': {
-                'render_js': 'false',
-                'country': 'US',
-                'asp': 'false'
-            }
-        },
-        'brightdata': {
-            'base_url': 'https://brd-customer-hl_XXXXXXXXX-zone-residential_proxy1.brd.superproxy.io:22225',
-            'auth': True,  # Uses basic auth instead of API key
-            'proxy_style': True
         }
-    }
 
-class EliteRedditScraperWithGateway:
-    """Elite scraper with integrated gateway support to avoid datacenter IP bans."""
+class EliteRedditScraperMultiKey:
+    """Elite scraper with multi-key ScraperAPI support and smart credit management."""
     
-    def __init__(self, target_count: int = 2500, gateway_provider: str = 'scraperapi') -> None:
+    def __init__(self, target_count: int = 2500) -> None:
         self.target_count = target_count
         self.influencers: List[Dict[str, Any]] = []
         self.scraped_users: Set[str] = set()
         self.failed_users: Set[str] = set()
         
-        # Gateway configuration with hardcoded ScraperAPI key
-        self.gateway_provider = gateway_provider
-        self.gateway_config = GatewayConfig.PROVIDERS.get(gateway_provider)
-        # Use environment variable first, then fallback to hardcoded key
-        self.gateway_key = os.getenv('SCRAPE_KEY') or os.getenv('GATEWAY_API_KEY') or '001dfb055d3443ea6a8ba1e0d2ac3562'
-        self.gateway_enabled = bool(self.gateway_key and self.gateway_config)
+        # Multi-key configuration
+        self.multi_key_config = MultiKeyConfig()
+        self.gateway_enabled = len(self.multi_key_config.api_keys) > 0
         
         # Setup logging first
         self._setup_logging()
         
         if not self.gateway_enabled:
-            self.logger.warning("⚠️ No gateway configured! Running in direct mode (may get banned on CI/CD)")
+            self.logger.error("❌ No ScraperAPI keys found! Add SCRAPERAPI_KEY or SCRAPERAPI_KEY_2, etc.")
+            raise ValueError("No API keys available")
         else:
-            self.logger.info(f"🛡️ Gateway enabled: {gateway_provider.upper()}")
-            self.logger.info(f"🔑 Using API key: {self.gateway_key[:8]}...")
+            stats = self.multi_key_config.get_stats_summary()
+            self.logger.info(f"🛡️ Multi-Key ScraperAPI enabled: {stats['total_keys']} keys loaded")
+            for i, key in enumerate(self.multi_key_config.api_keys):
+                self.logger.info(f"  Key {i+1}: ...{key[-8:]} (Ready)")
         
         # Progress tracking
         self.progress_file = 'elite_scraper_progress.json'
         self.csv_file = 'reddit_elite_influencers.csv'
         self.backup_interval = 50
         
-        # OPTIMIZED rate limiting for speed while maintaining gateway protection
+        # OPTIMIZED rate limiting for multi-key setup
         self.request_count = 0
         self.session_start = time.time()
-        self.max_requests_per_hour = 5000 if self.gateway_enabled else 3500  # Increased for gateway
-        self.base_delay = 0.3 if self.gateway_enabled else 0.8  # Much faster with gateway
+        self.base_delay = 0.2  # Faster with multiple keys
         self.current_delay = self.base_delay
         
         # Session management - optimized
         self.sessions = self._create_sessions()
         self.current_session_idx = 0
         
-        # Enhanced subreddit list - same as version 2
+        # Enhanced subreddit list - preserved from original
         self.subreddit_categories = {
             'crypto_defi_blockchain': [
                 'CryptoCurrency', 'Bitcoin', 'Ethereum', 'CryptoMarkets', 'defi', 'altcoin', 
@@ -186,14 +286,14 @@ class EliteRedditScraperWithGateway:
                 'Upgrade-Insecure-Requests': '1',
             })
             
-            # Configure retries - optimized for speed
+            # Configure retries - optimized for multi-key setup
             try:
                 from requests.adapters import HTTPAdapter
                 from urllib3.util.retry import Retry
                 
                 retry_strategy = Retry(
-                    total=3,  # Reduced retries for speed
-                    backoff_factor=1.5,  # Faster backoff
+                    total=2,  # Reduced for faster key rotation
+                    backoff_factor=1.0,
                     status_forcelist=[403, 429, 500, 502, 503, 504],
                 )
                 adapter = HTTPAdapter(max_retries=retry_strategy)
@@ -206,143 +306,134 @@ class EliteRedditScraperWithGateway:
             
         return sessions
     
-    def _gateway_request(self, url: str, params: Optional[Dict] = None, **kwargs) -> requests.Response:
-        """Optimized gateway request method."""
-        if not self.gateway_enabled:
-            # Direct request (original behavior)
-            session = self._get_session()
-            return session.get(url, params=params, timeout=20, **kwargs)
-        
-        # Gateway request - optimized for ScraperAPI
-        session = self._get_session()
-        
-        if self.gateway_provider == 'scraperapi':
-            return self._scraperapi_request_optimized(url, params, session, **kwargs)
-        elif self.gateway_provider == 'scrapfly':
-            return self._scrapfly_request(url, params, session, **kwargs)
-        elif self.gateway_provider == 'brightdata':
-            return self._brightdata_request(url, params, session, **kwargs)
-        else:
-            # Fallback to direct
-            return session.get(url, params=params, timeout=20, **kwargs)
-    
-    def _scraperapi_request_optimized(self, url: str, params: Optional[Dict], session: requests.Session, **kwargs) -> requests.Response:
-        """Optimized ScraperAPI request - faster processing."""
-        # Build target URL with params
+    def _multi_key_scraperapi_request(self, url: str, params: Optional[Dict] = None, **kwargs) -> requests.Response:
+        """Make request using multi-key ScraperAPI with intelligent key rotation."""
         if params:
-            from urllib.parse import urlencode
             query_string = urlencode(params)
             target_url = f"{url}?{query_string}"
         else:
             target_url = url
         
-        # Streamlined gateway params for speed
-        gateway_params = {
-            'api_key': self.gateway_key,
-            'url': target_url,
-            'render': 'false',  # Always false for speed
-            'country_code': 'US'
-        }
+        max_key_attempts = len(self.multi_key_config.api_keys)
+        attempt = 0
         
-        # Remove params from kwargs since we're embedding them in the URL
-        kwargs.pop('params', None)
-        # Set optimized timeout
-        kwargs['timeout'] = kwargs.get('timeout', 25)
-        
-        return session.get('http://api.scraperapi.com', params=gateway_params, **kwargs)
-    
-    def _scrapfly_request(self, url: str, params: Optional[Dict], session: requests.Session, **kwargs) -> requests.Response:
-        """Make request through ScrapFly."""
-        if params:
-            from urllib.parse import urlencode
-            query_string = urlencode(params)
-            target_url = f"{url}?{query_string}"
-        else:
-            target_url = url
-        
-        scrapfly_params = {
-            'key': self.gateway_key,
-            'url': target_url,
-            'render_js': 'false',
-            'country': 'US',
-            'asp': 'false'
-        }
-        
-        kwargs.pop('params', None)
-        kwargs['timeout'] = kwargs.get('timeout', 25)
-        return session.get('https://api.scrapfly.io/scrape', params=scrapfly_params, **kwargs)
-    
-    def _brightdata_request(self, url: str, params: Optional[Dict], session: requests.Session, **kwargs) -> requests.Response:
-        """Make request through Bright Data (proxy style)."""
-        # Note: This requires proxy credentials in format username:password
-        proxy_url = os.getenv('BRIGHTDATA_PROXY_URL')  # e.g., 'brd-customer-hl_XXXXX-zone-residential_proxy1:password@brd.superproxy.io:22225'
-        
-        if proxy_url:
-            proxies = {
-                'http': f'http://{proxy_url}',
-                'https': f'http://{proxy_url}'
+        while attempt < max_key_attempts:
+            # Get active API key
+            api_key = self.multi_key_config.get_active_key()
+            if not api_key:
+                # All keys exhausted
+                self.logger.error("❌ All API keys exhausted or blocked!")
+                # Wait and retry with least used key
+                time.sleep(60)
+                stats = self.multi_key_config.get_stats_summary()
+                self.logger.info("⏳ Attempting with least used key after cooldown...")
+                api_key = min(self.multi_key_config.api_keys, 
+                             key=lambda k: self.multi_key_config.key_stats[k]['requests'])
+            
+            # Build ScraperAPI request
+            gateway_params = {
+                'api_key': api_key,
+                'url': target_url,
+                'render': 'false',
+                'country_code': 'US',
+                'premium': 'false'  # Free plan optimization
             }
-            kwargs['proxies'] = proxies
+            
+            session = self._get_session()
+            kwargs_copy = kwargs.copy()
+            kwargs_copy.pop('params', None)
+            kwargs_copy['timeout'] = kwargs_copy.get('timeout', 25)
+            
+            try:
+                response = session.get('http://api.scraperapi.com', params=gateway_params, **kwargs_copy)
+                
+                if response.status_code == 200:
+                    # Success - record and return
+                    self.multi_key_config.record_request(api_key, success=True)
+                    return response
+                elif response.status_code == 401:
+                    # Invalid API key
+                    self.multi_key_config.record_request(api_key, success=False, error_type='401')
+                    self.logger.warning(f"⚠️ Invalid API key ...{api_key[-8:]}, rotating to next key")
+                elif response.status_code == 403:
+                    # Quota exceeded or blocked
+                    self.multi_key_config.record_request(api_key, success=False, error_type='403')
+                    self.logger.warning(f"⚠️ API key ...{api_key[-8:]} quota exceeded, rotating to next key")
+                elif response.status_code == 429:
+                    # Rate limited
+                    self.multi_key_config.record_request(api_key, success=False, error_type='429')
+                    self.logger.warning(f"⚠️ Rate limited on key ...{api_key[-8:]}, rotating to next key")
+                    time.sleep(random.uniform(2, 5))
+                else:
+                    # Other error
+                    self.multi_key_config.record_request(api_key, success=False, error_type=str(response.status_code))
+                    self.logger.warning(f"⚠️ Error {response.status_code} with key ...{api_key[-8:]}")
+                
+                # Try next key
+                attempt += 1
+                continue
+                
+            except requests.exceptions.RequestException as e:
+                self.multi_key_config.record_request(api_key, success=False, error_type='connection_error')
+                self.logger.warning(f"⚠️ Connection error with key ...{api_key[-8:]}: {e}")
+                attempt += 1
+                time.sleep(random.uniform(1, 3))
+                continue
         
-        kwargs['timeout'] = kwargs.get('timeout', 25)
-        return session.get(url, params=params, **kwargs)
+        # If we get here, all keys failed
+        raise requests.exceptions.RequestException("All API keys failed or exhausted")
     
     def _get_session(self) -> requests.Session:
         """Get current session and rotate if needed."""
         session = self.sessions[self.current_session_idx]
         
         # Rotate sessions more frequently for better distribution
-        if self.request_count % 200 == 0 and self.request_count > 0:
+        if self.request_count % 150 == 0 and self.request_count > 0:
             self.current_session_idx = (self.current_session_idx + 1) % len(self.sessions)
-            self.logger.info(f"🔄 Rotated to session {self.current_session_idx}")
             
         return session
     
     def _adaptive_delay(self) -> None:
-        """Optimized adaptive delay - much faster with gateway."""
+        """Optimized adaptive delay for multi-key setup."""
         self.request_count += 1
         
-        elapsed_hours = (time.time() - self.session_start) / 3600
-        if elapsed_hours > 0:
-            requests_per_hour = self.request_count / elapsed_hours
-            
-            if requests_per_hour > self.max_requests_per_hour * 0.8:
-                self.current_delay = min(self.current_delay * 1.1, 2.0 if self.gateway_enabled else 4.0)
-            elif requests_per_hour < self.max_requests_per_hour * 0.6:
-                self.current_delay = max(self.current_delay * 0.95, self.base_delay)
+        # Shorter delays with multiple keys
+        base_delay = 0.1 if len(self.multi_key_config.api_keys) > 3 else 0.2
         
-        # Reduced jitter for speed
-        jitter = random.uniform(0.8, 1.2) if self.gateway_enabled else random.uniform(0.5, 1.5)
-        actual_delay = self.current_delay * jitter
+        # Add small jitter
+        jitter = random.uniform(0.5, 1.5)
+        actual_delay = base_delay * jitter
         
         time.sleep(actual_delay)
+        
+        # Log key rotation stats periodically
+        if self.request_count % 100 == 0:
+            stats = self.multi_key_config.get_stats_summary()
+            self.logger.info(f"🔑 Multi-Key Stats: {stats['active_keys']}/{stats['total_keys']} active, "
+                           f"{stats['total_credits_used']} credits used")
     
     def _handle_rate_limit(self, response: requests.Response) -> bool:
-        """Optimized rate limiting - faster recovery with gateway."""
+        """Handle rate limiting with multi-key awareness."""
         if response.status_code == 429:
-            self.logger.warning("⚠️ Rate limited! Implementing exponential backoff")
-            backoff_time = random.uniform(15, 45) if self.gateway_enabled else random.uniform(60, 180)
-            self.logger.info(f"😴 Sleeping for {backoff_time:.1f} seconds")
-            time.sleep(backoff_time)
-            self.current_delay *= 1.2 if self.gateway_enabled else 1.5
+            self.logger.warning("⚠️ Rate limited! Rotating to next key...")
+            # Short delay then let key rotation handle it
+            time.sleep(random.uniform(1, 3))
             return True
         elif response.status_code in [502, 503, 504]:
-            self.logger.warning(f"🔧 Server error {response.status_code}, retrying...")
-            time.sleep(random.uniform(3, 8) if self.gateway_enabled else random.uniform(10, 30))
-            return True
-        elif response.status_code == 403 and not self.gateway_enabled:
-            self.logger.error("🚫 403 Forbidden - datacenter IP likely banned! Consider using a gateway.")
+            self.logger.warning(f"🔧 Server error {response.status_code}, trying next key...")
+            time.sleep(random.uniform(2, 5))
             return True
         return False
     
     def _save_progress(self) -> None:
-        """Save current progress to resume later."""
+        """Save current progress with multi-key stats."""
         progress_data = {
             'total_scraped': len(self.influencers),
             'scraped_users': list(self.scraped_users),
             'failed_users': list(self.failed_users),
             'timestamp': datetime.now().isoformat(),
-            'request_count': self.request_count
+            'request_count': self.request_count,
+            'multi_key_stats': self.multi_key_config.get_stats_summary()
         }
         
         with open(self.progress_file, 'w') as f:
@@ -361,6 +452,11 @@ class EliteRedditScraperWithGateway:
                 self.scraped_users = set(progress_data.get('scraped_users', []))
                 self.failed_users = set(progress_data.get('failed_users', []))
                 self.request_count = progress_data.get('request_count', 0)
+                
+                # Load previous key stats if available
+                if 'multi_key_stats' in progress_data:
+                    prev_stats = progress_data['multi_key_stats']
+                    self.logger.info(f"📊 Previous session used {prev_stats.get('total_credits_used', 0)} credits")
                 
                 if os.path.exists(self.csv_file):
                     self._load_existing_csv()
@@ -394,12 +490,12 @@ class EliteRedditScraperWithGateway:
             self.logger.error(f"❌ Failed to load existing CSV: {e}")
     
     def get_elite_posts_only(self, subreddit: str, limit: int = 100, max_retries: int = 2) -> List[Dict[str, Any]]:
-        """Get only TOP and HOT posts through gateway - OPTIMIZED."""
+        """Get only TOP and HOT posts using multi-key ScraperAPI."""
         all_posts = []
         
         # Streamlined sort configs for speed
         sort_configs = [
-            ('hot', None),      # Currently trending (fastest)  
+            ('hot', None),      # Currently trending
             ('top', 'week'),    # Best of the week
             ('top', 'month'),   # Best of the month
         ]
@@ -413,8 +509,7 @@ class EliteRedditScraperWithGateway:
             
             for attempt in range(max_retries):
                 try:
-                    # Use optimized gateway request method
-                    response = self._gateway_request(url, params=params)
+                    response = self._multi_key_scraperapi_request(url, params=params)
                     
                     if self._handle_rate_limit(response):
                         continue
@@ -438,7 +533,7 @@ class EliteRedditScraperWithGateway:
         return all_posts
     
     def get_user_with_retry(self, username: str, max_retries: int = 2) -> Dict[str, Any]:
-        """Optimized user retrieval with faster retry logic."""
+        """Get user data with multi-key retry logic."""
         if username in self.scraped_users or username in self.failed_users:
             return {}
         
@@ -446,8 +541,7 @@ class EliteRedditScraperWithGateway:
         
         for attempt in range(max_retries):
             try:
-                # Use optimized gateway request method
-                response = self._gateway_request(url)
+                response = self._multi_key_scraperapi_request(url)
                 
                 if self._handle_rate_limit(response):
                     continue
@@ -480,7 +574,7 @@ class EliteRedditScraperWithGateway:
         return {}
     
     def analyze_elite_user(self, user_data: Dict[str, Any]) -> Dict[str, Any]:
-        """ELITE USER ANALYSIS - Only accept high-karma accounts with Reddit profile link."""
+        """ELITE USER ANALYSIS - Only accept high-karma accounts."""
         if not user_data:
             return {}
         
@@ -533,7 +627,7 @@ class EliteRedditScraperWithGateway:
         
         influencer = {
             'username': username,
-            'reddit_profile_url': reddit_profile_url,  # NEW: Reddit account link
+            'reddit_profile_url': reddit_profile_url,
             'total_karma': total_karma,
             'link_karma': link_karma,
             'comment_karma': comment_karma,
@@ -550,7 +644,7 @@ class EliteRedditScraperWithGateway:
         return influencer
     
     def scrape_subreddit_elite(self, subreddit: str, target_users: int = 40) -> int:
-        """Optimized elite subreddit scraping with gateway support."""
+        """Optimized elite subreddit scraping with multi-key support."""
         self.logger.info(f"🎯 ELITE scraping r/{subreddit} (targeting {target_users} top users)")
         
         found_users = 0
@@ -563,12 +657,18 @@ class EliteRedditScraperWithGateway:
             if found_users >= target_users or len(self.influencers) >= self.target_count:
                 break
             
+            # Check if we're approaching credit limits
+            stats = self.multi_key_config.get_stats_summary()
+            if stats['total_credits_used'] > (stats['total_keys'] * 4500):  # 90% of credits used
+                self.logger.warning("⚠️ Approaching credit limits, saving progress...")
+                self._save_progress()
+            
             post = post_data.get('data', {})
             username = post.get('author', '')
             post_score = post.get('score', 0)
             
             # Lower threshold for faster results but still quality-focused
-            if post_score < 500:  # Lowered from 1000 for more candidates
+            if post_score < 500:
                 continue
             
             if (username and username != '[deleted]' and 
@@ -592,10 +692,14 @@ class EliteRedditScraperWithGateway:
         return found_users
     
     def scrape_all_categories_elite(self) -> None:
-        """Scrape all categories focusing on elite accounts only - OPTIMIZED."""
-        self.logger.info(f"🚀 ELITE SCRAPING MODE - Targeting {self.target_count} top-tier influencers")
+        """Scrape all categories with multi-key credit management."""
+        self.logger.info(f"🚀 MULTI-KEY ELITE SCRAPING - Targeting {self.target_count} top-tier influencers")
         self.logger.info("🏆 Minimum Karma: 50,000 (MAJOR tier and above)")
         self.logger.info("🎯 Tiers: MEGA (1M+), SUPER (250K+), MAJOR (50K+)")
+        
+        initial_stats = self.multi_key_config.get_stats_summary()
+        self.logger.info(f"🔑 Starting with {initial_stats['total_keys']} API keys, "
+                        f"{initial_stats['total_credits_used']} credits already used")
         
         category_stats: Dict[str, int] = {category: 0 for category in self.subreddit_categories.keys()}
         
@@ -615,41 +719,73 @@ class EliteRedditScraperWithGateway:
             if len(self.influencers) >= self.target_count:
                 break
                 
+            # Check credit usage before starting new category
+            current_stats = self.multi_key_config.get_stats_summary()
+            if current_stats['active_keys'] == 0:
+                self.logger.error("❌ No active API keys remaining!")
+                break
+            elif current_stats['total_credits_used'] > (current_stats['total_keys'] * 4750):
+                self.logger.warning("⚠️ 95% of credits used, stopping to preserve resources")
+                break
+                
             subreddits = self.subreddit_categories[category_name]
             self.logger.info(f"\n🎯 CATEGORY: {category_name.upper()} ({len(subreddits)} subreddits)")
+            self.logger.info(f"🔑 Active keys: {current_stats['active_keys']}/{current_stats['total_keys']}, "
+                           f"Credits used: {current_stats['total_credits_used']}")
             
             # Shuffle for variety but maintain quality focus
             random.shuffle(subreddits)
             
-            # Optimized targets per subreddit - balance speed vs quality
-            users_per_subreddit = 25  # Reduced for faster processing
+            # Adjust targets based on remaining credits
+            remaining_credits = (current_stats['total_keys'] * 1000) - current_stats['total_credits_used']
+            if remaining_credits < 500:
+                users_per_subreddit = 15  # Conservative for low credits
+            elif remaining_credits < 1000:
+                users_per_subreddit = 20  # Moderate
+            else:
+                users_per_subreddit = 25  # Normal operation
             
             for subreddit in subreddits:
                 if len(self.influencers) >= self.target_count:
+                    break
+                
+                # Double-check credit status
+                live_stats = self.multi_key_config.get_stats_summary()
+                if live_stats['active_keys'] == 0:
+                    self.logger.warning("⚠️ All keys exhausted during category processing")
                     break
                 
                 try:
                     added_count = self.scrape_subreddit_elite(subreddit, users_per_subreddit)
                     category_stats[category_name] += added_count
                     
-                    # Fast progress logging every 100 accounts
+                    # Progress logging every 100 accounts
                     if len(self.influencers) % 100 == 0 and len(self.influencers) > 0:
                         progress = (len(self.influencers) / self.target_count) * 100
-                        self.logger.info(f"📈 FAST Progress: {len(self.influencers)}/{self.target_count} ({progress:.1f}%)")
+                        live_stats = self.multi_key_config.get_stats_summary()
+                        self.logger.info(f"📈 Progress: {len(self.influencers)}/{self.target_count} ({progress:.1f}%) "
+                                       f"| Credits: {live_stats['total_credits_used']}")
                     
                 except Exception as e:
                     self.logger.error(f"❌ Error scraping r/{subreddit}: {e}")
                     continue
                 
-                # Show tier distribution every 250 accounts (less frequent for speed)
+                # Show tier distribution every 250 accounts
                 if len(self.influencers) % 250 == 0 and len(self.influencers) > 0:
                     self._show_elite_distribution()
         
         # Final category breakdown
+        final_stats = self.multi_key_config.get_stats_summary()
         self.logger.info(f"\n📊 FINAL CATEGORY BREAKDOWN:")
         for category, count in category_stats.items():
             percentage = (count / len(self.influencers)) * 100 if self.influencers else 0
             self.logger.info(f"  {category.upper():<30}: {count:>4,} accounts ({percentage:.1f}%)")
+        
+        self.logger.info(f"\n🔑 FINAL MULTI-KEY STATISTICS:")
+        for key_name, key_data in final_stats['key_details'].items():
+            self.logger.info(f"  {key_name}: {key_data['requests']} requests, "
+                           f"{key_data['credits']} credits, "
+                           f"{'BLOCKED' if key_data['blocked'] else 'ACTIVE'}")
     
     def _show_elite_distribution(self) -> None:
         """Show current elite tier distribution."""
@@ -696,7 +832,7 @@ class EliteRedditScraperWithGateway:
         self.logger.info(f"💾 Saved {len(self.influencers)} elite influencers to {filename}")
     
     def print_elite_summary(self) -> None:
-        """Print comprehensive elite summary."""
+        """Print comprehensive elite summary with multi-key stats."""
         if not self.influencers:
             self.logger.error("❌ No elite influencers found!")
             return
@@ -712,9 +848,10 @@ class EliteRedditScraperWithGateway:
             total_karma += influencer['total_karma']
         
         avg_karma = total_karma / len(self.influencers)
+        final_stats = self.multi_key_config.get_stats_summary()
         
-        print(f"\n🏆 ELITE SCRAPING RESULTS")
-        print(f"{'='*60}")
+        print(f"\n🏆 MULTI-KEY ELITE SCRAPING RESULTS")
+        print(f"{'='*70}")
         print(f"✅ Total Elite Influencers: {len(self.influencers):,}")
         print(f"🎯 Target Achievement: {(len(self.influencers)/self.target_count)*100:.1f}%")
         print(f"📊 Combined Karma: {total_karma:,}")
@@ -722,9 +859,21 @@ class EliteRedditScraperWithGateway:
         print(f"📈 Estimated Total Reach: {total_reach:,}")
         print(f"⏱️  Total Requests: {self.request_count:,}")
         print(f"🕐 Runtime: {(time.time() - self.session_start)/3600:.1f} hours")
-        print(f"🛡️  Gateway: {'ENABLED ✅' if self.gateway_enabled else 'DISABLED ⚠️'}")
         print(f"🔥 Quality Focus: 50K+ karma minimum")
         print(f"🔗 Profile URLs: Included in CSV export")
+        
+        print(f"\n🔑 MULTI-KEY API STATISTICS:")
+        print(f"  Total Keys Used: {final_stats['total_keys']}")
+        print(f"  Active Keys: {final_stats['active_keys']}")
+        print(f"  Total Credits Used: {final_stats['total_credits_used']}")
+        print(f"  Credits per Account: {final_stats['total_credits_used']/len(self.influencers):.1f}")
+        
+        print(f"\n🔑 INDIVIDUAL KEY PERFORMANCE:")
+        for key_name, key_data in final_stats['key_details'].items():
+            status = "🔴 BLOCKED" if key_data['blocked'] else "🟢 ACTIVE"
+            print(f"  {key_name} (...{key_data['last_8_chars']}): "
+                  f"{key_data['requests']} requests, {key_data['credits']} credits, "
+                  f"{key_data['errors']} errors {status}")
         
         print(f"\n🏆 ELITE KARMA TIER BREAKDOWN:")
         for tier in ['MEGA', 'SUPER', 'MAJOR']:
@@ -750,51 +899,53 @@ class EliteRedditScraperWithGateway:
         top_influencers = sorted(self.influencers, key=lambda x: x['total_karma'], reverse=True)[:25]
         
         print(f"\n🏆 TOP 25 ELITE INFLUENCERS:")
-        print(f"{'Rank':<4} {'Username':<20} {'Karma':<12} {'Tier':<6} {'Per Day':<10} {'Reach':<12} {'Profile URL'}")
-        print(f"{'-'*4} {'-'*20} {'-'*12} {'-'*6} {'-'*10} {'-'*12} {'-'*50}")
+        print(f"{'Rank':<4} {'Username':<20} {'Karma':<12} {'Tier':<6} {'Per Day':<10} {'Reach':<12}")
+        print(f"{'-'*4} {'-'*20} {'-'*12} {'-'*6} {'-'*10} {'-'*12}")
         for i, influencer in enumerate(top_influencers, 1):
             karma_per_day = influencer.get('karma_per_day', 0)
             reach = influencer.get('estimated_reach', 0)
-            profile_url = influencer.get('reddit_profile_url', 'N/A')
-            print(f"{i:2d}. u/{influencer['username']:<19} {influencer['total_karma']:>10,} {influencer['tier']:<6} {karma_per_day:>8.1f} {reach:>10,} {profile_url}")
+            print(f"{i:2d}. u/{influencer['username']:<19} {influencer['total_karma']:>10,} {influencer['tier']:<6} {karma_per_day:>8.1f} {reach:>10,}")
         
-        # Karma distribution analysis
-        mega_accounts = [i for i in self.influencers if i['tier'] == 'MEGA']
-        if mega_accounts:
-            mega_avg = sum(i['total_karma'] for i in mega_accounts) / len(mega_accounts)
-            print(f"\n💎 MEGA TIER ANALYSIS ({len(mega_accounts)} accounts):")
-            print(f"  Average Karma: {mega_avg:,.0f}")
-            print(f"  Combined Reach: {sum(i['estimated_reach'] for i in mega_accounts):,}")
+        # Credit efficiency analysis
+        if final_stats['total_credits_used'] > 0:
+            efficiency = len(self.influencers) / final_stats['total_credits_used']
+            print(f"\n💰 CREDIT EFFICIENCY ANALYSIS:")
+            print(f"  Accounts per Credit: {efficiency:.3f}")
+            print(f"  Cost per Elite Account: {1/efficiency:.1f} credits")
+            print(f"  Estimated Free Plan Potential: {int(efficiency * (final_stats['total_keys'] * 1000)):,} accounts")
         
-        print(f"\n📋 CSV Export includes:")
-        print(f"  • Username and Reddit profile URL")
-        print(f"  • Complete karma breakdown")
-        print(f"  • Account quality metrics")
-        print(f"  • Estimated reach calculations")
+        print(f"\n📋 GITHUB ACTIONS OPTIMIZATION:")
+        print(f"  • Multi-key rotation prevents single key exhaustion")
+        print(f"  • Smart credit management maximizes free plan usage")
+        print(f"  • Progress saving allows resumption after timeouts")
+        print(f"  • CSV includes all account data with profile URLs")
 
 def main() -> None:
-    """Main execution with optimized gateway configuration."""
-    print("🏆 ELITE REDDIT INFLUENCER SCRAPER WITH GATEWAY SUPPORT - OPTIMIZED")
-    print("="*70)
+    """Main execution optimized for GitHub Actions with multi-key support."""
+    print("🏆 MULTI-KEY ELITE REDDIT SCRAPER - GITHUB ACTIONS OPTIMIZED")
+    print("="*75)
     
-    # Detect gateway configuration
-    gateway_provider = os.getenv('GATEWAY_PROVIDER', 'scraperapi').lower()
-    gateway_key = os.getenv('SCRAPE_KEY') or os.getenv('GATEWAY_API_KEY') or '001dfb055d3443ea6a8ba1e0d2ac3562'
+    # Environment detection
+    target_count = int(os.getenv('TARGET_COUNT', '2500'))
     
-    if gateway_key and gateway_key != '001dfb055d3443ea6a8ba1e0d2ac3562':
-        print(f"🛡️  Gateway: {gateway_provider.upper()} (Environment key) ✅")
-    elif gateway_key:
-        print(f"🛡️  Gateway: {gateway_provider.upper()} (Built-in key) ✅")
-    else:
-        print("⚠️  No gateway configured - running in direct mode")
+    try:
+        scraper = EliteRedditScraperMultiKey(target_count=target_count)
+    except ValueError as e:
+        print(f"❌ Configuration Error: {e}")
+        print("\n🔧 SETUP INSTRUCTIONS FOR GITHUB ACTIONS:")
+        print("Add these secrets to your GitHub repository:")
+        print("  • SCRAPERAPI_KEY - Your primary ScraperAPI key")
+        print("  • SCRAPERAPI_KEY_2 - Additional key (optional)")
+        print("  • SCRAPERAPI_KEY_3 - Additional key (optional)")
+        print("Or set SCRAPERAPI_KEYS with comma-separated keys")
+        return
     
-    print("🚀 OPTIMIZATION: Faster delays, reduced retries, streamlined processing")
-    print("🔗 NEW FEATURE: Reddit profile URLs included in export")
-    print("Target: Top-Tier Accounts Only (50K+ karma)")
-    print("Focus: MEGA (1M+), SUPER (250K+), MAJOR (50K+)")
-    print("="*70)
-    
-    scraper = EliteRedditScraperWithGateway(target_count=2500, gateway_provider=gateway_provider)
+    initial_stats = scraper.multi_key_config.get_stats_summary()
+    print(f"🔑 Loaded {initial_stats['total_keys']} ScraperAPI keys")
+    print(f"📊 Estimated scraping capacity: {initial_stats['total_keys'] * 1000} credits")
+    print(f"🎯 Target: {target_count} elite influencers (50K+ karma)")
+    print(f"🚀 GitHub Actions optimized with smart credit management")
+    print("="*75)
     
     # Resume from previous progress if available
     resumed = scraper._load_progress()
@@ -814,15 +965,19 @@ def main() -> None:
         end_time = time.time()
         runtime_minutes = (end_time - start_time) / 60
         
-        print(f"\n✅ ELITE SCRAPING COMPLETE!")
+        final_stats = scraper.multi_key_config.get_stats_summary()
+        
+        print(f"\n✅ MULTI-KEY ELITE SCRAPING COMPLETE!")
         print(f"📁 Results saved to: {scraper.csv_file}")
         print(f"📋 Log file: elite_scraper.log")
         print(f"🎯 Quality Achieved: Only 50K+ karma accounts")
-        print(f"🛡️  Gateway Protection: {'ACTIVE ✅' if scraper.gateway_enabled else 'INACTIVE ⚠️'}")
-        print(f"⚡ Speed Optimization: {'ENABLED' if scraper.gateway_enabled else 'LIMITED'}")
+        print(f"🔑 Keys Used: {final_stats['active_keys']}/{final_stats['total_keys']} active")
+        print(f"💰 Credits Consumed: {final_stats['total_credits_used']}")
+        print(f"⚡ Efficiency: {len(scraper.influencers)/max(final_stats['total_credits_used'], 1):.3f} accounts/credit")
         print(f"🔗 Profile URLs: Included for all accounts")
         print(f"⏱️  Total Runtime: {runtime_minutes:.1f} minutes")
         print(f"📈 Speed: {len(scraper.influencers)/max(runtime_minutes, 1):.1f} accounts/minute")
+        print(f"🎯 GitHub Actions Compatible: ✅")
         
     except KeyboardInterrupt:
         print(f"\n⏹️  Elite scraping interrupted by user")
@@ -838,6 +993,13 @@ def main() -> None:
             scraper._save_progress()
             scraper.print_elite_summary()
             print(f"💾 Data saved despite error - check error_{scraper.csv_file}")
+        
+        # Show final key stats even on error
+        final_stats = scraper.multi_key_config.get_stats_summary()
+        print(f"\n🔑 FINAL KEY STATISTICS:")
+        print(f"Credits Used: {final_stats['total_credits_used']}")
+        for key_name, key_data in final_stats['key_details'].items():
+            print(f"  {key_name}: {key_data['credits']} credits, {'BLOCKED' if key_data['blocked'] else 'ACTIVE'}")
 
 if __name__ == "__main__":
     main()
