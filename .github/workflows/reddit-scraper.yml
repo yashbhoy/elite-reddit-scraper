@@ -6,7 +6,7 @@ on:
       target_count:
         description: 'Number of influencers to scrape'
         required: true
-        default: '2500'
+        default: '5000'
         type: string
       gateway_provider:
         description: 'Gateway provider to use'
@@ -25,7 +25,7 @@ on:
 jobs:
   scrape-reddit:
     runs-on: ubuntu-latest
-    timeout-minutes: 360  # 6 hours max runtime
+    timeout-minutes: 480  # 8 hours max runtime
     
     steps:
     - name: 📥 Checkout repository
@@ -46,9 +46,47 @@ jobs:
     - name: 🔧 Configure environment
       run: |
         echo "GATEWAY_PROVIDER=${{ github.event.inputs.gateway_provider || 'scraperapi' }}" >> $GITHUB_ENV
-        echo "TARGET_COUNT=${{ github.event.inputs.target_count || '2500' }}" >> $GITHUB_ENV
+        echo "TARGET_COUNT=${{ github.event.inputs.target_count || '5000' }}" >> $GITHUB_ENV
         echo "SCRAPE_KEY=${{ secrets.SCRAPE_KEY }}" >> $GITHUB_ENV
-        echo "🔑 Environment configured"
+        echo "SCRAPERAPI_KEY=${{ secrets.SCRAPERAPI_KEY }}" >> $GITHUB_ENV
+        echo "SCRAPERAPI_KEY_2=${{ secrets.SCRAPERAPI_KEY_2 }}" >> $GITHUB_ENV
+        echo "SCRAPERAPI_KEY_3=${{ secrets.SCRAPERAPI_KEY_3 }}" >> $GITHUB_ENV
+        echo "🔑 Environment configured with multi-key support"
+    
+    - name: 🔍 Validate API keys
+      run: |
+        echo "🔑 Checking available API keys..."
+        key_count=0
+        
+        # Check primary key (SCRAPE_KEY - your original)
+        if [ -n "$SCRAPE_KEY" ]; then
+          echo "✅ Primary SCRAPE_KEY: $(echo $SCRAPE_KEY | cut -c1-8)..."
+          key_count=$((key_count + 1))
+        fi
+        
+        # Check ScraperAPI keys
+        if [ -n "$SCRAPERAPI_KEY" ]; then
+          echo "✅ SCRAPERAPI_KEY: $(echo $SCRAPERAPI_KEY | cut -c1-8)..."
+          key_count=$((key_count + 1))
+        fi
+        
+        if [ -n "$SCRAPERAPI_KEY_2" ]; then
+          echo "✅ SCRAPERAPI_KEY_2: $(echo $SCRAPERAPI_KEY_2 | cut -c1-8)..."
+          key_count=$((key_count + 1))
+        fi
+        
+        if [ -n "$SCRAPERAPI_KEY_3" ]; then
+          echo "✅ SCRAPERAPI_KEY_3: $(echo $SCRAPERAPI_KEY_3 | cut -c1-8)..."
+          key_count=$((key_count + 1))
+        fi
+        
+        echo "🎯 Total available keys: $key_count"
+        echo "💰 Estimated capacity: $((key_count * 5000)) credits"
+        
+        if [ "$key_count" -eq 0 ]; then
+          echo "❌ ERROR: No API keys found! Please add SCRAPE_KEY or SCRAPERAPI_KEY secrets"
+          exit 1
+        fi
     
     - name: 📊 Check previous progress
       run: |
@@ -64,7 +102,7 @@ jobs:
         echo "🏆 Starting Elite Reddit Scraper..."
         echo "Gateway: $GATEWAY_PROVIDER"
         echo "Target: $TARGET_COUNT accounts"
-        echo "API Key: $(echo $SCRAPE_KEY | cut -c1-8)..."
+        echo "API Key: $(echo $SCRAPE_KEY$SCRAPERAPI_KEY | cut -c1-8)..."
         
         # Create logs directory
         mkdir -p logs
@@ -159,6 +197,10 @@ jobs:
           # Check for errors
           errors=$(grep -c "ERROR" elite_scraper.log || echo "0")
           echo "❌ Errors encountered: $errors"
+          
+          # Check for key rotation events
+          key_rotations=$(grep -c "rotating\|next key" elite_scraper.log || echo "0")
+          echo "🔄 Key rotation events: $key_rotations"
         fi
         
         echo "🏁 Workflow completed at $(date)"
