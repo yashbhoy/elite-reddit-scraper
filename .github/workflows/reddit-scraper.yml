@@ -70,7 +70,7 @@ jobs:
         mkdir -p logs
         
         # Run the scraper with timeout and error handling
-        timeout 21600 python3 Great_Scraper3_Optimized.py || {
+        timeout 21600 python3 Great_Scraper2_Gateway.py || {
           exit_code=$?
           if [ $exit_code -eq 124 ]; then
             echo "⏰ Scraper reached 6-hour timeout - saving progress"
