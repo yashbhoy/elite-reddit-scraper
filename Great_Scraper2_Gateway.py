@@ -306,66 +306,66 @@ class UltraOptimizedRedditScraper:
         
         # Optimized subreddit configuration
        self.subreddit_categories = {
-    'elite_crypto_defi': [
-        'CryptoCurrency', 'Bitcoin', 'Ethereum', 'CryptoMarkets', 'ethtrader', 'BitcoinMarkets',
-        'defi', 'CryptoTechnology', 'ethereum', 'ethereumnoobies', 'solana', 'cardano',
-        'Monero', 'litecoin', 'CryptoCurrencyTrading', 'altcoin', 'avalanche', 'polygon',
-        'chainlink', 'dot', 'cosmosnetwork', 'terra_money', 'algorand', 'tezos',
-        'NEO', 'eos', 'stellar', 'CryptoMoonShots', 'SatoshiStreetBets', 'binance',
-        'coinbase', 'kraken', 'CryptoCurrencies', 'BitcoinBeginners', 'BitcoinCash'
-    ],
-    
-    'advanced_ai_ml': [
-        'MachineLearning', 'artificial', 'OpenAI', 'ChatGPT', 'singularity', 'LocalLLaMA',
-        'ArtificialIntelligence', 'deeplearning', 'datascience', 'statistics', 'analytics',
-        'ComputerVision', 'NLP', 'reinforcementlearning', 'MLQuestions', 'MachineLearningNews',
-        'tensorflow', 'PyTorch', 'learnmachinelearning', 'dataengineering', 'bigdata',
-        'StableDiffusion', 'midjourney', 'dalle2', 'GPT3', 'LanguageTechnology', 'robotics'
-    ],
-    
-    'programming_dev': [
-        'programming', 'Python', 'javascript', 'reactjs', 'node', 'webdev', 'frontend',
-        'backend', 'fullstack', 'coding', 'learnprogramming', 'rust', 'golang', 'cpp',
-        'java', 'csharp', 'php', 'ruby', 'swift', 'kotlin', 'typescript', 'vuejs',
-        'angular', 'django', 'flask', 'springboot', 'dotnet', 'github', 'opensource',
-        'programming_languages', 'ProgrammerHumor', 'cscareerquestions', 'ExperiencedDevs'
-    ],
-    
-    'devops_cloud': [
-        'devops', 'kubernetes', 'docker', 'aws', 'azure', 'googlecloud', 'terraform',
-        'ansible', 'jenkins', 'linux', 'sysadmin', 'networking', 'cybersecurity',
-        'cloud', 'microservices', 'serverless', 'containers', 'cicd', 'monitoring',
-        'infrastructure', 'homelab', 'selfhosted', 'k8s', 'cloudformation', 'helm'
-    ],
-    
-    'blockchain_tech': [
-        'ethereum', 'solana', 'cardano', 'avalanche', 'polygon', 'cosmos', 'polkadot',
-        'chainlink', 'web3', 'DeFi', 'NFT', 'NFTs', 'smartcontracts', 'solidity',
-        'ethdev', 'ethereumdev', 'web3_blockchain', 'dapps', 'layer2', 'zksync',
-        'arbitrum', 'optimism', 'metamask', 'uniswap', 'aave', 'compound', 'yearn'
-    ],
-    
-    'fintech_trading': [
-        'algotrading', 'SecurityAnalysis', 'investing', 'ValueInvesting', 'StockMarket',
-        'options', 'forex', 'quantfinance', 'financialindependence', 'SecurityAnalysis',
-        'financialengineering', 'econometrics', 'portfoliomanagement', 'riskmanagement',
-        'trading', 'daytrading', 'swingtrading', 'technicalanalysis', 'fundamentalanalysis'
-    ],
-    
-    'startup_tech_business': [
-        'startups', 'Entrepreneur', 'smallbusiness', 'SaaS', 'ycombinator', 'venturecapital',
-        'business', 'marketing', 'growthHacking', 'product_management', 'UXDesign',
-        'UI_UX', 'design', 'productivity', 'remotework', 'freelancing', 'consulting',
-        'b2b', 'enterprise', 'techstartups', 'bootstrapped', 'indiehackers'
-    ],
-    
-    'data_science_analytics': [
-        'datascience', 'analytics', 'statistics', 'BigQuery', 'tableau', 'powerbi',
-        'excel', 'SQL', 'NoSQL', 'databases', 'dataengineering', 'ETL', 'datawarehouse',
-        'businessintelligence', 'predictiveanalytics', 'datamining', 'bigdata', 'hadoop',
-        'spark', 'snowflake', 'redshift', 'databricks', 'dbt', 'airflow'
-    ]
-}
+            'elite_crypto_defi': [
+                'CryptoCurrency', 'Bitcoin', 'Ethereum', 'CryptoMarkets', 'ethtrader', 'BitcoinMarkets',
+                'defi', 'CryptoTechnology', 'ethereum', 'ethereumnoobies', 'solana', 'cardano',
+                'Monero', 'litecoin', 'CryptoCurrencyTrading', 'altcoin', 'avalanche', 'polygon',
+                'chainlink', 'dot', 'cosmosnetwork', 'terra_money', 'algorand', 'tezos',
+                'NEO', 'eos', 'stellar', 'CryptoMoonShots', 'SatoshiStreetBets', 'binance',
+                'coinbase', 'kraken', 'CryptoCurrencies', 'BitcoinBeginners', 'BitcoinCash'
+            ],
+            
+            'advanced_ai_ml': [
+                'MachineLearning', 'artificial', 'OpenAI', 'ChatGPT', 'singularity', 'LocalLLaMA',
+                'ArtificialIntelligence', 'deeplearning', 'datascience', 'statistics', 'analytics',
+                'ComputerVision', 'NLP', 'reinforcementlearning', 'MLQuestions', 'MachineLearningNews',
+                'tensorflow', 'PyTorch', 'learnmachinelearning', 'dataengineering', 'bigdata',
+                'StableDiffusion', 'midjourney', 'dalle2', 'GPT3', 'LanguageTechnology', 'robotics'
+            ],
+            
+            'programming_dev': [
+                'programming', 'Python', 'javascript', 'reactjs', 'node', 'webdev', 'frontend',
+                'backend', 'fullstack', 'coding', 'learnprogramming', 'rust', 'golang', 'cpp',
+                'java', 'csharp', 'php', 'ruby', 'swift', 'kotlin', 'typescript', 'vuejs',
+                'angular', 'django', 'flask', 'springboot', 'dotnet', 'github', 'opensource',
+                'programming_languages', 'ProgrammerHumor', 'cscareerquestions', 'ExperiencedDevs'
+            ],
+            
+            'devops_cloud': [
+                'devops', 'kubernetes', 'docker', 'aws', 'azure', 'googlecloud', 'terraform',
+                'ansible', 'jenkins', 'linux', 'sysadmin', 'networking', 'cybersecurity',
+                'cloud', 'microservices', 'serverless', 'containers', 'cicd', 'monitoring',
+                'infrastructure', 'homelab', 'selfhosted', 'k8s', 'cloudformation', 'helm'
+            ],
+            
+            'blockchain_tech': [
+                'ethereum', 'solana', 'cardano', 'avalanche', 'polygon', 'cosmos', 'polkadot',
+                'chainlink', 'web3', 'DeFi', 'NFT', 'NFTs', 'smartcontracts', 'solidity',
+                'ethdev', 'ethereumdev', 'web3_blockchain', 'dapps', 'layer2', 'zksync',
+                'arbitrum', 'optimism', 'metamask', 'uniswap', 'aave', 'compound', 'yearn'
+            ],
+            
+            'fintech_trading': [
+                'algotrading', 'SecurityAnalysis', 'investing', 'ValueInvesting', 'StockMarket',
+                'options', 'forex', 'quantfinance', 'financialindependence', 'SecurityAnalysis',
+                'financialengineering', 'econometrics', 'portfoliomanagement', 'riskmanagement',
+                'trading', 'daytrading', 'swingtrading', 'technicalanalysis', 'fundamentalanalysis'
+            ],
+            
+            'startup_tech_business': [
+                'startups', 'Entrepreneur', 'smallbusiness', 'SaaS', 'ycombinator', 'venturecapital',
+                'business', 'marketing', 'growthHacking', 'product_management', 'UXDesign',
+                'UI_UX', 'design', 'productivity', 'remotework', 'freelancing', 'consulting',
+                'b2b', 'enterprise', 'techstartups', 'bootstrapped', 'indiehackers'
+            ],
+            
+            'data_science_analytics': [
+                'datascience', 'analytics', 'statistics', 'BigQuery', 'tableau', 'powerbi',
+                'excel', 'SQL', 'NoSQL', 'databases', 'dataengineering', 'ETL', 'datawarehouse',
+                'businessintelligence', 'predictiveanalytics', 'datamining', 'bigdata', 'hadoop',
+                'spark', 'snowflake', 'redshift', 'databricks', 'dbt', 'airflow'
+            ]
+        }
         
         self.minimum_karma = 50000
         
