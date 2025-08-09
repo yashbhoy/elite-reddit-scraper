@@ -305,66 +305,67 @@ class UltraOptimizedRedditScraper:
         self.backup_interval = 100
         
         # Optimized subreddit configuration
-        self.subreddit_categories = {
-            'crypto_defi_blockchain': [
-                'CryptoCurrency', 'Bitcoin', 'Ethereum', 'CryptoMarkets', 'defi', 'altcoin', 
-                'CryptoTechnology', 'CryptoMoonShots', 'SatoshiStreetBets', 'ethtrader',
-                'dogecoin', 'cardano', 'solana', 'NFT', 'NFTs', 'web3', 'binance', 'BitcoinBeginners',
-                'CryptoCurrencyTrading', 'BitcoinCash', 'litecoin', 'Monero', 'ethereum'
-            ],
-            'ai_machine_learning_tech': [
-                'artificial', 'MachineLearning', 'ChatGPT', 'singularity', 'OpenAI',
-                'ArtificialIntelligence', 'LocalLLaMA', 'datascience', 'dataengineering',
-                'analytics', 'statistics', 'MachineLearningNews', 'programming', 'python',
-                'javascript', 'webdev', 'learnprogramming', 'cybersecurity', 'devops',
-                'aws', 'docker', 'kubernetes', 'linux', 'StableDiffusion', 'midjourney', 'ComputerVision',
-                'deeplearning', 'tensorflow', 'PyTorch', 'coding', 'github'
-            ],
-            'investing_finance_business': [
-                'personalfinance', 'wallstreetbets', 'investing', 'stocks', 'StockMarket',
-                'financialindependence', 'SecurityAnalysis', 'options', 'pennystocks',
-                'dividendinvesting', 'ValueInvesting', 'RobinHood', 'Entrepreneur', 'startups',
-                'smallbusiness', 'business', 'GrowthHacking', 'SaaS', 'growmybusiness',
-                'realestate', 'Economics', 'finance', 'FinancialCareers', 'frugal',
-                'tax', 'retirement', 'creditcards', 'financialplanning', 'Fire', 'leanfire'
-            ],
-            'content_creator_influencer': [
-                'NewTubers', 'youtube', 'tiktok', 'instagram', 'streaming', 'twitch',
-                'letsplay', 'podcasting', 'blogging', 'copywriting', 'VideoEditing',
-                'ContentCreation', 'YouTube_startups', 'marketing', 'DigitalMarketing',
-                'SEO', 'PPC', 'advertising', 'Affiliatemarketing', 'content_marketing',
-                'socialmedia', 'branding', 'influencer', 'youtubers', 'streaming'
-            ],
-            'wellness_fitness_lifestyle': [
-                'fitness', 'loseit', 'gainit', 'bodyweightfitness', 'xxfitness', 'running',
-                'weightlifting', 'yoga', 'nutrition', 'MealPrepSunday', 'EatCheapAndHealthy',
-                'intermittentfasting', 'keto', 'mentalhealth', 'anxiety', 'depression',
-                'therapy', 'psychology', 'meditation', 'mindfulness', 'getmotivated',
-                'selfimprovement', 'productivity', 'getdisciplined', 'decidingtobebetter',
-                'progresspics', 'flexibility', 'strength_training', 'bodybuilding'
-            ],
-            'massive_general_engagement': [
-                'AskReddit', 'todayilearned', 'explainlikeimfive', 'LifeProTips', 'Showerthoughts',
-                'mildlyinteresting', 'interestingasfuck', 'Damnthatsinteresting', 'MadeMeSmile',
-                'unpopularopinion', 'news', 'worldnews', 'science', 'dataisbeautiful',
-                'nottheonion', 'videos', 'gifs', 'pics', 'funny', 'memes', 'gaming',
-                'movies', 'music', 'aww', 'IAmA', 'relationship_advice', 'askmen', 'askwomen'
-            ],
-            'creative_arts_entertainment': [
-                'art', 'photography', 'design', 'graphic_design', 'UI_UX', 'photoshop',
-                'blender', 'animation', 'writing', 'screenwriting', 'books', 'MovieSuggestions',
-                'movies', 'television', 'Music', 'WeAreTheMusicMakers', 'edmproduction',
-                'trapproduction', 'makinghiphop', 'gamedev', 'IndieGameDev', 'gamedesign',
-                'cinematography', 'filmmakers', 'painter', 'drawing'
-            ],
-            'fashion_travel_culture': [
-                'malefashionadvice', 'femalefashionadvice', 'streetwear', 'sneakers',
-                'frugalmalefashion', 'frugalfemalefashion', 'buyitforlife', 'travel',
-                'solotravel', 'backpacking', 'digitalnomad', 'onebag', 'shoestring',
-                'travel_tips', 'roadtrip', 'churning', 'awardtravel', 'camping',
-                'hiking', 'outdoors', 'fashion', 'malefashion'
-            ]
-        }
+       self.subreddit_categories = {
+    'elite_crypto_defi': [
+        'CryptoCurrency', 'Bitcoin', 'Ethereum', 'CryptoMarkets', 'ethtrader', 'BitcoinMarkets',
+        'defi', 'CryptoTechnology', 'ethereum', 'ethereumnoobies', 'solana', 'cardano',
+        'Monero', 'litecoin', 'CryptoCurrencyTrading', 'altcoin', 'avalanche', 'polygon',
+        'chainlink', 'dot', 'cosmosnetwork', 'terra_money', 'algorand', 'tezos',
+        'NEO', 'eos', 'stellar', 'CryptoMoonShots', 'SatoshiStreetBets', 'binance',
+        'coinbase', 'kraken', 'CryptoCurrencies', 'BitcoinBeginners', 'BitcoinCash'
+    ],
+    
+    'advanced_ai_ml': [
+        'MachineLearning', 'artificial', 'OpenAI', 'ChatGPT', 'singularity', 'LocalLLaMA',
+        'ArtificialIntelligence', 'deeplearning', 'datascience', 'statistics', 'analytics',
+        'ComputerVision', 'NLP', 'reinforcementlearning', 'MLQuestions', 'MachineLearningNews',
+        'tensorflow', 'PyTorch', 'learnmachinelearning', 'dataengineering', 'bigdata',
+        'StableDiffusion', 'midjourney', 'dalle2', 'GPT3', 'LanguageTechnology', 'robotics'
+    ],
+    
+    'programming_dev': [
+        'programming', 'Python', 'javascript', 'reactjs', 'node', 'webdev', 'frontend',
+        'backend', 'fullstack', 'coding', 'learnprogramming', 'rust', 'golang', 'cpp',
+        'java', 'csharp', 'php', 'ruby', 'swift', 'kotlin', 'typescript', 'vuejs',
+        'angular', 'django', 'flask', 'springboot', 'dotnet', 'github', 'opensource',
+        'programming_languages', 'ProgrammerHumor', 'cscareerquestions', 'ExperiencedDevs'
+    ],
+    
+    'devops_cloud': [
+        'devops', 'kubernetes', 'docker', 'aws', 'azure', 'googlecloud', 'terraform',
+        'ansible', 'jenkins', 'linux', 'sysadmin', 'networking', 'cybersecurity',
+        'cloud', 'microservices', 'serverless', 'containers', 'cicd', 'monitoring',
+        'infrastructure', 'homelab', 'selfhosted', 'k8s', 'cloudformation', 'helm'
+    ],
+    
+    'blockchain_tech': [
+        'ethereum', 'solana', 'cardano', 'avalanche', 'polygon', 'cosmos', 'polkadot',
+        'chainlink', 'web3', 'DeFi', 'NFT', 'NFTs', 'smartcontracts', 'solidity',
+        'ethdev', 'ethereumdev', 'web3_blockchain', 'dapps', 'layer2', 'zksync',
+        'arbitrum', 'optimism', 'metamask', 'uniswap', 'aave', 'compound', 'yearn'
+    ],
+    
+    'fintech_trading': [
+        'algotrading', 'SecurityAnalysis', 'investing', 'ValueInvesting', 'StockMarket',
+        'options', 'forex', 'quantfinance', 'financialindependence', 'SecurityAnalysis',
+        'financialengineering', 'econometrics', 'portfoliomanagement', 'riskmanagement',
+        'trading', 'daytrading', 'swingtrading', 'technicalanalysis', 'fundamentalanalysis'
+    ],
+    
+    'startup_tech_business': [
+        'startups', 'Entrepreneur', 'smallbusiness', 'SaaS', 'ycombinator', 'venturecapital',
+        'business', 'marketing', 'growthHacking', 'product_management', 'UXDesign',
+        'UI_UX', 'design', 'productivity', 'remotework', 'freelancing', 'consulting',
+        'b2b', 'enterprise', 'techstartups', 'bootstrapped', 'indiehackers'
+    ],
+    
+    'data_science_analytics': [
+        'datascience', 'analytics', 'statistics', 'BigQuery', 'tableau', 'powerbi',
+        'excel', 'SQL', 'NoSQL', 'databases', 'dataengineering', 'ETL', 'datawarehouse',
+        'businessintelligence', 'predictiveanalytics', 'datamining', 'bigdata', 'hadoop',
+        'spark', 'snowflake', 'redshift', 'databricks', 'dbt', 'airflow'
+    ]
+}
         
         self.minimum_karma = 50000
         
