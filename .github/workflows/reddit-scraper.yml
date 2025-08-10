@@ -1,31 +1,40 @@
-name: Elite Reddit Scraper
+name: Elite Reddit Scraper with Multi-Key Support
 
 on:
   workflow_dispatch:
     inputs:
       target_count:
-        description: 'Number of influencers to scrape'
+        description: 'Number of influencers to scrape (e.g., 2500, 5000)'
         required: true
-        default: '5000'
+        default: '2500'
         type: string
-      gateway_provider:
-        description: 'Gateway provider to use'
+      max_runtime_hours:
+        description: 'Maximum runtime in hours (1-8 hours)'
         required: true
-        default: 'scraperapi'
+        default: '4'
         type: choice
         options:
-        - scraperapi
-        - scrapfly
-        - brightdata
-        - direct
+        - '1'
+        - '2'
+        - '3'
+        - '4'
+        - '5'
+        - '6'
+        - '7'
+        - '8'
+      save_interval:
+        description: 'Save progress every N accounts (recommended: 25-100)'
+        required: false
+        default: '50'
+        type: string
   schedule:
-    # Run automatically every 7 days at 2 AM UTC (optional)
+    # Run automatically every Sunday at 2 AM UTC (optional)
     - cron: '0 2 * * 0'
 
 jobs:
   scrape-reddit:
     runs-on: ubuntu-latest
-    timeout-minutes: 480  # 8 hours max runtime
+    timeout-minutes: ${{ fromJson(github.event.inputs.max_runtime_hours || '4') * 60 + 30 }}  # Input hours + 30min buffer
     
     steps:
     - name: 📥 Checkout repository
@@ -45,162 +54,391 @@ jobs:
     
     - name: 🔧 Configure environment
       run: |
-        echo "GATEWAY_PROVIDER=${{ github.event.inputs.gateway_provider || 'scraperapi' }}" >> $GITHUB_ENV
-        echo "TARGET_COUNT=${{ github.event.inputs.target_count || '5000' }}" >> $GITHUB_ENV
+        echo "TARGET_COUNT=${{ github.event.inputs.target_count || '2500' }}" >> $GITHUB_ENV
+        echo "MAX_RUNTIME_HOURS=${{ github.event.inputs.max_runtime_hours || '4' }}" >> $GITHUB_ENV
+        echo "SAVE_INTERVAL=${{ github.event.inputs.save_interval || '50' }}" >> $GITHUB_ENV
+        
+        # Multi-key ScraperAPI support
         echo "SCRAPE_KEY=${{ secrets.SCRAPE_KEY }}" >> $GITHUB_ENV
         echo "SCRAPERAPI_KEY=${{ secrets.SCRAPERAPI_KEY }}" >> $GITHUB_ENV
         echo "SCRAPERAPI_KEY_2=${{ secrets.SCRAPERAPI_KEY_2 }}" >> $GITHUB_ENV
         echo "SCRAPERAPI_KEY_3=${{ secrets.SCRAPERAPI_KEY_3 }}" >> $GITHUB_ENV
+        echo "SCRAPERAPI_KEY_4=${{ secrets.SCRAPERAPI_KEY_4 }}" >> $GITHUB_ENV
+        echo "SCRAPERAPI_KEY_5=${{ secrets.SCRAPERAPI_KEY_5 }}" >> $GITHUB_ENV
+        echo "SCRAPERAPI_KEYS=${{ secrets.SCRAPERAPI_KEYS }}" >> $GITHUB_ENV
+        
         echo "🔑 Environment configured with multi-key support"
+        echo "⏰ Max runtime: ${{ github.event.inputs.max_runtime_hours || '4' }} hours"
+        echo "🎯 Target count: ${{ github.event.inputs.target_count || '2500' }} accounts"
     
-    - name: 🔍 Validate API keys
+    - name: 🔍 Validate API keys and capacity
       run: |
-        echo "🔑 Checking available API keys..."
+        echo "🔑 Checking available ScraperAPI keys..."
         key_count=0
+        total_capacity=0
         
-        # Check primary key (SCRAPE_KEY - your original)
+        # Check SCRAPE_KEY (your original key)
         if [ -n "$SCRAPE_KEY" ]; then
-          echo "✅ Primary SCRAPE_KEY: $(echo $SCRAPE_KEY | cut -c1-8)..."
+          echo "✅ SCRAPE_KEY (primary): ...$(echo $SCRAPE_KEY | tail -c 9)"
           key_count=$((key_count + 1))
+          total_capacity=$((total_capacity + 5000))
         fi
         
-        # Check ScraperAPI keys
+        # Check SCRAPERAPI_KEY
         if [ -n "$SCRAPERAPI_KEY" ]; then
-          echo "✅ SCRAPERAPI_KEY: $(echo $SCRAPERAPI_KEY | cut -c1-8)..."
+          echo "✅ SCRAPERAPI_KEY: ...$(echo $SCRAPERAPI_KEY | tail -c 9)"
           key_count=$((key_count + 1))
+          total_capacity=$((total_capacity + 5000))
         fi
         
-        if [ -n "$SCRAPERAPI_KEY_2" ]; then
-          echo "✅ SCRAPERAPI_KEY_2: $(echo $SCRAPERAPI_KEY_2 | cut -c1-8)..."
-          key_count=$((key_count + 1))
+        # Check additional keys (2-5)
+        for i in 2 3 4 5; do
+          key_var="SCRAPERAPI_KEY_$i"
+          key_value=$(eval echo \$$key_var)
+          if [ -n "$key_value" ]; then
+            echo "✅ SCRAPERAPI_KEY_$i: ...$(echo $key_value | tail -c 9)"
+            key_count=$((key_count + 1))
+            total_capacity=$((total_capacity + 5000))
+          fi
+        done
+        
+        # Check comma-separated keys
+        if [ -n "$SCRAPERAPI_KEYS" ]; then
+          comma_keys=$(echo "$SCRAPERAPI_KEYS" | tr ',' '\n' | wc -l)
+          echo "✅ SCRAPERAPI_KEYS: $comma_keys additional keys found"
+          key_count=$((key_count + comma_keys))
+          total_capacity=$((total_capacity + comma_keys * 5000))
         fi
         
-        if [ -n "$SCRAPERAPI_KEY_3" ]; then
-          echo "✅ SCRAPERAPI_KEY_3: $(echo $SCRAPERAPI_KEY_3 | cut -c1-8)..."
-          key_count=$((key_count + 1))
-        fi
-        
-        echo "🎯 Total available keys: $key_count"
-        echo "💰 Estimated capacity: $((key_count * 5000)) credits"
+        echo "📊 CAPACITY ANALYSIS:"
+        echo "  🔑 Total API keys: $key_count"
+        echo "  💰 Estimated capacity: $total_capacity accounts"
+        echo "  🎯 Target requested: $TARGET_COUNT accounts"
+        echo "  ⏰ Runtime limit: $MAX_RUNTIME_HOURS hours"
         
         if [ "$key_count" -eq 0 ]; then
-          echo "❌ ERROR: No API keys found! Please add SCRAPE_KEY or SCRAPERAPI_KEY secrets"
+          echo "❌ ERROR: No API keys found!"
+          echo "Please add at least one of these secrets to your repository:"
+          echo "  • SCRAPE_KEY (your original key)"
+          echo "  • SCRAPERAPI_KEY"
+          echo "  • SCRAPERAPI_KEY_2, SCRAPERAPI_KEY_3, etc."
+          echo "  • SCRAPERAPI_KEYS (comma-separated list)"
           exit 1
         fi
+        
+        if [ "$TARGET_COUNT" -gt "$total_capacity" ]; then
+          echo "⚠️ WARNING: Target ($TARGET_COUNT) exceeds estimated capacity ($total_capacity)"
+          echo "Consider adding more API keys or reducing target count"
+        else
+          echo "✅ Capacity check passed - sufficient keys available"
+        fi
     
-    - name: 📊 Check previous progress
+    - name: 📊 Check for previous progress
       run: |
+        echo "🔍 Checking for previous session data..."
+        
         if [ -f "elite_scraper_progress.json" ]; then
-          echo "🔄 Found previous progress file"
-          python3 -c "import json; data=json.load(open('elite_scraper_progress.json')); print(f'Previous session: {data.get(\"total_scraped\", 0)} accounts scraped')"
+          echo "🔄 Previous progress file found"
+          python3 -c "
+import json, os
+try:
+    with open('elite_scraper_progress.json', 'r') as f:
+        data = json.load(f)
+    print(f'📈 Previous session stats:')
+    print(f'  • Accounts scraped: {data.get(\"total_scraped\", 0)}')
+    print(f'  • Users processed: {len(data.get(\"scraped_users\", []))}')
+    print(f'  • Failed users: {len(data.get(\"failed_users\", []))}')
+    print(f'  • Last run: {data.get(\"timestamp\", \"Unknown\")}')
+    if 'multi_key_stats' in data:
+        stats = data['multi_key_stats']
+        print(f'  • Credits used: {stats.get(\"total_credits_used\", 0)}')
+        print(f'  • Keys used: {stats.get(\"total_keys\", 0)}')
+except Exception as e:
+    print(f'⚠️ Could not read progress file: {e}')
+"
         else
           echo "🆕 Starting fresh scraping session"
         fi
-    
-    - name: 🚀 Run Elite Reddit Scraper
-      run: |
-        echo "🏆 Starting Elite Reddit Scraper..."
-        echo "Gateway: $GATEWAY_PROVIDER"
-        echo "Target: $TARGET_COUNT accounts"
-        echo "API Key: $(echo $SCRAPE_KEY$SCRAPERAPI_KEY | cut -c1-8)..."
-        
-        # Create logs directory
-        mkdir -p logs
-        
-        # Run the scraper with timeout and error handling
-        timeout 21600 python3 Great_Scraper2_Gateway.py || {
-          exit_code=$?
-          if [ $exit_code -eq 124 ]; then
-            echo "⏰ Scraper reached 6-hour timeout - saving progress"
-          else
-            echo "❌ Scraper exited with code $exit_code"
-          fi
-          exit $exit_code
-        }
-      
-    - name: 📋 Display Results Summary
-      if: always()
-      run: |
-        echo "📊 SCRAPING SESSION SUMMARY"
-        echo "=========================="
         
         if [ -f "reddit_elite_influencers.csv" ]; then
-          row_count=$(($(wc -l < reddit_elite_influencers.csv) - 1))
-          echo "✅ CSV Export: $row_count elite influencers found"
-          
-          # Show file size
-          file_size=$(ls -lh reddit_elite_influencers.csv | awk '{print $5}')
-          echo "📁 File size: $file_size"
-          
-          # Show top 10 accounts
-          echo "🏆 TOP 10 ACCOUNTS:"
-          head -11 reddit_elite_influencers.csv | tail -10 | while IFS=, read username url tier karma rest; do
-            echo "  u/$username ($tier tier) - $karma karma"
-          done
-        else
-          echo "⚠️ No CSV file found - scraping may have failed"
-        fi
-        
-        if [ -f "elite_scraper.log" ]; then
-          echo "📋 Log file size: $(ls -lh elite_scraper.log | awk '{print $5}')"
-          echo "🔍 Last 20 log lines:"
-          tail -20 elite_scraper.log
-        fi
-        
-        if [ -f "elite_scraper_progress.json" ]; then
-          echo "💾 Progress file exists - can resume later"
-          python3 -c "import json; data=json.load(open('elite_scraper_progress.json')); print(f'Progress: {data.get(\"total_scraped\", 0)} accounts processed')"
+          echo "📄 Existing CSV file found"
+          existing_count=$(($(wc -l < reddit_elite_influencers.csv) - 1))
+          echo "  • Current CSV contains: $existing_count accounts"
         fi
     
-    - name: 📤 Upload Results as Artifacts
-      if: always()
+    - name: 🚀 Run Elite Reddit Scraper with Timeout
+      id: scraper_run
+      run: |
+        echo "🏆 Starting Elite Reddit Scraper with Multi-Key Support"
+        echo "=============================================="
+        echo "🎯 Target: $TARGET_COUNT elite accounts (10K+ karma)"
+        echo "⏰ Max runtime: $MAX_RUNTIME_HOURS hours"
+        echo "💾 Save interval: $SAVE_INTERVAL accounts"
+        echo "🔑 API keys configured: Multi-key rotation enabled"
+        echo "=============================================="
+        
+        # Create directories
+        mkdir -p logs backups
+        
+        # Calculate timeout in seconds (input hours * 3600 - 5 min buffer)
+        timeout_seconds=$(( ($MAX_RUNTIME_HOURS * 3600) - 300 ))
+        echo "⏱️ Timeout set to: $timeout_seconds seconds"
+        
+        # Run scraper with proper timeout and error handling
+        set +e  # Don't exit on error
+        
+        timeout $timeout_seconds python3 oldone.py 2>&1 | tee logs/scraper_output.log
+        exit_code=$?
+        
+        echo "🔍 Scraper finished with exit code: $exit_code"
+        
+        # Handle different exit scenarios
+        if [ $exit_code -eq 0 ]; then
+          echo "✅ Scraper completed successfully!"
+          echo "SCRAPER_STATUS=success" >> $GITHUB_ENV
+        elif [ $exit_code -eq 124 ]; then
+          echo "⏰ Scraper reached maximum runtime ($MAX_RUNTIME_HOURS hours)"
+          echo "💾 Progress should be saved automatically"
+          echo "SCRAPER_STATUS=timeout" >> $GITHUB_ENV
+        elif [ $exit_code -eq 130 ]; then
+          echo "🛑 Scraper was interrupted (Ctrl+C)"
+          echo "SCRAPER_STATUS=interrupted" >> $GITHUB_ENV
+        else
+          echo "⚠️ Scraper exited with error code: $exit_code"
+          echo "💾 Attempting to save any collected data..."
+          echo "SCRAPER_STATUS=error" >> $GITHUB_ENV
+        fi
+        
+        # Always try to save current state, regardless of exit status
+        echo "💾 Final data preservation check..."
+        
+        set -e  # Re-enable exit on error for remaining steps
+      continue-on-error: true  # Don't fail the workflow if scraper has issues
+    
+    - name: 📊 Analyze Results and Create Summary
+      if: always()  # Always run this step
+      run: |
+        echo "📊 SCRAPING SESSION ANALYSIS"
+        echo "============================"
+        
+        # Initialize counters
+        csv_accounts=0
+        backup_accounts=0
+        interrupted_accounts=0
+        error_accounts=0
+        
+        # Check main CSV
+        if [ -f "reddit_elite_influencers.csv" ]; then
+          csv_accounts=$(($(wc -l < reddit_elite_influencers.csv) - 1))
+          file_size=$(ls -lh reddit_elite_influencers.csv | awk '{print $5}')
+          echo "✅ Main CSV: $csv_accounts elite accounts ($file_size)"
+        else
+          echo "❌ Main CSV not found"
+        fi
+        
+        # Check backup files
+        for backup_file in backup_reddit_elite_influencers.csv interrupted_reddit_elite_influencers.csv error_reddit_elite_influencers.csv; do
+          if [ -f "$backup_file" ]; then
+            count=$(($(wc -l < $backup_file) - 1))
+            size=$(ls -lh $backup_file | awk '{print $5}')
+            echo "💾 $backup_file: $count accounts ($size)"
+            
+            case $backup_file in
+              backup_*) backup_accounts=$count ;;
+              interrupted_*) interrupted_accounts=$count ;;
+              error_*) error_accounts=$count ;;
+            esac
+          fi
+        done
+        
+        # Determine best file to use
+        max_accounts=$csv_accounts
+        best_file="reddit_elite_influencers.csv"
+        
+        if [ $backup_accounts -gt $max_accounts ]; then
+          max_accounts=$backup_accounts
+          best_file="backup_reddit_elite_influencers.csv"
+        fi
+        
+        if [ $interrupted_accounts -gt $max_accounts ]; then
+          max_accounts=$interrupted_accounts
+          best_file="interrupted_reddit_elite_influencers.csv"
+        fi
+        
+        if [ $error_accounts -gt $max_accounts ]; then
+          max_accounts=$error_accounts
+          best_file="error_reddit_elite_influencers.csv"
+        fi
+        
+        echo "🏆 Best result file: $best_file with $max_accounts accounts"
+        
+        # Create final consolidated CSV if we have any data
+        if [ $max_accounts -gt 0 ]; then
+          echo "📋 Creating final consolidated results..."
+          
+          # Copy best file to final results
+          cp "$best_file" "FINAL_reddit_elite_influencers.csv"
+          
+          # Show top performers
+          echo "🥇 TOP 15 ELITE ACCOUNTS:"
+          echo "Rank | Username              | Tier      | Total Karma | Per Day  | Reach"
+          echo "-----|---------------------- |-----------|-------------|----------|----------"
+          
+          # Skip header and show top 15
+          tail -n +2 "FINAL_reddit_elite_influencers.csv" | head -15 | nl -w4 -s'. ' | while IFS=',' read rank username url tier total_karma link_karma comment_karma age_days karma_per_day reach rest; do
+            printf "%-4s | %-20s | %-9s | %11s | %8s | %s\n" "$rank" "u/$username" "$tier" "$total_karma" "$karma_per_day" "$reach"
+          done
+          
+          # Calculate tier distribution
+          echo ""
+          echo "🏆 TIER DISTRIBUTION:"
+          for tier in LEGENDARY MEGA SUPER MAJOR RISING MICRO; do
+            count=$(tail -n +2 "FINAL_reddit_elite_influencers.csv" | cut -d',' -f4 | grep -c "^$tier$" || echo 0)
+            if [ $count -gt 0 ]; then
+              percentage=$(( count * 100 / max_accounts ))
+              echo "  $tier: $count accounts (${percentage}%)"
+            fi
+          done
+          
+        else
+          echo "❌ No accounts found in any file - scraping may have failed completely"
+        fi
+        
+        # Log file analysis
+        if [ -f "elite_scraper.log" ]; then
+          log_size=$(ls -lh elite_scraper.log | awk '{print $5}')
+          echo "📋 Log file: $log_size"
+          
+          # Extract key metrics from log
+          total_requests=$(grep -c "request\|GET" elite_scraper.log 2>/dev/null || echo "0")
+          errors=$(grep -c "ERROR\|error\|Error" elite_scraper.log 2>/dev/null || echo "0")
+          rate_limits=$(grep -c "rate limit\|Rate limit\|429" elite_scraper.log 2>/dev/null || echo "0")
+          key_rotations=$(grep -c "rotating\|next key\|Key rotation" elite_scraper.log 2>/dev/null || echo "0")
+          
+          echo "📈 Session Statistics:"
+          echo "  • API requests: $total_requests"
+          echo "  • Errors: $errors"
+          echo "  • Rate limits: $rate_limits"  
+          echo "  • Key rotations: $key_rotations"
+        fi
+        
+        # Progress file analysis
+        if [ -f "elite_scraper_progress.json" ]; then
+          echo "💾 Progress file available for resumption"
+          python3 -c "
+import json
+try:
+    with open('elite_scraper_progress.json', 'r') as f:
+        data = json.load(f)
+    print(f'📊 Session Progress:')
+    print(f'  • Total processed: {len(data.get(\"scraped_users\", []))} users')
+    print(f'  • Failed users: {len(data.get(\"failed_users\", []))} users')
+    if 'multi_key_stats' in data:
+        stats = data['multi_key_stats']
+        print(f'  • Credits used: {stats.get(\"total_credits_used\", 0)}')
+        print(f'  • Active keys: {stats.get(\"active_keys\", 0)}/{stats.get(\"total_keys\", 0)}')
+except Exception as e:
+    print(f'Could not analyze progress: {e}')
+"
+        fi
+        
+        echo "✨ Analysis complete!"
+    
+    - name: 📤 Upload ALL Results as Artifacts (Always)
+      if: always()  # This ensures artifacts are uploaded regardless of success/failure
       uses: actions/upload-artifact@v4
       with:
-        name: reddit-scraper-results-${{ github.run_number }}
+        name: reddit-scraper-results-${{ github.run_number }}-${{ github.event.inputs.target_count || '2500' }}-accounts
         path: |
           reddit_elite_influencers.csv
+          FINAL_reddit_elite_influencers.csv
           backup_reddit_elite_influencers.csv
-          elite_scraper_progress.json
-          elite_scraper.log
           interrupted_reddit_elite_influencers.csv
           error_reddit_elite_influencers.csv
+          elite_scraper_progress.json
+          elite_scraper.log
+          logs/scraper_output.log
+          logs/
         retention-days: 30
         if-no-files-found: warn
     
+    - name: 📤 Upload Backup Results (Emergency)
+      if: failure()  # Additional upload if main workflow fails
+      uses: actions/upload-artifact@v4
+      with:
+        name: emergency-backup-${{ github.run_number }}
+        path: |
+          *.csv
+          *.json
+          *.log
+          logs/
+        retention-days: 60
+        if-no-files-found: ignore
+    
     - name: 💾 Commit Results to Repository (Optional)
-      if: success() && github.ref == 'refs/heads/main'
+      if: success() && github.ref == 'refs/heads/main' && env.SCRAPER_STATUS == 'success'
       run: |
         # Configure git
         git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --local user.name "Reddit Scraper Bot"
         
-        # Add and commit results
+        # Prepare commit message
+        account_count=0
+        if [ -f "reddit_elite_influencers.csv" ]; then
+          account_count=$(($(wc -l < reddit_elite_influencers.csv) - 1))
+        fi
+        
+        commit_msg="🤖 Auto-scrape: $account_count elite Reddit accounts ($(date +%Y-%m-%d))"
+        
+        # Add files
         git add reddit_elite_influencers.csv elite_scraper_progress.json
-        git commit -m "🤖 Auto-update: Reddit scraper results $(date +%Y-%m-%d)" || echo "No changes to commit"
-        git push || echo "Push failed - continuing anyway"
+        
+        # Commit with detailed message
+        git commit -m "$commit_msg" -m "Runtime: $MAX_RUNTIME_HOURS hours | Target: $TARGET_COUNT | Status: $SCRAPER_STATUS" || {
+          echo "No changes to commit"
+          exit 0
+        }
+        
+        # Push to repository
+        git push || {
+          echo "Push failed - this is normal if repository is protected"
+          exit 0
+        }
     
-    - name: 📊 Performance Metrics
+    - name: 📊 Final Performance Report
       if: always()
       run: |
-        echo "⏱️ PERFORMANCE METRICS"
-        echo "====================="
+        echo "⏱️ FINAL PERFORMANCE REPORT"
+        echo "==========================="
+        echo "🏁 Workflow Status: ${SCRAPER_STATUS:-unknown}"
+        echo "⏰ Requested Runtime: $MAX_RUNTIME_HOURS hours"
+        echo "🎯 Target Count: $TARGET_COUNT accounts"
+        echo "💾 Save Interval: $SAVE_INTERVAL accounts"
         
-        if [ -f "elite_scraper.log" ]; then
-          # Extract metrics from log
-          total_requests=$(grep -c "request" elite_scraper.log || echo "0")
-          echo "📡 Total API requests: $total_requests"
-          
-          # Check for rate limiting
-          rate_limits=$(grep -c "Rate limited" elite_scraper.log || echo "0")
-          echo "⚠️ Rate limit hits: $rate_limits"
-          
-          # Check for errors
-          errors=$(grep -c "ERROR" elite_scraper.log || echo "0")
-          echo "❌ Errors encountered: $errors"
-          
-          # Check for key rotation events
-          key_rotations=$(grep -c "rotating\|next key" elite_scraper.log || echo "0")
-          echo "🔄 Key rotation events: $key_rotations"
+        # Count final results
+        total_found=0
+        if [ -f "reddit_elite_influencers.csv" ]; then
+          total_found=$(($(wc -l < reddit_elite_influencers.csv) - 1))
+        fi
+        
+        echo "📊 Results Summary:"
+        echo "  • Accounts scraped: $total_found"
+        echo "  • Success rate: $(( total_found * 100 / TARGET_COUNT ))%"
+        echo "  • Files created: $(ls -1 *.csv *.json *.log 2>/dev/null | wc -l)"
+        
+        if [ $total_found -gt 0 ]; then
+          efficiency=$(( TARGET_COUNT * 100 / total_found ))
+          echo "  • Target efficiency: ${efficiency}%"
+          echo "✅ SUCCESS: Data collected and uploaded as artifacts"
+        else
+          echo "❌ WARNING: No data collected - check logs for issues"
+        fi
+        
+        echo "📁 Artifacts uploaded:"
+        echo "  • Main results: reddit-scraper-results-${{ github.run_number }}-${{ github.event.inputs.target_count || '2500' }}-accounts"
+        if [ "${SCRAPER_STATUS:-unknown}" != "success" ]; then
+          echo "  • Emergency backup: emergency-backup-${{ github.run_number }}"
         fi
         
         echo "🏁 Workflow completed at $(date)"
+        echo "✨ Thank you for using Elite Reddit Scraper!"
