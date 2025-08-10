@@ -4,6 +4,7 @@ ELITE Reddit Influencer Scraper with Multi-Key ScraperAPI Support - OPTIMIZED
 Supports multiple ScraperAPI keys with intelligent rotation and credit management.
 Designed for GitHub Actions with free plan credit optimization.
 COMPLETE VERSION - All original functionality preserved and enhanced.
+Updated with new karma tiers: LEGENDARY (5M+), RISING (25K+), MICRO (10K+)
 """
 import requests
 import json
@@ -165,11 +166,11 @@ class EliteRedditScraperMultiKey:
         self._setup_logging()
         
         if not self.gateway_enabled:
-            self.logger.error("❌ No ScraperAPI keys found! Add SCRAPERAPI_KEY or SCRAPERAPI_KEY_2, etc.")
+            self.logger.error("ERROR: No ScraperAPI keys found! Add SCRAPERAPI_KEY or SCRAPERAPI_KEY_2, etc.")
             raise ValueError("No API keys available")
         else:
             stats = self.multi_key_config.get_stats_summary()
-            self.logger.info(f"🛡️ Multi-Key ScraperAPI enabled: {stats['total_keys']} keys loaded")
+            self.logger.info(f"Multi-Key ScraperAPI enabled: {stats['total_keys']} keys loaded")
             for i, key in enumerate(self.multi_key_config.api_keys):
                 self.logger.info(f"  Key {i+1}: ...{key[-8:]} (Ready)")
         
@@ -246,8 +247,9 @@ class EliteRedditScraperMultiKey:
             ]
         }
         
-        self.minimum_karma = 50000
-        self.tier_priorities = ['MEGA', 'SUPER', 'MAJOR']
+        # Updated minimum karma threshold for new MICRO tier
+        self.minimum_karma = 10000  # Lowered for MICRO tier (10K+)
+        self.tier_priorities = ['LEGENDARY', 'MEGA', 'SUPER', 'MAJOR', 'RISING', 'MICRO']
         
     def _setup_logging(self) -> None:
         """Setup comprehensive logging."""
@@ -322,11 +324,11 @@ class EliteRedditScraperMultiKey:
             api_key = self.multi_key_config.get_active_key()
             if not api_key:
                 # All keys exhausted
-                self.logger.error("❌ All API keys exhausted or blocked!")
+                self.logger.error("ERROR: All API keys exhausted or blocked!")
                 # Wait and retry with least used key
                 time.sleep(60)
                 stats = self.multi_key_config.get_stats_summary()
-                self.logger.info("⏳ Attempting with least used key after cooldown...")
+                self.logger.info("Attempting with least used key after cooldown...")
                 api_key = min(self.multi_key_config.api_keys, 
                              key=lambda k: self.multi_key_config.key_stats[k]['requests'])
             
@@ -354,20 +356,20 @@ class EliteRedditScraperMultiKey:
                 elif response.status_code == 401:
                     # Invalid API key
                     self.multi_key_config.record_request(api_key, success=False, error_type='401')
-                    self.logger.warning(f"⚠️ Invalid API key ...{api_key[-8:]}, rotating to next key")
+                    self.logger.warning(f"Invalid API key ...{api_key[-8:]}, rotating to next key")
                 elif response.status_code == 403:
                     # Quota exceeded or blocked
                     self.multi_key_config.record_request(api_key, success=False, error_type='403')
-                    self.logger.warning(f"⚠️ API key ...{api_key[-8:]} quota exceeded, rotating to next key")
+                    self.logger.warning(f"API key ...{api_key[-8:]} quota exceeded, rotating to next key")
                 elif response.status_code == 429:
                     # Rate limited
                     self.multi_key_config.record_request(api_key, success=False, error_type='429')
-                    self.logger.warning(f"⚠️ Rate limited on key ...{api_key[-8:]}, rotating to next key")
+                    self.logger.warning(f"Rate limited on key ...{api_key[-8:]}, rotating to next key")
                     time.sleep(random.uniform(2, 5))
                 else:
                     # Other error
                     self.multi_key_config.record_request(api_key, success=False, error_type=str(response.status_code))
-                    self.logger.warning(f"⚠️ Error {response.status_code} with key ...{api_key[-8:]}")
+                    self.logger.warning(f"Error {response.status_code} with key ...{api_key[-8:]}")
                 
                 # Try next key
                 attempt += 1
@@ -375,7 +377,7 @@ class EliteRedditScraperMultiKey:
                 
             except requests.exceptions.RequestException as e:
                 self.multi_key_config.record_request(api_key, success=False, error_type='connection_error')
-                self.logger.warning(f"⚠️ Connection error with key ...{api_key[-8:]}: {e}")
+                self.logger.warning(f"Connection error with key ...{api_key[-8:]}: {e}")
                 attempt += 1
                 time.sleep(random.uniform(1, 3))
                 continue
@@ -409,18 +411,18 @@ class EliteRedditScraperMultiKey:
         # Log key rotation stats periodically
         if self.request_count % 100 == 0:
             stats = self.multi_key_config.get_stats_summary()
-            self.logger.info(f"🔑 Multi-Key Stats: {stats['active_keys']}/{stats['total_keys']} active, "
+            self.logger.info(f"Multi-Key Stats: {stats['active_keys']}/{stats['total_keys']} active, "
                            f"{stats['total_credits_used']} credits used")
     
     def _handle_rate_limit(self, response: requests.Response) -> bool:
         """Handle rate limiting with multi-key awareness."""
         if response.status_code == 429:
-            self.logger.warning("⚠️ Rate limited! Rotating to next key...")
+            self.logger.warning("Rate limited! Rotating to next key...")
             # Short delay then let key rotation handle it
             time.sleep(random.uniform(1, 3))
             return True
         elif response.status_code in [502, 503, 504]:
-            self.logger.warning(f"🔧 Server error {response.status_code}, trying next key...")
+            self.logger.warning(f"Server error {response.status_code}, trying next key...")
             time.sleep(random.uniform(2, 5))
             return True
         return False
@@ -456,15 +458,15 @@ class EliteRedditScraperMultiKey:
                 # Load previous key stats if available
                 if 'multi_key_stats' in progress_data:
                     prev_stats = progress_data['multi_key_stats']
-                    self.logger.info(f"📊 Previous session used {prev_stats.get('total_credits_used', 0)} credits")
+                    self.logger.info(f"Previous session used {prev_stats.get('total_credits_used', 0)} credits")
                 
                 if os.path.exists(self.csv_file):
                     self._load_existing_csv()
                 
-                self.logger.info(f"🔄 Resumed from progress: {len(self.influencers)} elite influencers loaded")
+                self.logger.info(f"Resumed from progress: {len(self.influencers)} elite influencers loaded")
                 return True
             except Exception as e:
-                self.logger.error(f"❌ Failed to load progress: {e}")
+                self.logger.error(f"Failed to load progress: {e}")
         return False
     
     def _load_existing_csv(self) -> None:
@@ -487,7 +489,7 @@ class EliteRedditScraperMultiKey:
                     
                     self.influencers.append(row)
         except Exception as e:
-            self.logger.error(f"❌ Failed to load existing CSV: {e}")
+            self.logger.error(f"Failed to load existing CSV: {e}")
     
     def get_elite_posts_only(self, subreddit: str, limit: int = 100, max_retries: int = 2) -> List[Dict[str, Any]]:
         """Get only TOP and HOT posts using multi-key ScraperAPI."""
@@ -523,11 +525,11 @@ class EliteRedditScraperMultiKey:
                     break
                     
                 except Exception as e:
-                    self.logger.warning(f"⚠️ Attempt {attempt + 1} failed for r/{subreddit} ({sort_type}): {e}")
+                    self.logger.warning(f"Attempt {attempt + 1} failed for r/{subreddit} ({sort_type}): {e}")
                     if attempt < max_retries - 1:
                         time.sleep(random.uniform(2, 6))
                     else:
-                        self.logger.error(f"❌ Failed to get {sort_type} posts from r/{subreddit}")
+                        self.logger.error(f"Failed to get {sort_type} posts from r/{subreddit}")
                         continue
         
         return all_posts
@@ -563,18 +565,18 @@ class EliteRedditScraperMultiKey:
                     return {}
                 
             except Exception as e:
-                self.logger.warning(f"⚠️ Attempt {attempt + 1} failed for user {username}: {e}")
+                self.logger.warning(f"Attempt {attempt + 1} failed for user {username}: {e}")
                 if attempt < max_retries - 1:
                     time.sleep(random.uniform(2, 6))
                 else:
-                    self.logger.error(f"❌ Failed to get user {username} after {max_retries} attempts")
+                    self.logger.error(f"Failed to get user {username} after {max_retries} attempts")
                     self.failed_users.add(username)
                     return {}
         
         return {}
     
     def analyze_elite_user(self, user_data: Dict[str, Any]) -> Dict[str, Any]:
-        """ELITE USER ANALYSIS - Only accept high-karma accounts."""
+        """ELITE USER ANALYSIS with new karma tiers."""
         if not user_data:
             return {}
         
@@ -583,8 +585,8 @@ class EliteRedditScraperMultiKey:
         comment_karma = user_data.get('comment_karma', 0)
         total_karma = link_karma + comment_karma
         
-        # STRICT ELITE FILTERING
-        if total_karma < self.minimum_karma:
+        # UPDATED ELITE FILTERING for new MICRO tier
+        if total_karma < self.minimum_karma:  # Now 10,000 for MICRO tier
             return {}
         
         if user_data.get('is_suspended', False):
@@ -600,16 +602,25 @@ class EliteRedditScraperMultiKey:
         
         karma_per_day = total_karma / max(account_age_days, 1)
         
-        # ELITE TIER CLASSIFICATION
-        if total_karma >= 1000000:
+        # UPDATED ELITE TIER CLASSIFICATION with new tiers
+        if total_karma >= 5000000:  # 5M+ karma
+            tier = 'LEGENDARY'
+            reach_multiplier = 5.0
+        elif total_karma >= 1000000:  # 1M+ karma
             tier = 'MEGA'
             reach_multiplier = 4.0
-        elif total_karma >= 250000:
+        elif total_karma >= 250000:  # 250K+ karma
             tier = 'SUPER' 
             reach_multiplier = 3.0
-        elif total_karma >= 50000:
+        elif total_karma >= 50000:  # 50K+ karma
             tier = 'MAJOR'
             reach_multiplier = 2.5
+        elif total_karma >= 25000:  # 25K+ karma
+            tier = 'RISING'
+            reach_multiplier = 2.0
+        elif total_karma >= 10000:  # 10K+ karma
+            tier = 'MICRO'
+            reach_multiplier = 1.5
         else:
             return {}
         
@@ -645,7 +656,7 @@ class EliteRedditScraperMultiKey:
     
     def scrape_subreddit_elite(self, subreddit: str, target_users: int = 40) -> int:
         """Optimized elite subreddit scraping with multi-key support."""
-        self.logger.info(f"🎯 ELITE scraping r/{subreddit} (targeting {target_users} top users)")
+        self.logger.info(f"ELITE scraping r/{subreddit} (targeting {target_users} top users)")
         
         found_users = 0
         posts = self.get_elite_posts_only(subreddit, 100)
@@ -660,7 +671,7 @@ class EliteRedditScraperMultiKey:
             # Check if we're approaching credit limits
             stats = self.multi_key_config.get_stats_summary()
             if stats['total_credits_used'] > (stats['total_keys'] * 4500):  # 90% of credits used
-                self.logger.warning("⚠️ Approaching credit limits, saving progress...")
+                self.logger.warning("Approaching credit limits, saving progress...")
                 self._save_progress()
             
             post = post_data.get('data', {})
@@ -682,23 +693,23 @@ class EliteRedditScraperMultiKey:
                     self.influencers.append(influencer)
                     found_users += 1
                     
-                    self.logger.info(f"🏆 Added u/{username} ({influencer['tier']}, {influencer['total_karma']:,} karma)")
+                    self.logger.info(f"Added u/{username} ({influencer['tier']}, {influencer['total_karma']:,} karma)")
                     
                     if len(self.influencers) % self.backup_interval == 0:
                         self._save_progress()
-                        self.logger.info(f"💾 Progress saved: {len(self.influencers)}/{self.target_count}")
+                        self.logger.info(f"Progress saved: {len(self.influencers)}/{self.target_count}")
         
-        self.logger.info(f"📊 Found {found_users} elite users from r/{subreddit}")
+        self.logger.info(f"Found {found_users} elite users from r/{subreddit}")
         return found_users
     
     def scrape_all_categories_elite(self) -> None:
         """Scrape all categories with multi-key credit management."""
-        self.logger.info(f"🚀 MULTI-KEY ELITE SCRAPING - Targeting {self.target_count} top-tier influencers")
-        self.logger.info("🏆 Minimum Karma: 50,000 (MAJOR tier and above)")
-        self.logger.info("🎯 Tiers: MEGA (1M+), SUPER (250K+), MAJOR (50K+)")
+        self.logger.info(f"MULTI-KEY ELITE SCRAPING - Targeting {self.target_count} top-tier influencers")
+        self.logger.info("Minimum Karma: 10,000 (MICRO tier and above)")
+        self.logger.info("Tiers: LEGENDARY (5M+), MEGA (1M+), SUPER (250K+), MAJOR (50K+), RISING (25K+), MICRO (10K+)")
         
         initial_stats = self.multi_key_config.get_stats_summary()
-        self.logger.info(f"🔑 Starting with {initial_stats['total_keys']} API keys, "
+        self.logger.info(f"Starting with {initial_stats['total_keys']} API keys, "
                         f"{initial_stats['total_credits_used']} credits already used")
         
         category_stats: Dict[str, int] = {category: 0 for category in self.subreddit_categories.keys()}
@@ -722,15 +733,15 @@ class EliteRedditScraperMultiKey:
             # Check credit usage before starting new category
             current_stats = self.multi_key_config.get_stats_summary()
             if current_stats['active_keys'] == 0:
-                self.logger.error("❌ No active API keys remaining!")
+                self.logger.error("No active API keys remaining!")
                 break
             elif current_stats['total_credits_used'] > (current_stats['total_keys'] * 4750):
-                self.logger.warning("⚠️ 95% of credits used, stopping to preserve resources")
+                self.logger.warning("95% of credits used, stopping to preserve resources")
                 break
                 
             subreddits = self.subreddit_categories[category_name]
-            self.logger.info(f"\n🎯 CATEGORY: {category_name.upper()} ({len(subreddits)} subreddits)")
-            self.logger.info(f"🔑 Active keys: {current_stats['active_keys']}/{current_stats['total_keys']}, "
+            self.logger.info(f"\nCATEGORY: {category_name.upper()} ({len(subreddits)} subreddits)")
+            self.logger.info(f"Active keys: {current_stats['active_keys']}/{current_stats['total_keys']}, "
                            f"Credits used: {current_stats['total_credits_used']}")
             
             # Shuffle for variety but maintain quality focus
@@ -752,7 +763,7 @@ class EliteRedditScraperMultiKey:
                 # Double-check credit status
                 live_stats = self.multi_key_config.get_stats_summary()
                 if live_stats['active_keys'] == 0:
-                    self.logger.warning("⚠️ All keys exhausted during category processing")
+                    self.logger.warning("All keys exhausted during category processing")
                     break
                 
                 try:
@@ -763,11 +774,11 @@ class EliteRedditScraperMultiKey:
                     if len(self.influencers) % 100 == 0 and len(self.influencers) > 0:
                         progress = (len(self.influencers) / self.target_count) * 100
                         live_stats = self.multi_key_config.get_stats_summary()
-                        self.logger.info(f"📈 Progress: {len(self.influencers)}/{self.target_count} ({progress:.1f}%) "
+                        self.logger.info(f"Progress: {len(self.influencers)}/{self.target_count} ({progress:.1f}%) "
                                        f"| Credits: {live_stats['total_credits_used']}")
                     
                 except Exception as e:
-                    self.logger.error(f"❌ Error scraping r/{subreddit}: {e}")
+                    self.logger.error(f"Error scraping r/{subreddit}: {e}")
                     continue
                 
                 # Show tier distribution every 250 accounts
@@ -776,12 +787,12 @@ class EliteRedditScraperMultiKey:
         
         # Final category breakdown
         final_stats = self.multi_key_config.get_stats_summary()
-        self.logger.info(f"\n📊 FINAL CATEGORY BREAKDOWN:")
+        self.logger.info(f"\nFINAL CATEGORY BREAKDOWN:")
         for category, count in category_stats.items():
             percentage = (count / len(self.influencers)) * 100 if self.influencers else 0
             self.logger.info(f"  {category.upper():<30}: {count:>4,} accounts ({percentage:.1f}%)")
         
-        self.logger.info(f"\n🔑 FINAL MULTI-KEY STATISTICS:")
+        self.logger.info(f"\nFINAL MULTI-KEY STATISTICS:")
         for key_name, key_data in final_stats['key_details'].items():
             self.logger.info(f"  {key_name}: {key_data['requests']} requests, "
                            f"{key_data['credits']} credits, "
@@ -799,19 +810,19 @@ class EliteRedditScraperMultiKey:
         
         avg_karma = total_karma / len(self.influencers) if self.influencers else 0
         
-        self.logger.info(f"🏆 ELITE TIER DISTRIBUTION (Avg: {avg_karma:,.0f} karma):")
-        for tier in ['MEGA', 'SUPER', 'MAJOR']:
+        self.logger.info(f"ELITE TIER DISTRIBUTION (Avg: {avg_karma:,.0f} karma):")
+        for tier in ['LEGENDARY', 'MEGA', 'SUPER', 'MAJOR', 'RISING', 'MICRO']:
             count = tier_counts.get(tier, 0)
             if count > 0:
                 percentage = (count / len(self.influencers)) * 100
                 tier_karma = sum(i['total_karma'] for i in self.influencers if i['tier'] == tier)
                 tier_avg = tier_karma / count
-                self.logger.info(f"    {tier:<6}: {count:>4,} ({percentage:.1f}%) - Avg: {tier_avg:,.0f} karma")
+                self.logger.info(f"    {tier:<9}: {count:>4,} ({percentage:.1f}%) - Avg: {tier_avg:,.0f} karma")
     
     def _save_to_csv(self, filename: Optional[str] = None) -> None:
         """Save elite influencers to CSV with Reddit profile URLs."""
         if not self.influencers:
-            self.logger.warning("⚠️ No elite influencers to save!")
+            self.logger.warning("No elite influencers to save!")
             return
         
         filename = filename or self.csv_file
@@ -829,12 +840,12 @@ class EliteRedditScraperMultiKey:
             sorted_influencers = sorted(self.influencers, key=lambda x: x['total_karma'], reverse=True)
             writer.writerows(sorted_influencers)
         
-        self.logger.info(f"💾 Saved {len(self.influencers)} elite influencers to {filename}")
+        self.logger.info(f"Saved {len(self.influencers)} elite influencers to {filename}")
     
     def print_elite_summary(self) -> None:
         """Print comprehensive elite summary with multi-key stats."""
         if not self.influencers:
-            self.logger.error("❌ No elite influencers found!")
+            self.logger.error("No elite influencers found!")
             return
         
         tier_counts: Dict[str, int] = {}
@@ -850,47 +861,47 @@ class EliteRedditScraperMultiKey:
         avg_karma = total_karma / len(self.influencers)
         final_stats = self.multi_key_config.get_stats_summary()
         
-        print(f"\n🏆 MULTI-KEY ELITE SCRAPING RESULTS")
+        print(f"\nMULTI-KEY ELITE SCRAPING RESULTS")
         print(f"{'='*70}")
-        print(f"✅ Total Elite Influencers: {len(self.influencers):,}")
-        print(f"🎯 Target Achievement: {(len(self.influencers)/self.target_count)*100:.1f}%")
-        print(f"📊 Combined Karma: {total_karma:,}")
-        print(f"📈 Average Karma: {avg_karma:,.0f}")
-        print(f"📈 Estimated Total Reach: {total_reach:,}")
-        print(f"⏱️  Total Requests: {self.request_count:,}")
-        print(f"🕐 Runtime: {(time.time() - self.session_start)/3600:.1f} hours")
-        print(f"🔥 Quality Focus: 50K+ karma minimum")
-        print(f"🔗 Profile URLs: Included in CSV export")
+        print(f"Total Elite Influencers: {len(self.influencers):,}")
+        print(f"Target Achievement: {(len(self.influencers)/self.target_count)*100:.1f}%")
+        print(f"Combined Karma: {total_karma:,}")
+        print(f"Average Karma: {avg_karma:,.0f}")
+        print(f"Estimated Total Reach: {total_reach:,}")
+        print(f"Total Requests: {self.request_count:,}")
+        print(f"Runtime: {(time.time() - self.session_start)/3600:.1f} hours")
+        print(f"Quality Focus: 10K+ karma minimum")
+        print(f"Profile URLs: Included in CSV export")
         
-        print(f"\n🔑 MULTI-KEY API STATISTICS:")
+        print(f"\nMULTI-KEY API STATISTICS:")
         print(f"  Total Keys Used: {final_stats['total_keys']}")
         print(f"  Active Keys: {final_stats['active_keys']}")
         print(f"  Total Credits Used: {final_stats['total_credits_used']}")
         print(f"  Credits per Account: {final_stats['total_credits_used']/len(self.influencers):.1f}")
         
-        print(f"\n🔑 INDIVIDUAL KEY PERFORMANCE:")
+        print(f"\nINDIVIDUAL KEY PERFORMANCE:")
         for key_name, key_data in final_stats['key_details'].items():
-            status = "🔴 BLOCKED" if key_data['blocked'] else "🟢 ACTIVE"
+            status = "BLOCKED" if key_data['blocked'] else "ACTIVE"
             print(f"  {key_name} (...{key_data['last_8_chars']}): "
                   f"{key_data['requests']} requests, {key_data['credits']} credits, "
                   f"{key_data['errors']} errors {status}")
         
-        print(f"\n🏆 ELITE KARMA TIER BREAKDOWN:")
-        for tier in ['MEGA', 'SUPER', 'MAJOR']:
+        print(f"\nELITE KARMA TIER BREAKDOWN:")
+        for tier in ['LEGENDARY', 'MEGA', 'SUPER', 'MAJOR', 'RISING', 'MICRO']:
             count = tier_counts.get(tier, 0)
             if count > 0:
                 percentage = (count / len(self.influencers)) * 100
                 tier_karma = sum(i['total_karma'] for i in self.influencers if i['tier'] == tier)
                 tier_avg = tier_karma / count
                 tier_reach = sum(i['estimated_reach'] for i in self.influencers if i['tier'] == tier)
-                print(f"  {tier:<6}: {count:>4,} accounts ({percentage:.1f}%) - Avg: {tier_avg:,.0f} karma - Reach: {tier_reach:,}")
+                print(f"  {tier:<9}: {count:>4,} accounts ({percentage:.1f}%) - Avg: {tier_avg:,.0f} karma - Reach: {tier_reach:,}")
         
         # Show premium account stats
         verified_count = sum(1 for i in self.influencers if i.get('is_verified'))
         premium_count = sum(1 for i in self.influencers if i.get('has_premium'))
         verified_email_count = sum(1 for i in self.influencers if i.get('has_verified_email'))
         
-        print(f"\n🌟 ACCOUNT QUALITY METRICS:")
+        print(f"\nACCOUNT QUALITY METRICS:")
         print(f"  Reddit Employees: {verified_count}")
         print(f"  Premium Accounts: {premium_count} ({(premium_count/len(self.influencers))*100:.1f}%)")
         print(f"  Verified Email: {verified_email_count} ({(verified_email_count/len(self.influencers))*100:.1f}%)")
@@ -898,23 +909,23 @@ class EliteRedditScraperMultiKey:
         # Top performers with profile links
         top_influencers = sorted(self.influencers, key=lambda x: x['total_karma'], reverse=True)[:25]
         
-        print(f"\n🏆 TOP 25 ELITE INFLUENCERS:")
-        print(f"{'Rank':<4} {'Username':<20} {'Karma':<12} {'Tier':<6} {'Per Day':<10} {'Reach':<12}")
-        print(f"{'-'*4} {'-'*20} {'-'*12} {'-'*6} {'-'*10} {'-'*12}")
+        print(f"\nTOP 25 ELITE INFLUENCERS:")
+        print(f"{'Rank':<4} {'Username':<20} {'Karma':<12} {'Tier':<9} {'Per Day':<10} {'Reach':<12}")
+        print(f"{'-'*4} {'-'*20} {'-'*12} {'-'*9} {'-'*10} {'-'*12}")
         for i, influencer in enumerate(top_influencers, 1):
             karma_per_day = influencer.get('karma_per_day', 0)
             reach = influencer.get('estimated_reach', 0)
-            print(f"{i:2d}. u/{influencer['username']:<19} {influencer['total_karma']:>10,} {influencer['tier']:<6} {karma_per_day:>8.1f} {reach:>10,}")
+            print(f"{i:2d}. u/{influencer['username']:<19} {influencer['total_karma']:>10,} {influencer['tier']:<9} {karma_per_day:>8.1f} {reach:>10,}")
         
         # Credit efficiency analysis
         if final_stats['total_credits_used'] > 0:
             efficiency = len(self.influencers) / final_stats['total_credits_used']
-            print(f"\n💰 CREDIT EFFICIENCY ANALYSIS:")
+            print(f"\nCREDIT EFFICIENCY ANALYSIS:")
             print(f"  Accounts per Credit: {efficiency:.3f}")
             print(f"  Cost per Elite Account: {1/efficiency:.1f} credits")
             print(f"  Estimated Free Plan Potential: {int(efficiency * (final_stats['total_keys'] * 1000)):,} accounts")
         
-        print(f"\n📋 GITHUB ACTIONS OPTIMIZATION:")
+        print(f"\nGITHUB ACTIONS OPTIMIZATION:")
         print(f"  • Multi-key rotation prevents single key exhaustion")
         print(f"  • Smart credit management maximizes free plan usage")
         print(f"  • Progress saving allows resumption after timeouts")
@@ -922,7 +933,7 @@ class EliteRedditScraperMultiKey:
 
 def main() -> None:
     """Main execution optimized for GitHub Actions with multi-key support."""
-    print("🏆 MULTI-KEY ELITE REDDIT SCRAPER - GITHUB ACTIONS OPTIMIZED")
+    print("MULTI-KEY ELITE REDDIT SCRAPER - GITHUB ACTIONS OPTIMIZED")
     print("="*75)
     
     # Environment detection
@@ -931,8 +942,8 @@ def main() -> None:
     try:
         scraper = EliteRedditScraperMultiKey(target_count=target_count)
     except ValueError as e:
-        print(f"❌ Configuration Error: {e}")
-        print("\n🔧 SETUP INSTRUCTIONS FOR GITHUB ACTIONS:")
+        print(f"Configuration Error: {e}")
+        print("\nSETUP INSTRUCTIONS FOR GITHUB ACTIONS:")
         print("Add these secrets to your GitHub repository:")
         print("  • SCRAPERAPI_KEY - Your primary ScraperAPI key")
         print("  • SCRAPERAPI_KEY_2 - Additional key (optional)")
@@ -941,17 +952,17 @@ def main() -> None:
         return
     
     initial_stats = scraper.multi_key_config.get_stats_summary()
-    print(f"🔑 Loaded {initial_stats['total_keys']} ScraperAPI keys")
-    print(f"📊 Estimated scraping capacity: {initial_stats['total_keys'] * 1000} credits")
-    print(f"🎯 Target: {target_count} elite influencers (50K+ karma)")
-    print(f"🚀 GitHub Actions optimized with smart credit management")
+    print(f"Loaded {initial_stats['total_keys']} ScraperAPI keys")
+    print(f"Estimated scraping capacity: {initial_stats['total_keys'] * 1000} credits")
+    print(f"Target: {target_count} elite influencers (10K+ karma)")
+    print(f"GitHub Actions optimized with smart credit management")
     print("="*75)
     
     # Resume from previous progress if available
     resumed = scraper._load_progress()
     if resumed:
-        print(f"🔄 Resumed from previous session: {len(scraper.influencers)} elite accounts loaded")
-        print(f"⏩ Fast-forward: Skipping {len(scraper.scraped_users)} already processed users")
+        print(f"Resumed from previous session: {len(scraper.influencers)} elite accounts loaded")
+        print(f"Fast-forward: Skipping {len(scraper.scraped_users)} already processed users")
     
     try:
         start_time = time.time()
@@ -967,36 +978,36 @@ def main() -> None:
         
         final_stats = scraper.multi_key_config.get_stats_summary()
         
-        print(f"\n✅ MULTI-KEY ELITE SCRAPING COMPLETE!")
-        print(f"📁 Results saved to: {scraper.csv_file}")
-        print(f"📋 Log file: elite_scraper.log")
-        print(f"🎯 Quality Achieved: Only 50K+ karma accounts")
-        print(f"🔑 Keys Used: {final_stats['active_keys']}/{final_stats['total_keys']} active")
-        print(f"💰 Credits Consumed: {final_stats['total_credits_used']}")
-        print(f"⚡ Efficiency: {len(scraper.influencers)/max(final_stats['total_credits_used'], 1):.3f} accounts/credit")
-        print(f"🔗 Profile URLs: Included for all accounts")
-        print(f"⏱️  Total Runtime: {runtime_minutes:.1f} minutes")
-        print(f"📈 Speed: {len(scraper.influencers)/max(runtime_minutes, 1):.1f} accounts/minute")
-        print(f"🎯 GitHub Actions Compatible: ✅")
+        print(f"\nMULTI-KEY ELITE SCRAPING COMPLETE!")
+        print(f"Results saved to: {scraper.csv_file}")
+        print(f"Log file: elite_scraper.log")
+        print(f"Quality Achieved: Only 10K+ karma accounts")
+        print(f"Keys Used: {final_stats['active_keys']}/{final_stats['total_keys']} active")
+        print(f"Credits Consumed: {final_stats['total_credits_used']}")
+        print(f"Efficiency: {len(scraper.influencers)/max(final_stats['total_credits_used'], 1):.3f} accounts/credit")
+        print(f"Profile URLs: Included for all accounts")
+        print(f"Total Runtime: {runtime_minutes:.1f} minutes")
+        print(f"Speed: {len(scraper.influencers)/max(runtime_minutes, 1):.1f} accounts/minute")
+        print(f"GitHub Actions Compatible: YES")
         
     except KeyboardInterrupt:
-        print(f"\n⏹️  Elite scraping interrupted by user")
+        print(f"\nElite scraping interrupted by user")
         scraper._save_to_csv('interrupted_' + scraper.csv_file)
         scraper._save_progress()
         scraper.print_elite_summary()
-        print(f"💾 Progress saved - you can resume later!")
+        print(f"Progress saved - you can resume later!")
     
     except Exception as e:
-        scraper.logger.error(f"❌ Critical error: {e}")
+        scraper.logger.error(f"Critical error: {e}")
         if scraper.influencers:
             scraper._save_to_csv('error_' + scraper.csv_file)
             scraper._save_progress()
             scraper.print_elite_summary()
-            print(f"💾 Data saved despite error - check error_{scraper.csv_file}")
+            print(f"Data saved despite error - check error_{scraper.csv_file}")
         
         # Show final key stats even on error
         final_stats = scraper.multi_key_config.get_stats_summary()
-        print(f"\n🔑 FINAL KEY STATISTICS:")
+        print(f"\nFINAL KEY STATISTICS:")
         print(f"Credits Used: {final_stats['total_credits_used']}")
         for key_name, key_data in final_stats['key_details'].items():
             print(f"  {key_name}: {key_data['credits']} credits, {'BLOCKED' if key_data['blocked'] else 'ACTIVE'}")
