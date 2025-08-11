@@ -191,197 +191,68 @@ class EliteRedditScraperMultiKey:
         
         # Enhanced subreddit list - preserved from original
         self.subreddit_categories = {
-    'ai_machine_learning_tech': [
-        'artificial',
-        'MachineLearning',
-        'ChatGPT',
-        'singularity',
-        'OpenAI',
-        'dataengineering',
-        'analytics',
-        'python',
-        'javascript',
-        'learnprogramming',
-        'cybersecurity',
-        'devops',
-        'aws',
-        'docker',
-        'kubernetes',
-        'linux',
-        'StableDiffusion',
-        'midjourney',
-        'ComputerVision',
-    ],
-    'content_creator_influencer': [
-        'NewTubers',
-        'youtube',
-        'tiktok',
-        'instagram',
-        'streaming',
-        'twitch',
-        'letsplay',
-        'podcasting',
-        'blogging',
-        'copywriting',
-        'VideoEditing',
-        'ContentCreation',
-        'YouTube_startups',
-        'marketing',
-        'DigitalMarketing',
-        'SEO',
-        'PPC',
-        'advertising',
-        'Affiliatemarketing',
-        'content_marketing',
-        'socialmedia',
-        'branding',
-        'influencer',
-    ],
-    'wellness_fitness_lifestyle': [
-        'fitness',
-        'loseit',
-        'gainit',
-        'bodyweightfitness',
-        'xxfitness',
-        'running',
-        'weightlifting',
-        'yoga',
-        'nutrition',
-        'MealPrepSunday',
-        'EatCheapAndHealthy',
-        'intermittentfasting',
-        'keto',
-        'mentalhealth',
-        'anxiety',
-        'depression',
-        'therapy',
-        'psychology',
-        'meditation',
-        'mindfulness',
-        'getmotivated',
-        'selfimprovement',
-        'productivity',
-        'getdisciplined',
-        'decidingtobebetter',
-    ],
-    'creative_arts_entertainment': [
-        'art',
-        'photography',
-        'design',
-        'graphic_design',
-        'UI_UX',
-        'photoshop',
-        'blender',
-        'animation',
-        'writing',
-        'screenwriting',
-        'books',
-        'MovieSuggestions',
-        'television',
-        'Music',
-        'WeAreTheMusicMakers',
-        'edmproduction',
-        'trapproduction',
-        'makinghiphop',
-        'gamedev',
-        'IndieGameDev',
-        'gamedesign',
-    ],
-    'fashion_travel_culture': [
-        'malefashionadvice',
-        'femalefashionadvice',
-        'streetwear',
-        'sneakers',
-        'frugalmalefashion',
-        'frugalfemalefashion',
-        'buyitforlife',
-        'travel',
-        'solotravel',
-        'backpacking',
-        'digitalnomad',
-        'onebag',
-        'shoestring',
-        'travel_tips',
-        'roadtrip',
-        'churning',
-        'awardtravel',
-        'camping',
-        'hiking',
-        'outdoors',
-    ],
-    'crypto_defi_blockchain2': [
-        'btc',
-        'ethfinance',
-        'xrp',
-        'litecoin',
-        'stellar',
-        'polkadot_public',
-        'chainlink',
-        'avalancheavax',
-        'tezos',
-        'algorand',
-        'cryptogeneral',
-        'ethdev',
-        'cryptocurrencies',
-        'greencrypto',
-        'cryptodevs',
-        'vechain',
-        'cosmosnetwork',
-        'metaverse'
-    ],
-    'ai_machine_learning_tech2': [
-        'learnmachinelearning',
-        'deeplearning',
-        'neuralnetworks',
-        'agi',
-        'robotics',
-        'futurology',
-        'technology',
-        'aiethics',
-        'aiart',
-        'compsci',
-        'generative',
-        'defendingaiart',
-        'automate',
-        'transhuman',
-        'genai',
-        'iot',
-        'cloudcomputing',
-        'sysadmin',
-        'netsec',
-        'hardware',
-        'quantumcomputing',
-        'pytorch',
-        'tensorflow'
-    ],
-    'investing_finance_business2': [
-        'daytrading',
-        'forex',
-        'futures',
-        'algotrading',
-        'superstonk',
-        'stock_picks',
-        'bonds',
-        'mutualfunds',
-        'etfs',
-        'bogleheads',
-        'thetagang',
-        'fire',
-        'leanfire',
-        'fatfire',
-        'consulting',
-        'ecommerce',
-        'shopify',
-        'dropshipping',
-        'freelancing',
-        'sidehustle',
-        'passive_income',
-        'beermoney',
-        'budget',
-        'sales',
-        'leadership',
-        'sweatystartup'
-    ],
+        'crypto_defi_blockchain2': [
+            'ethfinance', 'bitcoinmarkets', 'CryptoMars', 'pancakeswap',
+            'uniswap', 'aave_official', 'yearn_finance', 'compound_finance',
+            'maticnetwork', 'avalanche', 'fantom', 'terra_money', 'cosmosnetwork'
+        ],
+        
+        'ai_machine_learning_tech2': [
+            'cscareerquestions', 'ExperiencedDevs', 'ITCareerQuestions', 'sysadmin',
+            'networking', 'netsec', 'hacking', 'homelab', 'selfhosted', 'opensource',
+            'github', 'golang', 'rust', 'reactjs', 'node', 'angular', 'vue'
+        ],
+        
+        'investing_finance_business2': [
+            'ecommerce', 'dropship', 'FBA', 'amazonfba', 'shopify', 'sideproject',
+            'indiehackers', 'startupideas', 'venturecapital', 'sales',
+            'Fire', 'realestateinvesting', 'landlord', 'mortgages', 'churning',
+            'quantfinance', 'algotrading', 'daytrading', 'forex', 'futures'
+        ],
+        
+        'gaming_entertainment': [
+            'pcgaming', 'buildapc', 'pcmasterrace', 'nvidia', 'amd', 'intel',
+            'PS5', 'xbox', 'nintendo', 'NintendoSwitch', 'Steam', 'Genshin_Impact',
+            'apexlegends', 'FortNiteBR', 'leagueoflegends', 'Overwatch', 'minecraft'
+        ],
+        
+        'lifestyle_general_engagement': [
+            'relationship_advice', 'AmItheAsshole', 'legaladvice',
+            'BuyItForLife', 'cookingforbeginners', 'DIY', 'HomeImprovement',
+            'gardening', 'houseplants'
+        ],
+        
+        'entertainment_culture': [
+            'television', 'netflix', 'marvel', 'DC_Cinematic', 'StarWars',
+            'gameofthrones', 'HouseOfTheDragon', 'stranger_things', 'TheOffice',
+            'rickandmorty', 'anime', 'manga', 'OnePiece', 'pokemon'
+        ],
+        
+        'sports_recreation': [
+            'nfl', 'nba', 'soccer', 'baseball', 'hockey', 'MMA', 'formula1',
+            'fantasyfootball', 'DynastyFF', 'cycling', 'bodybuilding', 'powerlifting'
+        ],
+        
+        'specialized_hobbies': [
+            'watches', 'mechanicalkeyboards', 'headphones', 'audiophile', 'vinyl',
+            'cars', 'teslamotors', 'electricvehicles', 'motorcycles', 'bicycling'
+        ],
+        
+        'education_career': [
+            'college', 'ApplyingToCollege', 'GradSchool', 'GetStudying', 'medicalschool',
+            'lawschool', 'MBA', 'consulting', 'accounting', 'engineering'
+        ],
+        
+        'emerging_tech_trends': [
+            'ChatGPTCoding', 'GPT3', 'NoCode', 'LowCode', 'automation', 'robotics', 
+            'IoT', 'edge_computing', 'metaverse', 'VRchat', 'oculus', 'virtualreality',
+            'augmentedreality', 'decentraland', 'sandbox', 'axieinfinity', 'GameFi'
+        ],
+        
+        'regional_high_activity': [
+            'nyc', 'london', 'toronto', 'australia', 'canada', 'unitedkingdom',
+            'europe', 'india', 'singapore', 'bayarea', 'losangeles', 'chicago'
+        ]
 }
 
         
@@ -854,14 +725,33 @@ class EliteRedditScraperMultiKey:
         
         # Prioritize categories by potential for high-karma users
         priority_order = [
-            'crypto_defi_blockchain2',        # Very active, high-karma community
-            'investing_finance_business2',    # High-value discussions
-            'ai_machine_learning_tech',
-            'ai_machine_learning_tech2',      # Growing, high-engagement
-            'content_creator_influencer',    # Professional creators
-            'wellness_fitness_lifestyle',    # Large, engaged communities
-            'creative_arts_entertainment',   # Showcase communities
-            'fashion_travel_culture'         # Lifestyle communities
+            # TIER 1: Direct alignment with your tech/crypto/business niche
+            'crypto_defi_blockchain2',        # Advanced DeFi/crypto communities
+            'ai_machine_learning_tech2',      # Tech professionals & developers  
+            'investing_finance_business2',    # Business/finance professionals
+            'ai_machine_learning_tech',       # Your existing tech category
+            'crypto_defi_blockchain',         # Your existing crypto category
+            'investing_finance_business',     # Your existing finance category
+            
+            # TIER 2: High karma potential with tech relevance
+            'gaming_entertainment',           # Tech-savvy gamers with high karma
+            'content_creator_influencer',     # Your existing category
+            
+            # TIER 3: High engagement backup categories
+            'lifestyle_general_engagement',   # AmItheAsshole users = high karma
+            'wellness_fitness_lifestyle',     # Your existing category
+            'entertainment_culture',          # High engagement entertainment
+            'creative_arts_entertainment',    # Your existing category
+            
+            # TIER 4: Specialized but valuable  
+            'sports_recreation',              # Surprisingly high karma users
+            'education_career',               # Professional communities
+            'specialized_hobbies',            # Niche but engaged users
+            'fashion_travel_culture',         # Your existing category
+            
+            # TIER 5: Emerging opportunities
+            'emerging_tech_trends',           # Early adopters & tech enthusiasts
+            'regional_high_activity'          # Location-based high activity
         ]
         
         for category_name in priority_order:
