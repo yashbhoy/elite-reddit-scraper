@@ -191,8 +191,6 @@ class EliteRedditScraperMultiKey:
         
         # Enhanced subreddit list - preserved from original
         self.subreddit_categories = {
-    'crypto_defi_blockchain': [
-    ],
     'ai_machine_learning_tech': [
         'artificial',
         'MachineLearning',
@@ -213,8 +211,6 @@ class EliteRedditScraperMultiKey:
         'StableDiffusion',
         'midjourney',
         'ComputerVision',
-    ],
-    'investing_finance_business': [
     ],
     'content_creator_influencer': [
         'NewTubers',
@@ -268,8 +264,6 @@ class EliteRedditScraperMultiKey:
         'getdisciplined',
         'decidingtobebetter',
     ],
-    'massive_general_engagement': [
-    ],
     'creative_arts_entertainment': [
         'art',
         'photography',
@@ -314,6 +308,79 @@ class EliteRedditScraperMultiKey:
         'camping',
         'hiking',
         'outdoors',
+    ],
+    'crypto_defi_blockchain2': [
+        'btc',
+        'ethfinance',
+        'xrp',
+        'litecoin',
+        'stellar',
+        'polkadot_public',
+        'chainlink',
+        'avalancheavax',
+        'tezos',
+        'algorand',
+        'cryptogeneral',
+        'ethdev',
+        'cryptocurrencies',
+        'greencrypto',
+        'cryptodevs',
+        'vechain',
+        'cosmosnetwork',
+        'metaverse'
+    ],
+    'ai_machine_learning_tech2': [
+        'learnmachinelearning',
+        'deeplearning',
+        'neuralnetworks',
+        'agi',
+        'robotics',
+        'futurology',
+        'technology',
+        'aiethics',
+        'aiart',
+        'compsci',
+        'generative',
+        'defendingaiart',
+        'automate',
+        'transhuman',
+        'genai',
+        'iot',
+        'cloudcomputing',
+        'sysadmin',
+        'netsec',
+        'hardware',
+        'quantumcomputing',
+        'pytorch',
+        'tensorflow'
+    ],
+    'investing_finance_business2': [
+        'daytrading',
+        'forex',
+        'futures',
+        'algotrading',
+        'superstonk',
+        'stock_picks',
+        'bonds',
+        'mutualfunds',
+        'etfs',
+        'bogleheads',
+        'thetagang',
+        'fire',
+        'leanfire',
+        'fatfire',
+        'consulting',
+        'ecommerce',
+        'shopify',
+        'dropshipping',
+        'freelancing',
+        'sidehustle',
+        'passive_income',
+        'beermoney',
+        'budget',
+        'sales',
+        'leadership',
+        'sweatystartup'
     ],
 }
 
@@ -787,10 +854,10 @@ class EliteRedditScraperMultiKey:
         
         # Prioritize categories by potential for high-karma users
         priority_order = [
-            'massive_general_engagement',    # Highest karma potential
-            'crypto_defi_blockchain',        # Very active, high-karma community
-            'investing_finance_business',    # High-value discussions
-            'ai_machine_learning_tech',      # Growing, high-engagement
+            'crypto_defi_blockchain2',        # Very active, high-karma community
+            'investing_finance_business2',    # High-value discussions
+            'ai_machine_learning_tech',
+            'ai_machine_learning_tech2',      # Growing, high-engagement
             'content_creator_influencer',    # Professional creators
             'wellness_fitness_lifestyle',    # Large, engaged communities
             'creative_arts_entertainment',   # Showcase communities
