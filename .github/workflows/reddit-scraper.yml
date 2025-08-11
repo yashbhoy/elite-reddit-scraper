@@ -34,7 +34,7 @@ jobs:
     - name: ⬇️ Download previous progress artifact
       uses: actions/download-artifact@v4
       with:
-        name: reddit-scraper-results-${{ github.run_number - 1 }} # Downloads artifact from the previous run
+        name: reddit-scraper-results # Use a fixed name for the artifact
         path: . # Downloads to the current working directory
       continue-on-error: true # Allow workflow to continue if no previous artifact is found
 
