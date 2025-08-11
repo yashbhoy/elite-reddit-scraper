@@ -725,14 +725,6 @@ class EliteRedditScraperMultiKey:
         
         # Prioritize categories by potential for high-karma users
         priority_order = [
-            # TIER 1: Direct alignment with your tech/crypto/business niche
-            'crypto_defi_blockchain2',        # Advanced DeFi/crypto communities
-            'ai_machine_learning_tech2',      # Tech professionals & developers  
-            'investing_finance_business2',    # Business/finance professionals
-            'ai_machine_learning_tech',       # Your existing tech category
-            'crypto_defi_blockchain',         # Your existing crypto category
-            'investing_finance_business',     # Your existing finance category
-            
             # TIER 2: High karma potential with tech relevance
             'gaming_entertainment',           # Tech-savvy gamers with high karma
             'content_creator_influencer',     # Your existing category
@@ -742,6 +734,14 @@ class EliteRedditScraperMultiKey:
             'wellness_fitness_lifestyle',     # Your existing category
             'entertainment_culture',          # High engagement entertainment
             'creative_arts_entertainment',    # Your existing category
+            
+            # TIER 1: Direct alignment with your tech/crypto/business niche
+            'crypto_defi_blockchain2',        # Advanced DeFi/crypto communities
+            'ai_machine_learning_tech2',      # Tech professionals & developers  
+            'investing_finance_business2',    # Business/finance professionals
+            'ai_machine_learning_tech',       # Your existing tech category
+            'crypto_defi_blockchain',         # Your existing crypto category
+            'investing_finance_business',     # Your existing finance category
             
             # TIER 4: Specialized but valuable  
             'sports_recreation',              # Surprisingly high karma users
