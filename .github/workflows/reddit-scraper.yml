@@ -18,6 +18,11 @@ on:
         - scrapfly
         - brightdata
         - direct
+      force_fresh_start:
+        description: 'Force fresh start (ignore previous progress)'
+        required: false
+        default: true
+        type: boolean
   schedule:
     # Run automatically every 7 days at 2 AM UTC (optional)
     - cron: '0 2 * * 0'
@@ -43,6 +48,37 @@ jobs:
         pip install requests
         echo "✅ Dependencies installed successfully"
     
+    - name: 🧹 Clean Previous Files (FORCE FRESH START)
+      run: |
+        echo "🧹 FORCING FRESH START - Removing all previous files..."
+        
+        # Remove all previous CSV files
+        rm -f reddit_elite_influencers.csv
+        rm -f backup_reddit_elite_influencers.csv
+        rm -f interrupted_reddit_elite_influencers.csv
+        rm -f error_reddit_elite_influencers.csv
+        
+        # Remove progress files
+        rm -f elite_scraper_progress.json
+        rm -f scraper_state.json
+        rm -f progress.json
+        
+        # Remove log files
+        rm -f elite_scraper.log
+        rm -f scraper.log
+        
+        # Remove any temporary files
+        rm -f *.tmp
+        rm -f temp_*
+        
+        # Create fresh logs directory
+        rm -rf logs
+        mkdir -p logs
+        
+        echo "✅ All previous files removed - starting completely fresh"
+        echo "📁 Current directory contents:"
+        ls -la
+    
     - name: 🔧 Configure environment
       run: |
         echo "GATEWAY_PROVIDER=${{ github.event.inputs.gateway_provider || 'scraperapi' }}" >> $GITHUB_ENV
@@ -51,7 +87,9 @@ jobs:
         echo "SCRAPERAPI_KEY=${{ secrets.SCRAPERAPI_KEY }}" >> $GITHUB_ENV
         echo "SCRAPERAPI_KEY_2=${{ secrets.SCRAPERAPI_KEY_2 }}" >> $GITHUB_ENV
         echo "SCRAPERAPI_KEY_3=${{ secrets.SCRAPERAPI_KEY_3 }}" >> $GITHUB_ENV
+        echo "FORCE_FRESH_START=true" >> $GITHUB_ENV
         echo "🔑 Environment configured with multi-key support"
+        echo "🆕 FRESH START MODE ENABLED"
     
     - name: 🔍 Validate API keys
       run: |
@@ -88,24 +126,38 @@ jobs:
           exit 1
         fi
     
-    - name: 📊 Check previous progress
+    - name: ✅ Confirm Fresh Start
       run: |
-        if [ -f "elite_scraper_progress.json" ]; then
-          echo "🔄 Found previous progress file"
-          python3 -c "import json; data=json.load(open('elite_scraper_progress.json')); print(f'Previous session: {data.get(\"total_scraped\", 0)} accounts scraped')"
-        else
-          echo "🆕 Starting fresh scraping session"
+        echo "🆕 CONFIRMING FRESH START STATUS"
+        echo "================================"
+        
+        # Verify no previous files exist
+        if [ -f "reddit_elite_influencers.csv" ]; then
+          echo "⚠️ WARNING: CSV file still exists!"
+          exit 1
         fi
+        
+        if [ -f "elite_scraper_progress.json" ]; then
+          echo "⚠️ WARNING: Progress file still exists!"
+          exit 1
+        fi
+        
+        echo "✅ Confirmed: No previous files found"
+        echo "✅ Starting completely fresh scraping session"
+        echo "🎯 Target: $TARGET_COUNT new accounts"
+        echo "🔧 Gateway: $GATEWAY_PROVIDER"
     
-    - name: 🚀 Run Elite Reddit Scraper
+    - name: 🚀 Run Elite Reddit Scraper (FRESH START)
       run: |
-        echo "🏆 Starting Elite Reddit Scraper..."
+        echo "🏆 Starting Elite Reddit Scraper (FRESH START)..."
         echo "Gateway: $GATEWAY_PROVIDER"
         echo "Target: $TARGET_COUNT accounts"
+        echo "Mode: COMPLETELY FRESH START"
         echo "API Key: $(echo $SCRAPE_KEY$SCRAPERAPI_KEY | cut -c1-8)..."
         
-        # Create logs directory
-        mkdir -p logs
+        # Set environment variable to force fresh start in Python script
+        export FORCE_FRESH_START=true
+        export START_FROM_SCRATCH=true
         
         # Run the scraper with timeout and error handling
         timeout 21600 python3 Great_Scraper2_Gateway.py || {
@@ -121,19 +173,22 @@ jobs:
     - name: 📋 Display Results Summary
       if: always()
       run: |
-        echo "📊 SCRAPING SESSION SUMMARY"
-        echo "=========================="
+        echo "📊 FRESH SCRAPING SESSION SUMMARY"
+        echo "================================="
         
         if [ -f "reddit_elite_influencers.csv" ]; then
           row_count=$(($(wc -l < reddit_elite_influencers.csv) - 1))
-          echo "✅ CSV Export: $row_count elite influencers found"
+          echo "✅ NEW CSV Export: $row_count elite influencers found"
           
           # Show file size
           file_size=$(ls -lh reddit_elite_influencers.csv | awk '{print $5}')
           echo "📁 File size: $file_size"
           
+          # Show creation time
+          echo "🕐 File created: $(stat -c %y reddit_elite_influencers.csv)"
+          
           # Show top 10 accounts
-          echo "🏆 TOP 10 ACCOUNTS:"
+          echo "🏆 TOP 10 ACCOUNTS (FRESH SCRAPE):"
           head -11 reddit_elite_influencers.csv | tail -10 | while IFS=, read username url tier karma rest; do
             echo "  u/$username ($tier tier) - $karma karma"
           done
@@ -147,43 +202,36 @@ jobs:
           tail -20 elite_scraper.log
         fi
         
-        if [ -f "elite_scraper_progress.json" ]; then
-          echo "💾 Progress file exists - can resume later"
-          python3 -c "import json; data=json.load(open('elite_scraper_progress.json')); print(f'Progress: {data.get(\"total_scraped\", 0)} accounts processed')"
-        fi
+        echo "🆕 This was a COMPLETE FRESH START - no previous data used"
     
-    - name: 📤 Upload Results as Artifacts
+    - name: 📤 Upload Fresh Results as Artifacts
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: reddit-scraper-results-${{ github.run_number }}
+        name: fresh-reddit-scraper-results-${{ github.run_number }}
         path: |
           reddit_elite_influencers.csv
-          backup_reddit_elite_influencers.csv
-          elite_scraper_progress.json
           elite_scraper.log
-          interrupted_reddit_elite_influencers.csv
-          error_reddit_elite_influencers.csv
         retention-days: 30
         if-no-files-found: warn
     
-    - name: 💾 Commit Results to Repository (Optional)
+    - name: 💾 Commit Fresh Results to Repository (Optional)
       if: success() && github.ref == 'refs/heads/main'
       run: |
         # Configure git
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         
-        # Add and commit results
-        git add reddit_elite_influencers.csv elite_scraper_progress.json
-        git commit -m "🤖 Auto-update: Reddit scraper results $(date +%Y-%m-%d)" || echo "No changes to commit"
+        # Add and commit ONLY the fresh results
+        git add reddit_elite_influencers.csv
+        git commit -m "🆕 Fresh scrape: Reddit elite influencers $(date +%Y-%m-%d)" || echo "No changes to commit"
         git push || echo "Push failed - continuing anyway"
     
-    - name: 📊 Performance Metrics
+    - name: 📊 Fresh Scrape Performance Metrics
       if: always()
       run: |
-        echo "⏱️ PERFORMANCE METRICS"
-        echo "====================="
+        echo "⏱️ FRESH SCRAPE PERFORMANCE METRICS"
+        echo "==================================="
         
         if [ -f "elite_scraper.log" ]; then
           # Extract metrics from log
@@ -203,4 +251,5 @@ jobs:
           echo "🔄 Key rotation events: $key_rotations"
         fi
         
-        echo "🏁 Workflow completed at $(date)"
+        echo "🏁 Fresh scrape workflow completed at $(date)"
+        echo "🆕 Result: Brand new CSV with zero previous data influence"
