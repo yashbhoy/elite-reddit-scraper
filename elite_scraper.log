@@ -1,1 +1,1205 @@
+2025-08-10 18:57:05,612 - INFO - Multi-Key ScraperAPI enabled: 3 keys loaded
+2025-08-10 18:57:05,612 - INFO -   Key 1: ...d2ac3562 (Ready)
+2025-08-10 18:57:05,612 - INFO -   Key 2: ...cb270628 (Ready)
+2025-08-10 18:57:05,612 - INFO -   Key 3: ...ab3f375e (Ready)
+2025-08-10 18:57:05,613 - INFO - MULTI-KEY ELITE SCRAPING - Targeting 5000 top-tier influencers
+2025-08-10 18:57:05,613 - INFO - Minimum Karma: 10,000 (MICRO tier and above)
+2025-08-10 18:57:05,613 - INFO - Tiers: LEGENDARY (5M+), MEGA (1M+), SUPER (250K+), MAJOR (50K+), RISING (25K+), MICRO (10K+)
+2025-08-10 18:57:05,613 - INFO - Starting with 3 API keys, 0 credits already used
+2025-08-10 18:57:05,613 - INFO - 
+CATEGORY: MASSIVE_GENERAL_ENGAGEMENT (25 subreddits)
+2025-08-10 18:57:05,613 - INFO - Active keys: 3/3, Credits used: 0
+2025-08-10 18:57:05,613 - INFO - ELITE scraping r/nottheonion (targeting 25 top users)
+2025-08-10 18:57:38,185 - INFO - Added u/SuitcaseGoer9225 (MICRO, 18,237 karma)
+2025-08-10 18:57:40,913 - INFO - Added u/MrKillaMidnight (MAJOR, 134,573 karma)
+2025-08-10 18:57:56,409 - INFO - Added u/Emerald_Encrusted (MAJOR, 70,256 karma)
+2025-08-10 18:58:05,613 - INFO - Added u/IrishStarUS (MEGA, 1,718,719 karma)
+2025-08-10 18:58:10,607 - INFO - Added u/JAlbert653 (MEGA, 1,339,923 karma)
+2025-08-10 18:58:20,100 - INFO - Added u/ICanStopTheRain (MAJOR, 234,945 karma)
+2025-08-10 18:58:26,655 - INFO - Added u/starkiller1613 (RISING, 29,704 karma)
+2025-08-10 18:58:43,005 - INFO - Added u/sixshots_onlyfive (MAJOR, 78,542 karma)
+2025-08-10 18:58:48,820 - INFO - Added u/NewSlinger (SUPER, 384,954 karma)
+2025-08-10 18:58:51,627 - INFO - Added u/TheAnonymouse999 (RISING, 45,926 karma)
+2025-08-10 18:58:54,880 - INFO - Added u/Fan387 (SUPER, 656,881 karma)
+2025-08-10 18:58:56,874 - INFO - Added u/JCPY00 (MAJOR, 53,806 karma)
+2025-08-10 18:59:00,488 - INFO - Added u/Fincherfan (RISING, 30,503 karma)
+2025-08-10 18:59:10,844 - INFO - Added u/powdersleaf (RISING, 33,417 karma)
+2025-08-10 18:59:26,371 - INFO - Added u/biograf_ (SUPER, 281,862 karma)
+2025-08-10 18:59:28,703 - INFO - Added u/That_One_Prog (MICRO, 24,859 karma)
+2025-08-10 18:59:35,269 - INFO - Added u/orangeclaypot (MICRO, 14,529 karma)
+2025-08-10 18:59:39,107 - INFO - Added u/UpperLowerEastSide (MAJOR, 183,595 karma)
+2025-08-10 18:59:44,558 - INFO - Added u/tnasstyy (RISING, 42,303 karma)
+2025-08-10 18:59:51,075 - INFO - Added u/_easilyamused (MAJOR, 147,046 karma)
+2025-08-10 18:59:57,433 - INFO - Added u/Disastrous_Award_789 (MAJOR, 76,035 karma)
+2025-08-10 19:00:00,647 - INFO - Added u/R-Dragon_Thunderzord (SUPER, 544,973 karma)
+2025-08-10 19:00:03,665 - INFO - Added u/BugOperator (SUPER, 443,043 karma)
+2025-08-10 19:00:13,895 - INFO - Added u/Dragonktcd (MICRO, 11,042 karma)
+2025-08-10 19:00:33,185 - INFO - Added u/notcontenttocrawl (MICRO, 14,355 karma)
+2025-08-10 19:00:33,185 - INFO - Found 25 elite users from r/nottheonion
+2025-08-10 19:00:33,186 - INFO - ELITE scraping r/movies (targeting 25 top users)
+2025-08-10 19:00:58,212 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fr%2Fmovies%2Fhot.json%3Flimit%3D100&render=false&country_code=US&premium=false
+2025-08-10 19:01:25,337 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fr%2Fmovies%2Fhot.json%3Flimit%3D100&render=false&country_code=US&premium=false
+2025-08-10 19:02:04,782 - INFO - Added u/photochadsupremacist (RISING, 44,881 karma)
+2025-08-10 19:02:15,959 - INFO - Added u/TheRealOcsiban (SUPER, 881,389 karma)
+2025-08-10 19:02:24,642 - INFO - Added u/1961Deckard (RISING, 26,424 karma)
+2025-08-10 19:02:52,092 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FDemiFiendRSA%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 19:02:56,458 - INFO - Added u/DemiFiendRSA (LEGENDARY, 5,499,967 karma)
+2025-08-10 19:03:05,989 - INFO - Added u/PM_Peartree (MICRO, 16,136 karma)
+2025-08-10 19:03:08,522 - INFO - Added u/LowCarbScares (RISING, 34,602 karma)
+2025-08-10 19:03:20,839 - INFO - Added u/Malencon (RISING, 39,848 karma)
+2025-08-10 19:03:23,312 - INFO - Added u/stekene (RISING, 49,012 karma)
+2025-08-10 19:03:26,545 - INFO - Added u/Dmitr_Jango (MAJOR, 57,880 karma)
+2025-08-10 19:03:40,601 - INFO - Added u/impeccabletim (MEGA, 4,777,992 karma)
+2025-08-10 19:03:42,580 - INFO - Added u/ihopnavajo (MICRO, 19,952 karma)
+2025-08-10 19:03:44,858 - INFO - Added u/RobotiSC (SUPER, 912,127 karma)
+2025-08-10 19:03:46,930 - INFO - Added u/ungaayya (MAJOR, 80,484 karma)
+2025-08-10 19:03:50,060 - INFO - Added u/movie5short (MAJOR, 57,432 karma)
+2025-08-10 19:04:02,726 - INFO - Added u/CosmosisJones42 (MICRO, 16,401 karma)
+2025-08-10 19:04:18,595 - INFO - Added u/MoneyLibrarian9032 (MAJOR, 207,982 karma)
+2025-08-10 19:04:27,573 - INFO - Added u/indiewire (MAJOR, 176,769 karma)
+2025-08-10 19:04:39,100 - INFO - Added u/RgObese (MICRO, 12,132 karma)
+2025-08-10 19:04:41,640 - INFO - Added u/BunyipPouch (LEGENDARY, 18,911,238 karma)
+2025-08-10 19:04:44,039 - INFO - Added u/bluenowait (MAJOR, 231,139 karma)
+2025-08-10 19:04:47,970 - INFO - Added u/MrRoboto12345 (SUPER, 541,251 karma)
+2025-08-10 19:04:54,733 - INFO - Added u/hekenwkskdn777728 (MICRO, 10,311 karma)
+2025-08-10 19:04:57,380 - INFO - Added u/nbcnews (MEGA, 2,546,706 karma)
+2025-08-10 19:05:13,901 - INFO - Added u/apple_kicks (MEGA, 2,006,298 karma)
+2025-08-10 19:05:21,292 - INFO - Added u/ChiefLeef22 (MEGA, 1,098,751 karma)
+2025-08-10 19:05:21,293 - INFO - Saved 50 elite influencers to backup_reddit_elite_influencers.csv
+2025-08-10 19:05:21,293 - INFO - Progress saved: 50/5000
+2025-08-10 19:05:21,293 - INFO - Found 25 elite users from r/movies
+2025-08-10 19:05:21,294 - INFO - ELITE scraping r/Showerthoughts (targeting 25 top users)
+2025-08-10 19:05:44,997 - INFO - Added u/unclefishbits (SUPER, 455,064 karma)
+2025-08-10 19:06:07,934 - INFO - Added u/improbsable (MAJOR, 206,408 karma)
+2025-08-10 19:06:31,267 - INFO - Added u/hihihihihihellohi (MICRO, 19,768 karma)
+2025-08-10 19:06:39,126 - INFO - Added u/rayQuGR (MAJOR, 141,546 karma)
+2025-08-10 19:06:41,788 - INFO - Added u/CMDR_omnicognate (SUPER, 429,630 karma)
+2025-08-10 19:06:45,272 - INFO - Added u/MarinatedPickachu (MAJOR, 84,210 karma)
+2025-08-10 19:06:48,245 - INFO - Added u/RedPantyKnight (MAJOR, 67,099 karma)
+2025-08-10 19:06:52,866 - INFO - Added u/doodybot (MAJOR, 61,226 karma)
+2025-08-10 19:06:59,362 - INFO - Added u/PanickyMushroom (RISING, 30,847 karma)
+2025-08-10 19:07:13,473 - INFO - Added u/gachunt (RISING, 37,603 karma)
+2025-08-10 19:07:15,562 - INFO - Added u/ironwolf6464 (SUPER, 853,599 karma)
+2025-08-10 19:07:18,888 - INFO - Added u/stixy_stixy (MAJOR, 69,232 karma)
+2025-08-10 19:07:23,820 - INFO - Added u/ChewyNutCluster (MAJOR, 139,898 karma)
+2025-08-10 19:07:26,002 - INFO - Added u/Dawjman (MAJOR, 179,969 karma)
+2025-08-10 19:07:28,533 - INFO - Added u/Miky617 (MICRO, 15,656 karma)
+2025-08-10 19:07:31,392 - INFO - Added u/riri1281 (MAJOR, 132,553 karma)
+2025-08-10 19:07:37,809 - INFO - Added u/Franklinricard (RISING, 26,610 karma)
+2025-08-10 19:07:39,770 - INFO - Added u/99999999999999999989 (SUPER, 882,162 karma)
+2025-08-10 19:07:42,775 - INFO - Added u/TheMegnificent1 (MAJOR, 93,301 karma)
+2025-08-10 19:07:52,105 - INFO - Added u/_littlekidlover_ (RISING, 37,775 karma)
+2025-08-10 19:07:54,983 - INFO - Added u/asdfghqwertz1 (RISING, 37,607 karma)
+2025-08-10 19:07:58,988 - INFO - Added u/sora_mui (MAJOR, 86,384 karma)
+2025-08-10 19:08:06,451 - INFO - Added u/ahandmadegrin (MAJOR, 56,142 karma)
+2025-08-10 19:08:31,478 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FCaptainPeru%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 19:08:34,727 - INFO - Added u/CaptainPeru (MAJOR, 58,142 karma)
+2025-08-10 19:08:38,959 - INFO - Added u/brycejm1991 (MAJOR, 167,375 karma)
+2025-08-10 19:08:38,959 - INFO - Found 25 elite users from r/Showerthoughts
+2025-08-10 19:08:38,960 - INFO - ELITE scraping r/science (targeting 25 top users)
+2025-08-10 19:09:01,027 - INFO - Added u/chrisdh79 (LEGENDARY, 16,487,709 karma)
+2025-08-10 19:09:06,011 - INFO - Added u/Aggravating_Money992 (MEGA, 1,773,406 karma)
+2025-08-10 19:09:08,854 - INFO - Multi-Key Stats: 3/3 active, 100 credits used
+2025-08-10 19:09:08,855 - INFO - Added u/Wagamaga (LEGENDARY, 13,363,993 karma)
+2025-08-10 19:09:12,096 - INFO - Added u/mvea (LEGENDARY, 33,106,828 karma)
+2025-08-10 19:09:15,004 - INFO - Added u/-Mystica- (SUPER, 408,899 karma)
+2025-08-10 19:09:18,555 - INFO - Added u/James_Fortis (SUPER, 291,844 karma)
+2025-08-10 19:09:27,600 - INFO - Added u/TypicalEpistemophile (MAJOR, 106,582 karma)
+2025-08-10 19:09:33,595 - INFO - Added u/smurfyjenkins (MEGA, 2,091,227 karma)
+2025-08-10 19:09:39,280 - INFO - Added u/Science_News (SUPER, 273,189 karma)
+2025-08-10 19:10:04,290 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2Fwhitelightstorm%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 19:10:10,695 - INFO - Added u/whitelightstorm (MAJOR, 50,522 karma)
+2025-08-10 19:10:15,820 - INFO - Added u/Hrmbee (MEGA, 1,531,386 karma)
+2025-08-10 19:10:20,132 - INFO - Added u/The_Conversation (MAJOR, 64,033 karma)
+2025-08-10 19:10:26,963 - INFO - Added u/Ollyfer (RISING, 36,037 karma)
+2025-08-10 19:10:33,591 - INFO - Added u/sciencealert (MAJOR, 141,892 karma)
+2025-08-10 19:11:00,109 - INFO - Added u/PHealthy (SUPER, 857,850 karma)
+2025-08-10 19:11:13,199 - INFO - Added u/nohup_me (MAJOR, 222,210 karma)
+2025-08-10 19:11:26,150 - INFO - Added u/unsw (MAJOR, 153,085 karma)
+2025-08-10 19:11:31,397 - INFO - Added u/lolmonsterlol (MICRO, 24,403 karma)
+2025-08-10 19:11:50,429 - INFO - Added u/scientificamerican (MAJOR, 156,322 karma)
+2025-08-10 19:12:11,862 - INFO - Added u/calliope_kekule (MAJOR, 145,230 karma)
+2025-08-10 19:12:19,492 - INFO - Added u/HeinieKaboobler (MEGA, 2,044,426 karma)
+2025-08-10 19:12:28,374 - INFO - Added u/F0urLeafCl0ver (MAJOR, 200,059 karma)
+2025-08-10 19:12:35,137 - INFO - Added u/MistWeaver80 (LEGENDARY, 5,092,385 karma)
+2025-08-10 19:12:39,431 - INFO - Added u/MotherHolle (SUPER, 323,421 karma)
+2025-08-10 19:12:47,619 - INFO - Added u/New_Scientist_Mag (MAJOR, 71,920 karma)
+2025-08-10 19:12:47,620 - INFO - Saved 100 elite influencers to backup_reddit_elite_influencers.csv
+2025-08-10 19:12:47,620 - INFO - Progress saved: 100/5000
+2025-08-10 19:12:47,620 - INFO - Found 25 elite users from r/science
+2025-08-10 19:12:47,620 - INFO - Progress: 100/5000 (2.0%) | Credits: 126
+2025-08-10 19:12:47,621 - INFO - ELITE scraping r/IAmA (targeting 25 top users)
+2025-08-10 19:13:22,646 - INFO - Added u/Twelvefingersgirl12 (RISING, 41,637 karma)
+2025-08-10 19:13:33,421 - INFO - Added u/NdemicCreations (MAJOR, 52,781 karma)
+2025-08-10 19:13:35,408 - INFO - Added u/theonion (RISING, 29,852 karma)
+2025-08-10 19:13:47,425 - INFO - Added u/kevinmrr (MEGA, 4,778,009 karma)
+2025-08-10 19:13:59,824 - INFO - Added u/marshall_project (MICRO, 22,193 karma)
+2025-08-10 19:14:02,988 - INFO - Added u/forbes (MAJOR, 73,765 karma)
+2025-08-10 19:14:05,934 - INFO - Added u/citizen-weiner (MICRO, 11,238 karma)
+2025-08-10 19:14:11,450 - INFO - Found 7 elite users from r/IAmA
+2025-08-10 19:14:11,450 - INFO - ELITE scraping r/dataisbeautiful (targeting 25 top users)
+2025-08-10 19:14:27,460 - INFO - Added u/_crazyboyhere_ (SUPER, 658,025 karma)
+2025-08-10 19:14:31,328 - INFO - Added u/cavedave (SUPER, 379,627 karma)
+2025-08-10 19:14:59,954 - INFO - Added u/Ugluk4242 (MICRO, 22,826 karma)
+2025-08-10 19:15:19,992 - INFO - Added u/oscarleo0 (MAJOR, 91,290 karma)
+2025-08-10 19:15:37,744 - INFO - Added u/DataSittingAlone (SUPER, 305,726 karma)
+2025-08-10 19:15:52,489 - INFO - Added u/rocketsalesman (MAJOR, 63,556 karma)
+2025-08-10 19:16:10,783 - INFO - Added u/TenFresh (MAJOR, 58,287 karma)
+2025-08-10 19:16:14,763 - INFO - Added u/USAFacts (MAJOR, 156,553 karma)
+2025-08-10 19:16:26,727 - INFO - Added u/hemedlungo_725 (MICRO, 10,657 karma)
+2025-08-10 19:16:31,857 - INFO - Added u/TheoryofJustice123 (RISING, 28,050 karma)
+2025-08-10 19:16:53,804 - INFO - Added u/TA-MajestyPalm (MAJOR, 81,456 karma)
+2025-08-10 19:17:03,885 - INFO - Added u/Smacpats111111 (SUPER, 402,867 karma)
+2025-08-10 19:17:11,580 - INFO - Added u/shadratchet (RISING, 37,155 karma)
+2025-08-10 19:17:22,855 - INFO - Added u/Mido_Aus (MICRO, 11,717 karma)
+2025-08-10 19:17:50,766 - INFO - Added u/shinyro (MICRO, 13,867 karma)
+2025-08-10 19:17:53,618 - INFO - Added u/MetricT (SUPER, 280,884 karma)
+2025-08-10 19:17:56,454 - INFO - Added u/DavidWaldron (MAJOR, 71,083 karma)
+2025-08-10 19:18:03,204 - INFO - Added u/J0hn-Stuart-Mill (MAJOR, 81,532 karma)
+2025-08-10 19:18:19,593 - INFO - Added u/Proud-Discipline9902 (MICRO, 12,790 karma)
+2025-08-10 19:18:21,587 - INFO - Added u/noisymortimer (MICRO, 18,676 karma)
+2025-08-10 19:18:41,477 - INFO - Added u/sankeyart (RISING, 38,850 karma)
+2025-08-10 19:19:07,084 - INFO - Added u/Tradition96 (MAJOR, 50,802 karma)
+2025-08-10 19:19:15,174 - INFO - Added u/davidbauer (RISING, 48,982 karma)
+2025-08-10 19:19:23,421 - INFO - Added u/klime02 (MICRO, 16,389 karma)
+2025-08-10 19:19:30,157 - INFO - Added u/Synfinium (MAJOR, 94,752 karma)
+2025-08-10 19:19:30,157 - INFO - Found 25 elite users from r/dataisbeautiful
+2025-08-10 19:19:30,159 - INFO - ELITE scraping r/Damnthatsinteresting (targeting 25 top users)
+2025-08-10 19:20:07,143 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fr%2FDamnthatsinteresting%2Ftop.json%3Flimit%3D100%26t%3Dmonth&render=false&country_code=US&premium=false
+2025-08-10 19:20:23,884 - INFO - Added u/beekay8845 (SUPER, 646,234 karma)
+2025-08-10 19:20:48,911 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2Fl__o-o__l%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 19:20:56,950 - INFO - Added u/Wooden-Journalist902 (SUPER, 533,527 karma)
+2025-08-10 19:20:59,485 - INFO - Added u/Barry-McKocinue (SUPER, 347,138 karma)
+2025-08-10 19:21:04,501 - INFO - Added u/BrainOld9460 (SUPER, 313,811 karma)
+2025-08-10 19:21:06,944 - INFO - Added u/Longjumping-Box5691 (SUPER, 951,652 karma)
+2025-08-10 19:21:14,637 - INFO - Added u/notyours_pb (MAJOR, 157,427 karma)
+2025-08-10 19:21:18,239 - INFO - Multi-Key Stats: 3/3 active, 200 credits used
+2025-08-10 19:21:18,239 - INFO - Added u/TheGhost5322 (SUPER, 856,593 karma)
+2025-08-10 19:21:21,886 - INFO - Added u/Kronyzx (MEGA, 1,238,103 karma)
+2025-08-10 19:21:25,665 - INFO - Added u/AgeNovel3566 (MAJOR, 55,743 karma)
+2025-08-10 19:21:28,667 - INFO - Added u/Kooka32081 (SUPER, 572,711 karma)
+2025-08-10 19:21:53,690 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2Fsolateor%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 19:21:59,175 - INFO - Added u/solateor (LEGENDARY, 7,299,015 karma)
+2025-08-10 19:22:05,406 - INFO - Added u/AnonymousTimewaster (MAJOR, 204,163 karma)
+2025-08-10 19:22:08,085 - INFO - Added u/biswajit388 (SUPER, 877,096 karma)
+2025-08-10 19:22:30,247 - INFO - Added u/WebEven620 (MAJOR, 169,734 karma)
+2025-08-10 19:22:33,874 - INFO - Added u/Unboxing__Pandora (RISING, 46,051 karma)
+2025-08-10 19:22:36,967 - INFO - Added u/TameTheAuroch (MAJOR, 89,842 karma)
+2025-08-10 19:22:55,636 - INFO - Added u/Darkknight8381 (MICRO, 22,416 karma)
+2025-08-10 19:23:01,465 - INFO - Added u/CauliflowerDeep129 (RISING, 44,372 karma)
+2025-08-10 19:23:01,467 - INFO - Saved 150 elite influencers to backup_reddit_elite_influencers.csv
+2025-08-10 19:23:01,467 - INFO - Progress saved: 150/5000
+2025-08-10 19:23:07,645 - INFO - Added u/Elegant-Gene9433 (MAJOR, 121,191 karma)
+2025-08-10 19:23:27,923 - INFO - Added u/rishabh2996 (SUPER, 346,344 karma)
+2025-08-10 19:23:30,820 - INFO - Added u/Sad-Cup3027 (MICRO, 19,471 karma)
+2025-08-10 19:23:34,674 - INFO - Added u/MothersMiIk (MEGA, 2,119,001 karma)
+2025-08-10 19:23:41,392 - INFO - Added u/artificial_ben (RISING, 29,482 karma)
+2025-08-10 19:23:44,370 - INFO - Added u/thedarkspy17 (RISING, 45,666 karma)
+2025-08-10 19:23:48,315 - INFO - Added u/Antique-Spirit9627 (MICRO, 15,212 karma)
+2025-08-10 19:23:48,315 - INFO - Found 25 elite users from r/Damnthatsinteresting
+2025-08-10 19:23:48,315 - INFO - ELITE scraping r/pics (targeting 25 top users)
+2025-08-10 19:24:18,658 - INFO - Added u/amanhasnoname54 (RISING, 31,262 karma)
+2025-08-10 19:24:31,673 - INFO - Added u/Much_Ad3106 (MAJOR, 50,258 karma)
+2025-08-10 19:24:38,729 - INFO - Added u/odezza27 (RISING, 32,440 karma)
+2025-08-10 19:24:40,736 - INFO - Added u/bgbrewer (MICRO, 12,725 karma)
+2025-08-10 19:24:48,096 - INFO - Added u/ifoundblipsoncitv (MAJOR, 55,266 karma)
+2025-08-10 19:24:50,959 - INFO - Added u/RetroDadOnReddit (MICRO, 12,502 karma)
+2025-08-10 19:25:03,015 - INFO - Added u/rpgmgta (SUPER, 274,751 karma)
+2025-08-10 19:25:06,982 - INFO - Added u/Stayscruffyart (MAJOR, 53,412 karma)
+2025-08-10 19:25:14,263 - INFO - Added u/LKM_44122 (MAJOR, 176,255 karma)
+2025-08-10 19:25:22,155 - INFO - Added u/Justthriving56 (RISING, 30,198 karma)
+2025-08-10 19:25:24,462 - INFO - Added u/nekonomiks01 (MICRO, 11,072 karma)
+2025-08-10 19:25:25,623 - INFO - Added u/cmwpost (RISING, 39,084 karma)
+2025-08-10 19:25:43,150 - INFO - Added u/HealthyWar7942 (RISING, 44,970 karma)
+2025-08-10 19:25:50,977 - INFO - Added u/mohab_saeed (RISING, 27,122 karma)
+2025-08-10 19:25:55,564 - INFO - Added u/real_ikonn (MAJOR, 64,984 karma)
+2025-08-10 19:25:57,756 - INFO - Added u/TheZippoLab (MAJOR, 147,852 karma)
+2025-08-10 19:26:22,783 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2Frj_yul%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 19:26:31,695 - INFO - Added u/rj_yul (MAJOR, 70,033 karma)
+2025-08-10 19:26:56,721 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FPandepon%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 19:27:02,229 - INFO - Added u/Pandepon (SUPER, 328,397 karma)
+2025-08-10 19:27:07,287 - INFO - Added u/No-Pressure-809 (RISING, 45,148 karma)
+2025-08-10 19:27:09,903 - INFO - Added u/BluBearry (RISING, 31,185 karma)
+2025-08-10 19:27:12,860 - INFO - Added u/THEBNTG (MAJOR, 157,005 karma)
+2025-08-10 19:27:18,846 - INFO - Added u/infernoenigma (MICRO, 23,655 karma)
+2025-08-10 19:27:25,803 - INFO - Added u/Embarrassed_Pin69420 (MAJOR, 63,712 karma)
+2025-08-10 19:27:31,141 - INFO - Added u/Cold_Platypus_2104 (RISING, 45,531 karma)
+2025-08-10 19:27:34,264 - INFO - Added u/jakiclark963 (MICRO, 10,393 karma)
+2025-08-10 19:27:34,265 - INFO - Found 25 elite users from r/pics
+2025-08-10 19:27:34,265 - INFO - ELITE scraping r/LifeProTips (targeting 25 top users)
+2025-08-10 19:28:49,272 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FMelkorHimself%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 19:29:02,071 - INFO - Added u/MelkorHimself (SUPER, 409,173 karma)
+2025-08-10 19:29:22,366 - INFO - Added u/Spare_Act6202 (MICRO, 18,469 karma)
+2025-08-10 19:29:31,763 - INFO - Added u/pixelpusher15 (MICRO, 14,018 karma)
+2025-08-10 19:29:33,916 - INFO - Added u/Daniel96dsl (RISING, 26,341 karma)
+2025-08-10 19:29:58,943 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2Fsergioescalante%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 19:30:38,864 - INFO - Added u/MsAndooftheWoods (RISING, 37,874 karma)
+2025-08-10 19:30:42,697 - INFO - Added u/speak2klein (MICRO, 13,289 karma)
+2025-08-10 19:31:08,595 - INFO - Added u/Chimerain (MAJOR, 98,120 karma)
+2025-08-10 19:32:17,788 - INFO - Added u/MeatUnusual2098 (MAJOR, 61,246 karma)
+2025-08-10 19:32:37,106 - INFO - Added u/ClaireClover (RISING, 30,516 karma)
+2025-08-10 19:32:39,396 - INFO - Added u/ayanboss007 (MICRO, 13,241 karma)
+2025-08-10 19:32:48,713 - INFO - Added u/jacafeez (RISING, 41,834 karma)
+2025-08-10 19:33:00,805 - INFO - Added u/ComputerSoup (MICRO, 15,312 karma)
+2025-08-10 19:33:14,726 - INFO - Added u/gustavotherecliner (MAJOR, 134,968 karma)
+2025-08-10 19:33:17,953 - INFO - Added u/SgtSprinkle (RISING, 43,046 karma)
+2025-08-10 19:33:22,610 - INFO - Added u/Hottentott14 (MICRO, 17,495 karma)
+2025-08-10 19:33:30,458 - INFO - Added u/Razer531 (RISING, 25,896 karma)
+2025-08-10 19:33:35,835 - INFO - Added u/Minifig81 (MEGA, 2,217,869 karma)
+2025-08-10 19:34:03,447 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2Fquardlepleen%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 19:34:39,010 - INFO - Multi-Key Stats: 3/3 active, 300 credits used
+2025-08-10 19:34:47,581 - INFO - Added u/OkAccess6128 (MAJOR, 202,538 karma)
+2025-08-10 19:34:47,583 - INFO - Saved 200 elite influencers to backup_reddit_elite_influencers.csv
+2025-08-10 19:34:47,583 - INFO - Progress saved: 200/5000
+2025-08-10 19:34:49,958 - INFO - Added u/OnLandOrSeaOrFoam (RISING, 34,531 karma)
+2025-08-10 19:35:36,285 - INFO - Added u/DungeonsAndData (RISING, 44,553 karma)
+2025-08-10 19:35:44,692 - INFO - Added u/Pandelerium11 (MAJOR, 61,960 karma)
+2025-08-10 19:35:50,601 - INFO - Added u/Onehundredyearsold (MAJOR, 77,519 karma)
+2025-08-10 19:35:53,223 - INFO - Added u/kkillbite (MAJOR, 65,135 karma)
+2025-08-10 19:36:03,253 - INFO - Added u/OkRickySpinach (SUPER, 255,530 karma)
+2025-08-10 19:36:08,305 - INFO - Added u/WonderfulMemory3697 (MICRO, 11,667 karma)
+2025-08-10 19:36:08,305 - INFO - Found 25 elite users from r/LifeProTips
+2025-08-10 19:36:08,305 - INFO - ELITE scraping r/videos (targeting 25 top users)
+2025-08-10 19:36:52,889 - INFO - Added u/evilthing (MAJOR, 155,894 karma)
+2025-08-10 19:37:05,223 - INFO - Added u/etfvfva (SUPER, 328,123 karma)
+2025-08-10 19:37:08,446 - INFO - Added u/saymyname_101 (MICRO, 15,757 karma)
+2025-08-10 19:37:19,957 - INFO - Added u/Quasimdo (SUPER, 795,465 karma)
+2025-08-10 19:37:28,733 - INFO - Added u/seekthesametoo (MICRO, 13,460 karma)
+2025-08-10 19:37:33,912 - INFO - Added u/enoughwiththebread (RISING, 36,025 karma)
+2025-08-10 19:37:37,112 - INFO - Added u/Select_Entrance9311 (RISING, 33,677 karma)
+2025-08-10 19:37:43,224 - INFO - Added u/Static-Jak (MAJOR, 130,067 karma)
+2025-08-10 19:37:53,435 - INFO - Added u/IAdmitILie (SUPER, 339,896 karma)
+2025-08-10 19:37:58,928 - INFO - Added u/CrassHoppr (RISING, 42,211 karma)
+2025-08-10 19:38:01,949 - INFO - Added u/AvalancheMaster (MAJOR, 182,804 karma)
+2025-08-10 19:38:15,157 - INFO - Added u/flamehead243 (MICRO, 20,454 karma)
+2025-08-10 19:38:19,103 - INFO - Added u/Safety_Drance (SUPER, 470,374 karma)
+2025-08-10 19:38:27,585 - INFO - Added u/CWG4BF (SUPER, 894,552 karma)
+2025-08-10 19:38:43,382 - INFO - Added u/nuttybudd (SUPER, 548,005 karma)
+2025-08-10 19:39:08,395 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FJ-Sou-Flay%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 19:39:11,084 - INFO - Added u/J-Sou-Flay (MICRO, 23,575 karma)
+2025-08-10 19:39:24,820 - INFO - Added u/ControlCAD (MEGA, 3,737,816 karma)
+2025-08-10 19:39:27,453 - INFO - Added u/Cubelock (MEGA, 1,327,178 karma)
+2025-08-10 19:39:31,507 - INFO - Added u/BuzzLiteSmear (MICRO, 14,252 karma)
+2025-08-10 19:39:38,182 - INFO - Added u/craftors (MAJOR, 55,408 karma)
+2025-08-10 19:39:41,480 - INFO - Added u/petestrumental (MICRO, 11,660 karma)
+2025-08-10 19:39:43,884 - INFO - Added u/ManofTheNightsWatch (MAJOR, 98,165 karma)
+2025-08-10 19:40:00,313 - INFO - Added u/Hussayniya (RISING, 45,079 karma)
+2025-08-10 19:40:17,306 - INFO - Added u/DantyKSA (MAJOR, 156,381 karma)
+2025-08-10 19:40:21,879 - INFO - Added u/ianjm (SUPER, 817,451 karma)
+2025-08-10 19:40:21,879 - INFO - Found 25 elite users from r/videos
+2025-08-10 19:40:21,879 - INFO - ELITE scraping r/music (targeting 25 top users)
+2025-08-10 19:40:55,303 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fr%2Fmusic%2Ftop.json%3Flimit%3D100%26t%3Dweek&render=false&country_code=US&premium=false
+2025-08-10 19:41:13,894 - INFO - Added u/Blithe17 (SUPER, 444,011 karma)
+2025-08-10 19:41:16,818 - INFO - Added u/ebradio (MEGA, 1,668,238 karma)
+2025-08-10 19:41:22,265 - INFO - Added u/dantheman_woot (MAJOR, 193,348 karma)
+2025-08-10 19:41:25,207 - INFO - Added u/GenButter (RISING, 25,215 karma)
+2025-08-10 19:41:30,353 - INFO - Added u/TheMirrorUS (MEGA, 1,520,078 karma)
+2025-08-10 19:41:43,007 - INFO - Added u/SingleandSober (SUPER, 259,712 karma)
+2025-08-10 19:41:46,517 - INFO - Added u/BreakfastTop6899 (MEGA, 1,795,413 karma)
+2025-08-10 19:41:59,060 - INFO - Added u/YoureASkyscraper (MEGA, 1,043,719 karma)
+2025-08-10 19:42:07,292 - INFO - Added u/AdSpecialist6598 (MEGA, 4,088,839 karma)
+2025-08-10 19:42:09,288 - INFO - Added u/newsweek (MEGA, 2,015,209 karma)
+2025-08-10 19:42:16,175 - INFO - Added u/EmployOk5086 (MICRO, 23,559 karma)
+2025-08-10 19:42:21,294 - INFO - Added u/theindependentonline (MEGA, 3,585,894 karma)
+2025-08-10 19:42:26,144 - INFO - Added u/Albuquerque82 (MICRO, 17,278 karma)
+2025-08-10 19:42:29,604 - INFO - Added u/DamnitRidley (MAJOR, 76,800 karma)
+2025-08-10 19:42:34,771 - INFO - Added u/LooseDistance1059 (RISING, 40,916 karma)
+2025-08-10 19:42:41,132 - INFO - Added u/Jenna7979 (MAJOR, 62,320 karma)
+2025-08-10 19:42:43,356 - INFO - Added u/Top-Three-USA (RISING, 47,474 karma)
+2025-08-10 19:42:47,060 - INFO - Added u/globalgazette (MAJOR, 122,720 karma)
+2025-08-10 19:42:47,062 - INFO - Saved 250 elite influencers to backup_reddit_elite_influencers.csv
+2025-08-10 19:42:47,062 - INFO - Progress saved: 250/5000
+2025-08-10 19:42:52,645 - INFO - Added u/Metro-UK (SUPER, 282,989 karma)
+2025-08-10 19:43:00,431 - INFO - Added u/mrinternetman24 (MAJOR, 120,906 karma)
+2025-08-10 19:43:21,225 - INFO - Added u/heavysk (MAJOR, 52,660 karma)
+2025-08-10 19:43:30,533 - INFO - Added u/mrjohnnymac18 (SUPER, 270,285 karma)
+2025-08-10 19:43:48,183 - INFO - Added u/cmaia1503 (LEGENDARY, 5,129,753 karma)
+2025-08-10 19:43:50,818 - INFO - Added u/peoplemagazine (SUPER, 602,469 karma)
+2025-08-10 19:43:53,396 - INFO - Added u/TheExpressUS (MEGA, 1,324,143 karma)
+2025-08-10 19:43:53,396 - INFO - Found 25 elite users from r/music
+2025-08-10 19:43:53,396 - INFO - ELITE scraping r/memes (targeting 25 top users)
+2025-08-10 19:44:06,571 - INFO - Added u/claudiocorona93 (SUPER, 450,252 karma)
+2025-08-10 19:44:31,598 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FFaithAndABiscuit%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 19:44:50,399 - INFO - Added u/FaithAndABiscuit (MICRO, 22,756 karma)
+2025-08-10 19:45:05,271 - INFO - Added u/ketamineforpresident (RISING, 32,250 karma)
+2025-08-10 19:45:08,104 - INFO - Added u/Alarmed-Ad-436 (MEGA, 1,370,556 karma)
+2025-08-10 19:45:13,502 - INFO - Added u/Outrageous_Match2619 (MAJOR, 65,238 karma)
+2025-08-10 19:45:21,158 - INFO - Added u/shivthegamer6969 (MEGA, 1,083,642 karma)
+2025-08-10 19:45:23,246 - INFO - Added u/slow_joke (MAJOR, 180,027 karma)
+2025-08-10 19:45:25,059 - INFO - Added u/a-tiberius (MAJOR, 60,171 karma)
+2025-08-10 19:45:28,104 - INFO - Added u/courtesysmile30 (MAJOR, 111,539 karma)
+2025-08-10 19:45:32,449 - INFO - Added u/Makoto_Kurume (SUPER, 805,904 karma)
+2025-08-10 19:45:58,044 - INFO - Added u/homelander_30 (MAJOR, 50,054 karma)
+2025-08-10 19:46:07,188 - INFO - Added u/rottendorito (MAJOR, 85,019 karma)
+2025-08-10 19:46:13,745 - INFO - Added u/NapoleoneBonoacarte (SUPER, 360,398 karma)
+2025-08-10 19:46:16,453 - INFO - Added u/tea-n-wifi (MAJOR, 181,602 karma)
+2025-08-10 19:46:34,954 - INFO - Added u/Ok_Concentrate_9713 (RISING, 30,773 karma)
+2025-08-10 19:46:37,208 - INFO - Added u/thefunnyguy275 (RISING, 47,326 karma)
+2025-08-10 19:46:43,246 - INFO - Added u/Few_Amoeba_2362 (MAJOR, 229,152 karma)
+2025-08-10 19:46:46,148 - INFO - Added u/AromaticPurple5146 (RISING, 40,602 karma)
+2025-08-10 19:46:54,442 - INFO - Multi-Key Stats: 3/3 active, 400 credits used
+2025-08-10 19:46:54,442 - INFO - Added u/J_ClutchFTV (MAJOR, 139,905 karma)
+2025-08-10 19:47:00,539 - INFO - Added u/Nerdy-Christian-33 (RISING, 36,067 karma)
+2025-08-10 19:47:21,277 - INFO - Added u/MahNword (MICRO, 10,080 karma)
+2025-08-10 19:47:29,774 - INFO - Added u/Joessmoey (MAJOR, 77,197 karma)
+2025-08-10 19:47:39,547 - INFO - Added u/Soonly_Taing (MAJOR, 62,214 karma)
+2025-08-10 19:47:41,739 - INFO - Added u/hustle_like_demon (RISING, 33,976 karma)
+2025-08-10 19:47:49,028 - INFO - Added u/Gl1tchyVirus (MAJOR, 57,684 karma)
+2025-08-10 19:47:49,029 - INFO - Found 25 elite users from r/memes
+2025-08-10 19:47:49,029 - INFO - ELITE scraping r/news (targeting 25 top users)
+2025-08-10 19:48:15,669 - INFO - Added u/adkim78 (RISING, 33,549 karma)
+2025-08-10 19:48:19,016 - INFO - Added u/hoosakiwi (MEGA, 1,187,408 karma)
+2025-08-10 19:48:44,024 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2Fblairb03%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 19:48:46,516 - INFO - Added u/blairb03 (MAJOR, 52,231 karma)
+2025-08-10 19:48:48,449 - INFO - Added u/Face2FaceRecs (SUPER, 753,872 karma)
+2025-08-10 19:49:07,068 - INFO - Added u/theykilledk3nny (SUPER, 266,730 karma)
+2025-08-10 19:49:09,834 - INFO - Added u/AudibleNod (LEGENDARY, 7,285,746 karma)
+2025-08-10 19:49:21,574 - INFO - Added u/romantotale (RISING, 31,769 karma)
+2025-08-10 19:49:30,020 - INFO - Added u/immaZebrah (MAJOR, 65,678 karma)
+2025-08-10 19:49:55,023 - INFO - Added u/SouthernRow2710 (MICRO, 10,442 karma)
+2025-08-10 19:50:10,315 - INFO - Added u/StupendousMan1995 (SUPER, 866,952 karma)
+2025-08-10 19:50:35,336 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2Fsnuffleupaguslives%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 19:50:38,292 - INFO - Added u/snuffleupaguslives (MAJOR, 59,451 karma)
+2025-08-10 19:50:49,493 - INFO - Added u/woowoo293 (SUPER, 616,102 karma)
+2025-08-10 19:50:55,614 - INFO - Added u/Tamashii-Azul (MAJOR, 75,289 karma)
+2025-08-10 19:51:01,052 - INFO - Added u/BigDaddyBain (MAJOR, 112,304 karma)
+2025-08-10 19:51:03,525 - INFO - Added u/WhatWouldKantDo (RISING, 42,720 karma)
+2025-08-10 19:51:08,729 - INFO - Added u/Proud_Tie (MAJOR, 93,442 karma)
+2025-08-10 19:51:14,876 - INFO - Added u/TheSolitaryRugosan (MICRO, 14,654 karma)
+2025-08-10 19:51:18,032 - INFO - Added u/CupidStunt13 (MEGA, 1,186,899 karma)
+2025-08-10 19:51:18,034 - INFO - Saved 300 elite influencers to backup_reddit_elite_influencers.csv
+2025-08-10 19:51:18,035 - INFO - Progress saved: 300/5000
+2025-08-10 19:51:23,860 - INFO - Added u/EscapeFromIowa (MAJOR, 50,995 karma)
+2025-08-10 19:51:31,378 - INFO - Added u/RoachedCoach (SUPER, 905,567 karma)
+2025-08-10 19:51:35,950 - INFO - Added u/WoofWoofster (SUPER, 524,800 karma)
+2025-08-10 19:51:45,698 - INFO - Added u/NeverendSuperior (MAJOR, 77,889 karma)
+2025-08-10 19:51:48,186 - INFO - Added u/Dickle_Pizazz (MICRO, 22,373 karma)
+2025-08-10 19:51:51,366 - INFO - Added u/substituted_pinions (RISING, 48,710 karma)
+2025-08-10 19:51:53,623 - INFO - Added u/n3ws0 (MICRO, 15,530 karma)
+2025-08-10 19:51:53,623 - INFO - Found 25 elite users from r/news
+2025-08-10 19:51:53,623 - INFO - ELITE scraping r/mildlyinteresting (targeting 25 top users)
+2025-08-10 19:52:16,592 - INFO - Added u/easygoingbarber (MICRO, 14,020 karma)
+2025-08-10 19:52:18,550 - INFO - Added u/Rob_on_Sunday (MICRO, 11,623 karma)
+2025-08-10 19:52:20,801 - INFO - Added u/Scottybadotty (RISING, 49,036 karma)
+2025-08-10 19:52:25,893 - INFO - Added u/Unimatrix617 (MICRO, 20,810 karma)
+2025-08-10 19:52:38,834 - INFO - Added u/_corwin (RISING, 33,379 karma)
+2025-08-10 19:52:41,454 - INFO - Added u/sethcurrysleftshoe (MICRO, 12,098 karma)
+2025-08-10 19:52:44,484 - INFO - Added u/tydav8813 (MICRO, 12,591 karma)
+2025-08-10 19:52:49,007 - INFO - Added u/DeepFuckingPants (MICRO, 23,396 karma)
+2025-08-10 19:53:03,696 - INFO - Added u/HeinleinsRazor (MAJOR, 50,190 karma)
+2025-08-10 19:53:06,495 - INFO - Added u/IllustriousShine8678 (MICRO, 10,040 karma)
+2025-08-10 19:53:09,709 - INFO - Added u/Vampyre1282 (MICRO, 16,249 karma)
+2025-08-10 19:53:13,101 - INFO - Added u/Alaca22 (MICRO, 21,086 karma)
+2025-08-10 19:53:15,567 - INFO - Added u/CaimanWendt (MICRO, 21,493 karma)
+2025-08-10 19:53:17,933 - INFO - Added u/MrMatt88 (MAJOR, 57,641 karma)
+2025-08-10 19:53:23,556 - INFO - Added u/LakeTilia (MAJOR, 68,381 karma)
+2025-08-10 19:53:37,660 - INFO - Added u/SmolUmbon (MICRO, 15,894 karma)
+2025-08-10 19:53:40,832 - INFO - Added u/Dingosama69 (RISING, 31,836 karma)
+2025-08-10 19:53:44,017 - INFO - Added u/DannyMeatlegs (RISING, 33,618 karma)
+2025-08-10 19:53:48,905 - INFO - Added u/Kingtripz (MAJOR, 129,384 karma)
+2025-08-10 19:53:51,384 - INFO - Added u/_plot-twist_ (MAJOR, 52,046 karma)
+2025-08-10 19:53:56,057 - INFO - Added u/Fast-Opening-1051 (RISING, 42,712 karma)
+2025-08-10 19:54:11,846 - INFO - Added u/Masked_Daisy (MAJOR, 83,851 karma)
+2025-08-10 19:54:22,894 - INFO - Added u/Astrolemon (MICRO, 18,443 karma)
+2025-08-10 19:54:25,841 - INFO - Added u/jermainePropane (MICRO, 10,220 karma)
+2025-08-10 19:54:29,264 - INFO - Added u/Blow_Oskar (MICRO, 15,273 karma)
+2025-08-10 19:54:29,264 - INFO - Found 25 elite users from r/mildlyinteresting
+2025-08-10 19:54:29,265 - INFO - ELITE scraping r/interestingasfuck (targeting 25 top users)
+2025-08-10 19:54:47,274 - INFO - Added u/Parge-leniss (MAJOR, 125,321 karma)
+2025-08-10 19:54:54,435 - INFO - Added u/BrandonRJones (RISING, 27,139 karma)
+2025-08-10 19:54:56,505 - INFO - Added u/Worth-Boysenberry-93 (MAJOR, 215,940 karma)
+2025-08-10 19:55:00,811 - INFO - Added u/IloveRamen99 (SUPER, 478,527 karma)
+2025-08-10 19:55:06,294 - INFO - Added u/HORROR_VIBE_OFFICIAL (SUPER, 602,975 karma)
+2025-08-10 19:55:12,637 - INFO - Added u/Yeet_TheVoid (MAJOR, 220,901 karma)
+2025-08-10 19:55:30,549 - INFO - Added u/phatpssdestroyer (RISING, 31,555 karma)
+2025-08-10 19:55:33,601 - INFO - Added u/Vloodzy (SUPER, 902,815 karma)
+2025-08-10 19:55:41,229 - INFO - Added u/Subject-Property-343 (MEGA, 1,363,572 karma)
+2025-08-10 19:55:43,070 - INFO - Added u/truly-immaculate (SUPER, 279,365 karma)
+2025-08-10 19:55:54,299 - INFO - Added u/krishbh (RISING, 27,718 karma)
+2025-08-10 19:55:59,546 - INFO - Added u/Wonderfulhumanss (MAJOR, 158,436 karma)
+2025-08-10 19:56:08,242 - INFO - Added u/arsalamanderr (MAJOR, 51,657 karma)
+2025-08-10 19:56:11,586 - INFO - Added u/TheOddityCollector (SUPER, 449,660 karma)
+2025-08-10 19:56:15,713 - INFO - Added u/MilesLongthe3rd (SUPER, 745,257 karma)
+2025-08-10 19:56:18,072 - INFO - Added u/heineken7172 (MAJOR, 50,435 karma)
+2025-08-10 19:56:28,930 - INFO - Added u/Beautiful-Bit9832 (MAJOR, 109,253 karma)
+2025-08-10 19:56:41,920 - INFO - Added u/tyrion2024 (MEGA, 2,593,929 karma)
+2025-08-10 19:56:41,922 - INFO - Saved 350 elite influencers to backup_reddit_elite_influencers.csv
+2025-08-10 19:56:41,922 - INFO - Progress saved: 350/5000
+2025-08-10 19:56:44,364 - INFO - Added u/GoodPossession2323 (MICRO, 19,136 karma)
+2025-08-10 19:56:47,918 - INFO - Added u/IndicationBrief5950 (SUPER, 373,689 karma)
+2025-08-10 19:56:53,268 - INFO - Added u/deuce-tatum (SUPER, 376,798 karma)
+2025-08-10 19:57:06,350 - INFO - Added u/zabaterz (MAJOR, 81,397 karma)
+2025-08-10 19:57:12,299 - INFO - Added u/Worldlyoox (MAJOR, 233,447 karma)
+2025-08-10 19:57:14,940 - INFO - Added u/theseeenutzzz (MAJOR, 139,141 karma)
+2025-08-10 19:57:17,782 - INFO - Added u/Frostwolf_777 (RISING, 35,319 karma)
+2025-08-10 19:57:17,782 - INFO - Found 25 elite users from r/interestingasfuck
+2025-08-10 19:57:17,784 - INFO - ELITE scraping r/todayilearned (targeting 25 top users)
+2025-08-10 19:57:38,033 - INFO - Added u/South_Gas626 (MAJOR, 115,449 karma)
+2025-08-10 19:57:48,852 - INFO - Added u/Algrinder (MEGA, 1,156,401 karma)
+2025-08-10 19:57:52,039 - INFO - Multi-Key Stats: 3/3 active, 500 credits used
+2025-08-10 19:57:52,040 - INFO - Added u/PowershellAddict (RISING, 27,655 karma)
+2025-08-10 19:57:56,619 - INFO - Added u/rampantradius (RISING, 35,511 karma)
+2025-08-10 19:57:59,754 - INFO - Added u/Overall-Register9758 (MAJOR, 82,069 karma)
+2025-08-10 19:58:02,115 - INFO - Added u/EssexGuyUpNorth (MAJOR, 159,050 karma)
+2025-08-10 19:58:12,624 - INFO - Added u/ClownfishSoup (MEGA, 1,919,001 karma)
+2025-08-10 19:58:14,613 - INFO - Added u/bostonstrong781 (MAJOR, 106,551 karma)
+2025-08-10 19:58:19,309 - INFO - Added u/LookAtThatBacon (SUPER, 466,929 karma)
+2025-08-10 19:58:37,874 - INFO - Added u/biebrforro (MAJOR, 175,984 karma)
+2025-08-10 19:58:45,809 - INFO - Added u/Jacknerik (MAJOR, 206,724 karma)
+2025-08-10 19:58:48,553 - INFO - Added u/Madmystic94 (MICRO, 15,065 karma)
+2025-08-10 19:58:55,020 - INFO - Added u/shenalster (MICRO, 15,934 karma)
+2025-08-10 19:59:03,405 - INFO - Added u/Ill_Definition8074 (SUPER, 288,030 karma)
+2025-08-10 19:59:09,688 - INFO - Added u/zahrul3 (SUPER, 966,286 karma)
+2025-08-10 19:59:22,254 - INFO - Added u/Oturanthesarklord (MAJOR, 151,086 karma)
+2025-08-10 19:59:29,810 - INFO - Added u/TJ_Fox (MAJOR, 193,952 karma)
+2025-08-10 19:59:40,739 - INFO - Added u/ShabtaiBenOron (MAJOR, 226,407 karma)
+2025-08-10 19:59:44,862 - INFO - Added u/Objective_Horror1113 (RISING, 38,017 karma)
+2025-08-10 19:59:48,624 - INFO - Added u/Flubadubadubadub (SUPER, 261,322 karma)
+2025-08-10 19:59:55,904 - INFO - Added u/MrMojoFomo (SUPER, 313,471 karma)
+2025-08-10 20:00:03,447 - INFO - Added u/Alvinyuu (MICRO, 22,408 karma)
+2025-08-10 20:00:07,165 - INFO - Added u/ModenaR (SUPER, 306,870 karma)
+2025-08-10 20:00:20,851 - INFO - Added u/gullydon (SUPER, 303,905 karma)
+2025-08-10 20:00:25,056 - INFO - Added u/tamsui_tosspot (SUPER, 356,488 karma)
+2025-08-10 20:00:25,056 - INFO - Found 25 elite users from r/todayilearned
+2025-08-10 20:00:25,058 - INFO - ELITE scraping r/explainlikeimfive (targeting 25 top users)
+2025-08-10 20:00:50,084 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fr%2Fexplainlikeimfive%2Fhot.json%3Flimit%3D100&render=false&country_code=US&premium=false
+2025-08-10 20:02:04,264 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FProudReaction2204%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 20:02:31,368 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FProudReaction2204%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 20:02:35,004 - INFO - Added u/ProudReaction2204 (MAJOR, 141,124 karma)
+2025-08-10 20:02:37,774 - INFO - Added u/cool_username_iguess (RISING, 42,315 karma)
+2025-08-10 20:03:02,571 - INFO - Added u/WWWWWWWWWWWWWWWWWWHW (MAJOR, 150,179 karma)
+2025-08-10 20:03:20,790 - INFO - Added u/Cryovenom (MAJOR, 75,248 karma)
+2025-08-10 20:03:34,498 - INFO - Added u/KaiserAdvisor (MAJOR, 164,507 karma)
+2025-08-10 20:03:59,519 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FDeadeyeClock%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 20:04:02,369 - INFO - Added u/DeadeyeClock (MICRO, 21,926 karma)
+2025-08-10 20:04:20,178 - INFO - Added u/paoerfuuul (MAJOR, 54,246 karma)
+2025-08-10 20:04:23,997 - INFO - Added u/rsbanham (RISING, 35,801 karma)
+2025-08-10 20:04:42,101 - INFO - Added u/the-dutch-fist (MICRO, 13,011 karma)
+2025-08-10 20:04:52,155 - INFO - Added u/shinobi7 (MAJOR, 61,946 karma)
+2025-08-10 20:05:40,794 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FJolly-Feed-4551%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 20:06:04,910 - INFO - Added u/CRK_76 (RISING, 46,640 karma)
+2025-08-10 20:06:28,574 - INFO - Added u/throwaway54345753 (MICRO, 11,610 karma)
+2025-08-10 20:06:31,130 - INFO - Added u/Simon_Drake (SUPER, 390,776 karma)
+2025-08-10 20:06:38,829 - INFO - Added u/TheAverageWTPlayer69 (MICRO, 21,884 karma)
+2025-08-10 20:07:42,926 - INFO - Added u/Jaded-Ad-9741 (MICRO, 21,769 karma)
+2025-08-10 20:08:06,077 - INFO - Added u/papabearmormont01 (RISING, 28,638 karma)
+2025-08-10 20:08:14,406 - INFO - Added u/vksdann (MAJOR, 153,862 karma)
+2025-08-10 20:08:39,433 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FxMushroomking%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 20:08:59,193 - INFO - Added u/Local_Farm_5112 (MICRO, 23,080 karma)
+2025-08-10 20:08:59,196 - INFO - Saved 400 elite influencers to backup_reddit_elite_influencers.csv
+2025-08-10 20:08:59,196 - INFO - Progress saved: 400/5000
+2025-08-10 20:09:35,699 - INFO - Added u/the_topiary (MICRO, 22,985 karma)
+2025-08-10 20:10:19,467 - INFO - Added u/Unlikely_Spinach (MAJOR, 113,321 karma)
+2025-08-10 20:10:49,344 - INFO - Added u/Octine64 (MICRO, 16,722 karma)
+2025-08-10 20:10:53,982 - INFO - Added u/Colin286 (RISING, 40,066 karma)
+2025-08-10 20:11:03,197 - INFO - Added u/TheWalkinFrood (RISING, 35,258 karma)
+2025-08-10 20:11:08,167 - INFO - Added u/Particular-Swim2461 (SUPER, 263,847 karma)
+2025-08-10 20:11:27,892 - INFO - Added u/sy029 (MAJOR, 162,197 karma)
+2025-08-10 20:11:27,892 - INFO - Found 25 elite users from r/explainlikeimfive
+2025-08-10 20:11:27,892 - INFO - ELITE scraping r/funny (targeting 25 top users)
+2025-08-10 20:12:00,109 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fr%2Ffunny%2Ftop.json%3Flimit%3D100%26t%3Dweek&render=false&country_code=US&premium=false
+2025-08-10 20:12:21,861 - INFO - Added u/Vast-Intention (MAJOR, 85,203 karma)
+2025-08-10 20:12:24,085 - INFO - Added u/RSSenna (RISING, 43,064 karma)
+2025-08-10 20:12:30,697 - INFO - Added u/tukistabbe (MAJOR, 63,889 karma)
+2025-08-10 20:12:47,028 - INFO - Added u/Garudakings (MAJOR, 67,243 karma)
+2025-08-10 20:12:52,743 - INFO - Added u/Aditya_sanap (MAJOR, 76,994 karma)
+2025-08-10 20:13:05,016 - INFO - Added u/Jezzaq94 (MAJOR, 56,184 karma)
+2025-08-10 20:13:08,752 - INFO - Added u/No-Understanding-357 (RISING, 34,297 karma)
+2025-08-10 20:13:24,920 - INFO - Added u/kenistod (MEGA, 2,417,272 karma)
+2025-08-10 20:13:28,367 - INFO - Added u/vanish619 (SUPER, 300,523 karma)
+2025-08-10 20:13:36,660 - INFO - Added u/Justin_Godfrey (SUPER, 879,886 karma)
+2025-08-10 20:13:43,861 - INFO - Multi-Key Stats: 3/3 active, 600 credits used
+2025-08-10 20:13:43,861 - INFO - Added u/-rabid- (SUPER, 574,449 karma)
+2025-08-10 20:13:47,656 - INFO - Added u/InterviewGlum9263 (RISING, 44,606 karma)
+2025-08-10 20:13:50,156 - INFO - Added u/Morella1989 (MAJOR, 122,985 karma)
+2025-08-10 20:13:53,999 - INFO - Added u/uranonfraand (MAJOR, 157,982 karma)
+2025-08-10 20:13:56,990 - INFO - Added u/thebunnyrocket (MICRO, 16,177 karma)
+2025-08-10 20:14:04,543 - INFO - Added u/burnrobe (MAJOR, 219,966 karma)
+2025-08-10 20:14:10,806 - INFO - Added u/Much-Sherbert-4876 (MICRO, 11,337 karma)
+2025-08-10 20:14:26,855 - INFO - Added u/Regular_Eggplant_248 (MAJOR, 73,174 karma)
+2025-08-10 20:14:33,648 - INFO - Added u/Salty_Invite_757 (MICRO, 22,497 karma)
+2025-08-10 20:14:37,056 - INFO - Added u/FiveHoleFrenzy (RISING, 28,051 karma)
+2025-08-10 20:15:02,083 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2Fiatetoomuchchicken%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 20:15:07,419 - INFO - Added u/iatetoomuchchicken (SUPER, 917,541 karma)
+2025-08-10 20:15:15,534 - INFO - Added u/Foldingtrees (RISING, 48,483 karma)
+2025-08-10 20:15:23,195 - INFO - Added u/Twangerz-Lime (MICRO, 20,589 karma)
+2025-08-10 20:15:36,842 - INFO - Added u/kleutscher (SUPER, 437,545 karma)
+2025-08-10 20:15:40,314 - INFO - Added u/urusernameisweird (MAJOR, 102,171 karma)
+2025-08-10 20:15:40,314 - INFO - Found 25 elite users from r/funny
+2025-08-10 20:15:40,314 - INFO - ELITE scraping r/gaming (targeting 25 top users)
+2025-08-10 20:16:13,086 - INFO - Added u/Smackvein (MAJOR, 127,124 karma)
+2025-08-10 20:16:15,793 - INFO - Added u/Dragu_nova (MAJOR, 62,600 karma)
+2025-08-10 20:16:18,284 - INFO - Added u/elusiveanswers (MAJOR, 68,160 karma)
+2025-08-10 20:16:27,208 - INFO - Added u/NathanLonghair (MICRO, 15,997 karma)
+2025-08-10 20:16:30,748 - INFO - Added u/TheChessHorse (MICRO, 10,202 karma)
+2025-08-10 20:16:33,257 - INFO - Added u/CHUNKY_BLOODY_QUEEFS (MAJOR, 191,909 karma)
+2025-08-10 20:16:35,537 - INFO - Added u/ScreamSmart (MAJOR, 181,945 karma)
+2025-08-10 20:16:46,980 - INFO - Added u/Omnicide103 (MAJOR, 242,059 karma)
+2025-08-10 20:16:58,047 - INFO - Added u/Extasio (MAJOR, 100,623 karma)
+2025-08-10 20:17:01,448 - INFO - Added u/Mr_Hot_Takes (MAJOR, 71,518 karma)
+2025-08-10 20:17:08,080 - INFO - Added u/HatingGeoffry (SUPER, 442,743 karma)
+2025-08-10 20:17:09,491 - INFO - Added u/Zelphkiel (RISING, 33,436 karma)
+2025-08-10 20:17:12,792 - INFO - Added u/thejko (MICRO, 11,596 karma)
+2025-08-10 20:17:15,034 - INFO - Added u/EjnarH (MAJOR, 51,649 karma)
+2025-08-10 20:17:29,082 - INFO - Added u/n0b0dycar3s07 (MAJOR, 74,975 karma)
+2025-08-10 20:17:58,059 - INFO - Added u/RefrigeratorHot3959 (RISING, 30,285 karma)
+2025-08-10 20:18:05,511 - INFO - Added u/eldestscrollx (MAJOR, 115,515 karma)
+2025-08-10 20:18:10,338 - INFO - Added u/ReaddittiddeR (SUPER, 714,240 karma)
+2025-08-10 20:18:10,341 - INFO - Saved 450 elite influencers to backup_reddit_elite_influencers.csv
+2025-08-10 20:18:10,341 - INFO - Progress saved: 450/5000
+2025-08-10 20:18:13,154 - INFO - Added u/ILoveKetchup402 (MAJOR, 58,487 karma)
+2025-08-10 20:18:21,411 - INFO - Added u/lynxicat (RISING, 34,955 karma)
+2025-08-10 20:18:37,409 - INFO - Added u/SYLOH (MEGA, 1,246,665 karma)
+2025-08-10 20:18:45,068 - INFO - Added u/MuptonBossman (MEGA, 1,433,524 karma)
+2025-08-10 20:18:55,914 - INFO - Added u/GIJohnathon (MICRO, 12,267 karma)
+2025-08-10 20:19:02,689 - INFO - Added u/Blurbss (MAJOR, 153,091 karma)
+2025-08-10 20:19:05,744 - INFO - Added u/KaySan-TheBrightStar (SUPER, 309,608 karma)
+2025-08-10 20:19:05,744 - INFO - Found 25 elite users from r/gaming
+2025-08-10 20:19:05,746 - INFO - ELITE scraping r/MadeMeSmile (targeting 25 top users)
+2025-08-10 20:19:25,880 - INFO - Added u/abbeyiskewl2 (MAJOR, 102,346 karma)
+2025-08-10 20:19:50,907 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FShekel_Hadash%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 20:19:59,752 - INFO - Added u/Shekel_Hadash (SUPER, 750,293 karma)
+2025-08-10 20:20:08,871 - INFO - Added u/Puzzled_ethics9175 (RISING, 35,112 karma)
+2025-08-10 20:20:10,824 - INFO - Added u/DanceWithMacaw (MAJOR, 201,644 karma)
+2025-08-10 20:20:20,984 - INFO - Added u/mindyour (LEGENDARY, 7,414,628 karma)
+2025-08-10 20:20:28,505 - INFO - Added u/MysticalAmethyst99 (MAJOR, 59,092 karma)
+2025-08-10 20:20:38,799 - INFO - Added u/Mysterious_Tea_2750 (MICRO, 14,150 karma)
+2025-08-10 20:20:47,092 - INFO - Added u/MicV66 (MAJOR, 129,419 karma)
+2025-08-10 20:21:10,743 - INFO - Added u/seangolden06 (SUPER, 323,918 karma)
+2025-08-10 20:21:13,743 - INFO - Added u/Relevant_Demand7593 (SUPER, 536,355 karma)
+2025-08-10 20:21:16,654 - INFO - Added u/AtomicCypher (SUPER, 921,706 karma)
+2025-08-10 20:21:18,766 - INFO - Added u/n8saces (MEGA, 1,436,138 karma)
+2025-08-10 20:21:39,416 - INFO - Added u/Linorelai (SUPER, 544,592 karma)
+2025-08-10 20:21:42,727 - INFO - Added u/Commercial-Law-2229 (MAJOR, 52,651 karma)
+2025-08-10 20:21:51,505 - INFO - Added u/rererowr (MAJOR, 214,405 karma)
+2025-08-10 20:21:54,877 - INFO - Added u/EmergencyRead5254 (MAJOR, 165,671 karma)
+2025-08-10 20:21:59,602 - INFO - Added u/frosted_bite (SUPER, 897,164 karma)
+2025-08-10 20:22:01,862 - INFO - Added u/abyssal_banana (MICRO, 22,586 karma)
+2025-08-10 20:22:12,984 - INFO - Added u/Hypnoidz (MEGA, 1,320,025 karma)
+2025-08-10 20:22:31,112 - INFO - Added u/bigbusta (MEGA, 2,100,479 karma)
+2025-08-10 20:22:48,141 - INFO - Added u/Svoles (MAJOR, 204,695 karma)
+2025-08-10 20:22:51,194 - INFO - Added u/Rpark888 (SUPER, 637,155 karma)
+2025-08-10 20:23:05,660 - INFO - Added u/Lifegoesonforever (SUPER, 323,556 karma)
+2025-08-10 20:23:09,973 - INFO - Added u/No-Community- (MAJOR, 181,805 karma)
+2025-08-10 20:23:13,417 - INFO - Added u/AristFrost (SUPER, 318,376 karma)
+2025-08-10 20:23:13,417 - INFO - Found 25 elite users from r/MadeMeSmile
+2025-08-10 20:23:13,417 - INFO - ELITE scraping r/aww (targeting 25 top users)
+2025-08-10 20:24:00,844 - INFO - Added u/ScoobyD00BIEdoo (MAJOR, 99,129 karma)
+2025-08-10 20:24:02,783 - INFO - Added u/steeler7588 (MICRO, 13,932 karma)
+2025-08-10 20:24:06,028 - INFO - Added u/sonia72quebec (MEGA, 1,905,422 karma)
+2025-08-10 20:24:21,038 - INFO - Added u/gallopingwalloper (MAJOR, 102,959 karma)
+2025-08-10 20:24:26,907 - INFO - Added u/phenols (MAJOR, 120,021 karma)
+2025-08-10 20:24:29,149 - INFO - Added u/pacificcactus (RISING, 36,118 karma)
+2025-08-10 20:24:54,707 - INFO - Added u/romgm (MAJOR, 97,825 karma)
+2025-08-10 20:25:00,475 - INFO - Added u/meowpal33 (SUPER, 283,642 karma)
+2025-08-10 20:25:06,826 - INFO - Added u/b4rrywh1te (MICRO, 12,273 karma)
+2025-08-10 20:25:22,740 - INFO - Added u/Opening-Lecture-702 (MICRO, 11,089 karma)
+2025-08-10 20:25:33,781 - INFO - Added u/Aggressive-Tap-7056 (MAJOR, 99,341 karma)
+2025-08-10 20:26:02,003 - INFO - Added u/Terrible-Ball-9229 (MICRO, 12,895 karma)
+2025-08-10 20:26:05,724 - INFO - Added u/Alternative-Eye4547 (RISING, 47,728 karma)
+2025-08-10 20:26:32,285 - INFO - Multi-Key Stats: 3/3 active, 700 credits used
+2025-08-10 20:26:32,285 - INFO - Added u/post_makes_sad_bear (MICRO, 12,269 karma)
+2025-08-10 20:26:36,563 - INFO - Added u/MrsIronbad (SUPER, 405,416 karma)
+2025-08-10 20:26:39,979 - INFO - Added u/Emptydata_Enzo (SUPER, 432,957 karma)
+2025-08-10 20:27:22,170 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FCat_Litter_Scientist%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 20:27:25,093 - INFO - Added u/Cat_Litter_Scientist (RISING, 44,678 karma)
+2025-08-10 20:27:29,771 - INFO - Added u/thiscarecupisempty (MAJOR, 190,800 karma)
+2025-08-10 20:27:29,775 - INFO - Saved 500 elite influencers to backup_reddit_elite_influencers.csv
+2025-08-10 20:27:29,775 - INFO - Progress saved: 500/5000
+2025-08-10 20:27:32,170 - INFO - Added u/notmenotyoutoo (RISING, 42,418 karma)
+2025-08-10 20:27:39,475 - INFO - Added u/methanol88 (RISING, 39,902 karma)
+2025-08-10 20:27:50,147 - INFO - Added u/Muerteds (MAJOR, 110,169 karma)
+2025-08-10 20:27:59,700 - INFO - Added u/TheCinemaGod (MICRO, 15,052 karma)
+2025-08-10 20:28:07,385 - INFO - Added u/JAdamsidk123 (MAJOR, 101,296 karma)
+2025-08-10 20:28:24,721 - INFO - Added u/EL3CTED (MAJOR, 65,501 karma)
+2025-08-10 20:28:36,240 - INFO - Added u/sabocano (MAJOR, 139,868 karma)
+2025-08-10 20:28:36,240 - INFO - Found 25 elite users from r/aww
+2025-08-10 20:28:36,240 - INFO - ELITE scraping r/worldnews (targeting 25 top users)
+2025-08-10 20:28:59,658 - INFO - Added u/Ask4MD (SUPER, 976,178 karma)
+2025-08-10 20:29:20,109 - INFO - Added u/DomesticErrorist22 (SUPER, 480,860 karma)
+2025-08-10 20:29:23,006 - INFO - Added u/LogicX64 (MAJOR, 55,120 karma)
+2025-08-10 20:29:39,118 - INFO - Added u/rezwenn (SUPER, 745,870 karma)
+2025-08-10 20:29:42,698 - INFO - Added u/jackytheblade (SUPER, 293,313 karma)
+2025-08-10 20:29:56,812 - INFO - Added u/Jay_CD (SUPER, 356,365 karma)
+2025-08-10 20:30:21,816 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FNoMedicine3572%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 20:30:29,862 - INFO - Added u/NoMedicine3572 (MAJOR, 70,485 karma)
+2025-08-10 20:30:54,880 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FStudentlovelys%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 20:31:12,550 - INFO - Added u/Caledor152 (SUPER, 391,060 karma)
+2025-08-10 20:31:16,030 - INFO - Added u/pabinudake (RISING, 39,827 karma)
+2025-08-10 20:31:21,005 - INFO - Added u/eaglemaxie (MEGA, 3,556,241 karma)
+2025-08-10 20:31:29,148 - INFO - Added u/RGV_KJ (SUPER, 425,559 karma)
+2025-08-10 20:31:54,161 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FExcellent_Analysis65%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 20:31:56,982 - INFO - Added u/Excellent_Analysis65 (RISING, 45,750 karma)
+2025-08-10 20:32:04,608 - INFO - Added u/SunTzuXiJinping (MICRO, 19,278 karma)
+2025-08-10 20:32:21,355 - INFO - Added u/elliothahah (MAJOR, 51,798 karma)
+2025-08-10 20:32:47,340 - INFO - Added u/esporx (MEGA, 2,554,238 karma)
+2025-08-10 20:32:56,386 - INFO - Added u/pheexio (MICRO, 14,108 karma)
+2025-08-10 20:33:00,878 - INFO - Added u/SendStoreJader (RISING, 31,516 karma)
+2025-08-10 20:33:17,364 - INFO - Added u/silver_light (RISING, 35,212 karma)
+2025-08-10 20:33:33,684 - INFO - Added u/SPXQuantAlgo (SUPER, 707,346 karma)
+2025-08-10 20:33:40,478 - INFO - Added u/AlwaysBlaze_ (MAJOR, 148,655 karma)
+2025-08-10 20:33:47,030 - INFO - Added u/Famous_Celebration22 (MICRO, 14,352 karma)
+2025-08-10 20:33:52,649 - INFO - Added u/steffxoxoxoo (MAJOR, 80,059 karma)
+2025-08-10 20:33:57,359 - INFO - Added u/PseudoY (SUPER, 338,428 karma)
+2025-08-10 20:33:59,957 - INFO - Added u/Zen1 (SUPER, 487,937 karma)
+2025-08-10 20:34:17,264 - INFO - Added u/Impressive-Task5915 (MICRO, 10,574 karma)
+2025-08-10 20:34:17,264 - INFO - Found 25 elite users from r/worldnews
+2025-08-10 20:34:17,264 - INFO - ELITE scraping r/gifs (targeting 25 top users)
+2025-08-10 20:34:50,801 - INFO - Added u/jimymac1958 (MICRO, 16,946 karma)
+2025-08-10 20:34:52,483 - INFO - Added u/KellyGreen802 (MAJOR, 93,916 karma)
+2025-08-10 20:34:54,798 - INFO - Added u/lnfinity (LEGENDARY, 12,670,320 karma)
+2025-08-10 20:35:12,454 - INFO - Added u/Koyaanisquatsi_ (RISING, 41,925 karma)
+2025-08-10 20:35:21,345 - INFO - Added u/ChiefDerek (RISING, 36,398 karma)
+2025-08-10 20:35:33,398 - INFO - Added u/1296223 (RISING, 41,806 karma)
+2025-08-10 20:35:39,132 - INFO - Added u/lowtrippy (RISING, 38,933 karma)
+2025-08-10 20:35:42,274 - INFO - Added u/floor796 (MAJOR, 50,794 karma)
+2025-08-10 20:35:44,189 - INFO - Added u/GruntCandy86 (MAJOR, 97,238 karma)
+2025-08-10 20:35:46,764 - INFO - Added u/v78 (MEGA, 1,510,157 karma)
+2025-08-10 20:35:50,087 - INFO - Added u/Modern-Moo (MEGA, 1,632,320 karma)
+2025-08-10 20:36:08,404 - INFO - Added u/ArtyChikoo (MICRO, 11,767 karma)
+2025-08-10 20:36:18,041 - INFO - Added u/Wizyakuza (SUPER, 631,500 karma)
+2025-08-10 20:36:55,742 - INFO - Added u/DrunkRonin (MICRO, 24,049 karma)
+2025-08-10 20:37:00,105 - INFO - Added u/Getatbay (MAJOR, 123,874 karma)
+2025-08-10 20:37:03,036 - INFO - Added u/Almazus (MAJOR, 63,000 karma)
+2025-08-10 20:37:06,260 - INFO - Found 16 elite users from r/gifs
+2025-08-10 20:37:06,261 - INFO - ELITE scraping r/unpopularopinion (targeting 25 top users)
+2025-08-10 20:37:32,389 - INFO - Added u/HasSomeSelfEsteem (MAJOR, 184,896 karma)
+2025-08-10 20:37:37,925 - INFO - Added u/Lost_Roku_Remote (MICRO, 17,131 karma)
+2025-08-10 20:37:37,929 - INFO - Saved 550 elite influencers to backup_reddit_elite_influencers.csv
+2025-08-10 20:37:37,929 - INFO - Progress saved: 550/5000
+2025-08-10 20:37:53,443 - INFO - Added u/Outlaw_Josie_Snails (MICRO, 13,063 karma)
+2025-08-10 20:38:18,448 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2Fits_not_you_its_ye%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 20:38:37,960 - INFO - Added u/its_not_you_its_ye (MAJOR, 70,145 karma)
+2025-08-10 20:38:41,123 - INFO - Added u/cosmiccoffee9 (RISING, 39,679 karma)
+2025-08-10 20:38:58,777 - INFO - Added u/gabotuit (MICRO, 21,069 karma)
+2025-08-10 20:39:07,081 - INFO - Added u/kor_the_fiend (RISING, 38,354 karma)
+2025-08-10 20:39:27,779 - INFO - Added u/SpyderJack (MICRO, 14,478 karma)
+2025-08-10 20:39:30,757 - INFO - Added u/TheBestTake (MICRO, 13,262 karma)
+2025-08-10 20:39:43,560 - INFO - Added u/Dryanni (RISING, 29,763 karma)
+2025-08-10 20:39:53,909 - INFO - Added u/KendrickBlack502 (MAJOR, 155,161 karma)
+2025-08-10 20:40:16,543 - INFO - Added u/AlexJRod (MICRO, 24,709 karma)
+2025-08-10 20:41:07,156 - INFO - Multi-Key Stats: 3/3 active, 800 credits used
+2025-08-10 20:41:07,157 - INFO - Added u/Gold_Palpitation8982 (MICRO, 16,997 karma)
+2025-08-10 20:41:31,110 - INFO - Added u/kneedoorman (RISING, 38,078 karma)
+2025-08-10 20:41:41,077 - INFO - Added u/Ok_Orchid1004 (MICRO, 20,620 karma)
+2025-08-10 20:41:50,224 - INFO - Added u/ReyalpybguR (MICRO, 21,120 karma)
+2025-08-10 20:41:54,749 - INFO - Added u/endmylifefam_ (MAJOR, 56,698 karma)
+2025-08-10 20:42:09,198 - INFO - Added u/THENOCAPGENIE (MAJOR, 69,044 karma)
+2025-08-10 20:42:14,972 - INFO - Added u/LocationOld6656 (MICRO, 21,133 karma)
+2025-08-10 20:42:20,775 - INFO - Added u/cs_____question1031 (MICRO, 16,059 karma)
+2025-08-10 20:42:32,636 - INFO - Added u/Ravingrook (MAJOR, 71,095 karma)
+2025-08-10 20:42:57,656 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2Fcaptainburger31%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 20:43:39,004 - INFO - Added u/Dreadsin (MAJOR, 206,053 karma)
+2025-08-10 20:43:41,871 - INFO - Added u/Drinking_Frog (RISING, 37,985 karma)
+2025-08-10 20:44:02,329 - INFO - Added u/MegaZeroX7 (MAJOR, 119,267 karma)
+2025-08-10 20:44:21,780 - INFO - Added u/Agreeable_Car5114 (RISING, 43,751 karma)
+2025-08-10 20:44:21,780 - INFO - Found 25 elite users from r/unpopularopinion
+2025-08-10 20:44:21,781 - INFO - ELITE scraping r/AskReddit (targeting 25 top users)
+2025-08-10 20:44:40,651 - INFO - Added u/damaniac1223 (MICRO, 10,563 karma)
+2025-08-10 20:45:04,611 - INFO - Added u/FinTecGeek (MAJOR, 79,254 karma)
+2025-08-10 20:45:07,559 - INFO - Added u/LevelDinner (MICRO, 10,341 karma)
+2025-08-10 20:45:15,086 - INFO - Added u/2a_lib (MAJOR, 118,382 karma)
+2025-08-10 20:45:28,848 - INFO - Added u/Zealousideal_Cost811 (MICRO, 11,016 karma)
+2025-08-10 20:45:53,237 - INFO - Added u/Economy_Swim_8585 (MAJOR, 80,818 karma)
+2025-08-10 20:46:12,455 - INFO - Added u/Starmiebuckss2882 (RISING, 49,028 karma)
+2025-08-10 20:46:54,194 - INFO - Added u/Schreck2 (RISING, 34,949 karma)
+2025-08-10 20:47:01,790 - INFO - Added u/pizzabagelblastoff (MAJOR, 76,474 karma)
+2025-08-10 20:47:08,391 - INFO - Added u/dkapeller01 (RISING, 45,859 karma)
+2025-08-10 20:47:38,143 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FThat1RebelGuy%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 20:48:25,972 - INFO - Added u/MjPour (RISING, 27,933 karma)
+2025-08-10 20:49:08,451 - INFO - Added u/texas-is-the-reason (MAJOR, 155,833 karma)
+2025-08-10 20:49:13,368 - INFO - Added u/Alvamar (MAJOR, 65,590 karma)
+2025-08-10 20:49:19,122 - INFO - Added u/HotelPuzzleheaded654 (MAJOR, 223,097 karma)
+2025-08-10 20:49:47,956 - INFO - Added u/FootballPizzaMan (RISING, 28,584 karma)
+2025-08-10 20:50:32,635 - INFO - Added u/bannedbooks123 (MAJOR, 55,108 karma)
+2025-08-10 20:51:05,054 - INFO - Added u/No-Jicama-3673 (MICRO, 16,751 karma)
+2025-08-10 20:51:44,051 - INFO - Added u/Lua-Ma (MICRO, 17,053 karma)
+2025-08-10 20:52:06,836 - INFO - Added u/cubansbottomdollar (MAJOR, 197,990 karma)
+2025-08-10 20:52:19,590 - INFO - Added u/Winter_Ganache1919 (RISING, 40,479 karma)
+2025-08-10 20:52:38,594 - INFO - Added u/Dear-Ad-8540 (MAJOR, 182,957 karma)
+2025-08-10 20:52:58,733 - INFO - Added u/Imaginary_Ride_6185 (MICRO, 10,565 karma)
+2025-08-10 20:53:03,237 - INFO - Added u/Substantial_Judge931 (RISING, 25,073 karma)
+2025-08-10 20:53:09,546 - INFO - Added u/Positive_Spirit_1585 (MICRO, 22,087 karma)
+2025-08-10 20:53:34,481 - INFO - Multi-Key Stats: 3/3 active, 900 credits used
+2025-08-10 20:53:38,995 - INFO - Added u/Forgetadapassword (MICRO, 21,580 karma)
+2025-08-10 20:53:38,995 - INFO - Found 25 elite users from r/AskReddit
+2025-08-10 20:53:38,996 - INFO - 
+CATEGORY: CRYPTO_DEFI_BLOCKCHAIN (18 subreddits)
+2025-08-10 20:53:38,996 - INFO - Active keys: 3/3, Credits used: 901
+2025-08-10 20:53:38,996 - INFO - ELITE scraping r/CryptoMarkets (targeting 25 top users)
+2025-08-10 20:54:22,377 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fr%2FCryptoMarkets%2Ftop.json%3Flimit%3D100%26t%3Dmonth&render=false&country_code=US&premium=false
+2025-08-10 20:54:43,342 - INFO - Found 0 elite users from r/CryptoMarkets
+2025-08-10 20:54:43,342 - INFO - ELITE scraping r/altcoin (targeting 25 top users)
+2025-08-10 20:55:02,885 - INFO - Found 0 elite users from r/altcoin
+2025-08-10 20:55:02,886 - INFO - ELITE scraping r/ethtrader (targeting 25 top users)
+2025-08-10 20:55:23,214 - INFO - Added u/Creative_Ad7831 (MAJOR, 66,381 karma)
+2025-08-10 20:55:25,590 - INFO - Added u/kirtash93 (SUPER, 750,099 karma)
+2025-08-10 20:55:25,595 - INFO - Saved 600 elite influencers to backup_reddit_elite_influencers.csv
+2025-08-10 20:55:25,595 - INFO - Progress saved: 600/5000
+2025-08-10 20:55:30,380 - INFO - Added u/CymandeTV (RISING, 49,863 karma)
+2025-08-10 20:55:36,189 - INFO - Added u/Odd-Radio-8500 (MAJOR, 227,741 karma)
+2025-08-10 20:56:01,216 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FGJGT%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 20:56:12,922 - INFO - Added u/Wonderful_Bad6531 (MAJOR, 148,349 karma)
+2025-08-10 20:56:12,923 - INFO - Found 5 elite users from r/ethtrader
+2025-08-10 20:56:12,924 - INFO - ELITE scraping r/dogecoin (targeting 25 top users)
+2025-08-10 20:56:42,828 - INFO - Added u/42points (MAJOR, 128,944 karma)
+2025-08-10 20:56:46,065 - INFO - Added u/Revelation22_vv14-15 (RISING, 37,565 karma)
+2025-08-10 20:56:49,908 - INFO - Added u/Loud_Philosopher4277 (MICRO, 17,749 karma)
+2025-08-10 20:57:04,654 - INFO - Added u/TheMaharishiEffect (MICRO, 12,210 karma)
+2025-08-10 20:57:10,343 - INFO - Added u/God-Emperor-Pepe (MAJOR, 107,048 karma)
+2025-08-10 20:57:17,845 - INFO - Added u/Dutchrudduh (RISING, 28,626 karma)
+2025-08-10 20:57:26,834 - INFO - Found 6 elite users from r/dogecoin
+2025-08-10 20:57:26,836 - INFO - ELITE scraping r/NFTs (targeting 25 top users)
+2025-08-10 20:57:42,403 - INFO - Found 0 elite users from r/NFTs
+2025-08-10 20:57:42,403 - INFO - ELITE scraping r/defi (targeting 25 top users)
+2025-08-10 20:58:07,411 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fr%2Fdefi%2Fhot.json%3Flimit%3D100&render=false&country_code=US&premium=false
+2025-08-10 20:58:30,354 - INFO - Found 0 elite users from r/defi
+2025-08-10 20:58:30,354 - INFO - ELITE scraping r/SatoshiStreetBets (targeting 25 top users)
+2025-08-10 20:58:54,885 - INFO - Found 0 elite users from r/SatoshiStreetBets
+2025-08-10 20:58:54,886 - INFO - ELITE scraping r/binance (targeting 25 top users)
+2025-08-10 20:59:10,604 - INFO - Found 0 elite users from r/binance
+2025-08-10 20:59:10,605 - INFO - ELITE scraping r/CryptoTechnology (targeting 25 top users)
+2025-08-10 20:59:23,067 - INFO - Found 0 elite users from r/CryptoTechnology
+2025-08-10 20:59:23,067 - INFO - ELITE scraping r/cardano (targeting 25 top users)
+2025-08-10 20:59:54,999 - INFO - Found 0 elite users from r/cardano
+2025-08-10 20:59:55,000 - INFO - ELITE scraping r/Bitcoin (targeting 25 top users)
+2025-08-10 21:00:17,666 - INFO - Added u/Esoldier22 (MICRO, 18,841 karma)
+2025-08-10 21:00:48,470 - INFO - Added u/LifeIsJustASickJoke (MAJOR, 92,013 karma)
+2025-08-10 21:01:25,248 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2Fbrdbrd1%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 21:01:46,620 - INFO - Added u/Ayrko (RISING, 33,447 karma)
+2025-08-10 21:02:03,127 - INFO - Added u/attoj559 (RISING, 48,583 karma)
+2025-08-10 21:02:06,567 - INFO - Added u/HealthyMolasses8199 (SUPER, 286,906 karma)
+2025-08-10 21:02:52,137 - INFO - Added u/rtmxavi (MAJOR, 177,521 karma)
+2025-08-10 21:02:55,935 - INFO - Added u/BitCypher84 (MAJOR, 228,890 karma)
+2025-08-10 21:03:40,158 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2Fsero007%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 21:03:53,206 - INFO - Added u/NaziZombiez (RISING, 30,585 karma)
+2025-08-10 21:04:11,864 - INFO - Added u/Accidental_Ballyhoo (MICRO, 20,558 karma)
+2025-08-10 21:04:16,849 - INFO - Added u/Mantis-Prawn (MICRO, 19,487 karma)
+2025-08-10 21:04:29,026 - INFO - Added u/yoobermcruber (RISING, 29,278 karma)
+2025-08-10 21:04:35,311 - INFO - Added u/omg_its_dan (MAJOR, 56,411 karma)
+2025-08-10 21:05:14,681 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2Ffraction-of-ice%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 21:05:22,432 - INFO - Added u/fraction-of-ice (MICRO, 10,983 karma)
+2025-08-10 21:05:42,241 - INFO - Added u/Generationhodl (MICRO, 21,820 karma)
+2025-08-10 21:05:56,144 - INFO - Added u/snakesayan (MICRO, 17,608 karma)
+2025-08-10 21:06:29,155 - INFO - Added u/Local_Doubt_4029 (RISING, 27,710 karma)
+2025-08-10 21:06:39,267 - INFO - Added u/moonlightvle (MICRO, 13,895 karma)
+2025-08-10 21:06:42,271 - INFO - Added u/bobjohndaviddick (MAJOR, 87,833 karma)
+2025-08-10 21:06:54,794 - INFO - Multi-Key Stats: 3/3 active, 1000 credits used
+2025-08-10 21:06:54,794 - INFO - Added u/_swuaksa8242211 (SUPER, 407,188 karma)
+2025-08-10 21:07:09,374 - INFO - Added u/donkeynutsandtits (MICRO, 13,017 karma)
+2025-08-10 21:07:37,967 - INFO - Added u/InternationalOption3 (MAJOR, 66,428 karma)
+2025-08-10 21:07:48,332 - INFO - Added u/gutchie (MICRO, 16,960 karma)
+2025-08-10 21:08:38,170 - INFO - Added u/Bubbly_Ice3836 (MICRO, 20,332 karma)
+2025-08-10 21:09:09,709 - INFO - Added u/DryMyBottom (RISING, 27,204 karma)
+2025-08-10 21:09:14,321 - INFO - Added u/gennyrick01 (MICRO, 18,069 karma)
+2025-08-10 21:09:14,321 - INFO - Found 25 elite users from r/Bitcoin
+2025-08-10 21:09:14,321 - INFO - ELITE scraping r/NFT (targeting 25 top users)
+2025-08-10 21:09:45,567 - INFO - Found 0 elite users from r/NFT
+2025-08-10 21:09:45,568 - INFO - ELITE scraping r/BitcoinBeginners (targeting 25 top users)
+2025-08-10 21:10:11,801 - INFO - Added u/bitusher (MAJOR, 136,435 karma)
+2025-08-10 21:10:11,803 - INFO - Found 1 elite users from r/BitcoinBeginners
+2025-08-10 21:10:11,803 - INFO - ELITE scraping r/web3 (targeting 25 top users)
+2025-08-10 21:10:25,755 - INFO - Found 0 elite users from r/web3
+2025-08-10 21:10:25,756 - INFO - ELITE scraping r/CryptoCurrency (targeting 25 top users)
+2025-08-10 21:11:16,380 - INFO - Added u/No-Elephant-Dies (MICRO, 19,473 karma)
+2025-08-10 21:11:19,544 - INFO - Added u/SscorpionN08 (MAJOR, 139,110 karma)
+2025-08-10 21:11:40,352 - INFO - Added u/Dongerated (MICRO, 22,439 karma)
+2025-08-10 21:11:43,829 - INFO - Added u/TheGreatCryptopo (MAJOR, 143,095 karma)
+2025-08-10 21:12:08,855 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2F002_timmy%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 21:12:11,904 - INFO - Added u/002_timmy (MAJOR, 84,152 karma)
+2025-08-10 21:12:15,836 - INFO - Added u/CriticalCobraz (MAJOR, 88,190 karma)
+2025-08-10 21:12:20,573 - INFO - Added u/CragBawz (MAJOR, 56,220 karma)
+2025-08-10 21:12:26,970 - INFO - Added u/Next_Statement6145 (MAJOR, 86,214 karma)
+2025-08-10 21:12:32,521 - INFO - Added u/Illperformance6969 (MICRO, 13,246 karma)
+2025-08-10 21:12:36,664 - INFO - Added u/Green_Candler (MICRO, 15,347 karma)
+2025-08-10 21:13:01,691 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2Fsadiq_238%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 21:13:06,724 - INFO - Added u/sadiq_238 (MAJOR, 86,592 karma)
+2025-08-10 21:13:09,658 - INFO - Added u/Abdeliq (MAJOR, 145,448 karma)
+2025-08-10 21:13:16,839 - INFO - Added u/partymsl (SUPER, 506,661 karma)
+2025-08-10 21:13:19,397 - INFO - Added u/LargeSnorlax (SUPER, 779,631 karma)
+2025-08-10 21:13:28,047 - INFO - Added u/Opichavac (MICRO, 23,562 karma)
+2025-08-10 21:13:28,051 - INFO - Saved 650 elite influencers to backup_reddit_elite_influencers.csv
+2025-08-10 21:13:28,051 - INFO - Progress saved: 650/5000
+2025-08-10 21:13:33,047 - INFO - Added u/GreedVault (MAJOR, 60,440 karma)
+2025-08-10 21:13:37,235 - INFO - Added u/diwalost (MICRO, 23,291 karma)
+2025-08-10 21:13:50,340 - INFO - Added u/Natural_NoChemical (MICRO, 12,608 karma)
+2025-08-10 21:14:01,234 - INFO - Added u/Every_Hunt_160 (MAJOR, 231,157 karma)
+2025-08-10 21:14:04,094 - INFO - Added u/Wise-Grapefruit-1443 (MAJOR, 64,970 karma)
+2025-08-10 21:14:21,132 - INFO - Added u/Silver-Maximum9190 (MAJOR, 175,559 karma)
+2025-08-10 21:14:35,697 - INFO - Added u/Fritz1818 (MAJOR, 149,886 karma)
+2025-08-10 21:15:00,707 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FPractical-Solutions1%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 21:15:18,536 - INFO - Added u/goldyluckinblokchain (MAJOR, 155,971 karma)
+2025-08-10 21:15:24,294 - INFO - Added u/Johnroberts95000 (MICRO, 17,970 karma)
+2025-08-10 21:15:49,321 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FSuccotashAdditional%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 21:15:54,983 - INFO - Found 24 elite users from r/CryptoCurrency
+2025-08-10 21:15:54,983 - INFO - ELITE scraping r/CryptoMoonShots (targeting 25 top users)
+2025-08-10 21:16:18,025 - INFO - Added u/LucidDreamState (MICRO, 18,787 karma)
+2025-08-10 21:16:28,939 - INFO - Added u/NILANJONA147 (MICRO, 14,344 karma)
+2025-08-10 21:17:06,380 - INFO - Found 2 elite users from r/CryptoMoonShots
+2025-08-10 21:17:06,382 - INFO - ELITE scraping r/Ethereum (targeting 25 top users)
+2025-08-10 21:17:36,481 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fr%2FEthereum%2Ftop.json%3Flimit%3D100%26t%3Dweek&render=false&country_code=US&premium=false
+2025-08-10 21:17:50,913 - INFO - Found 0 elite users from r/Ethereum
+2025-08-10 21:17:50,913 - INFO - ELITE scraping r/solana (targeting 25 top users)
+2025-08-10 21:18:08,331 - INFO - Added u/TRWNBC (MICRO, 21,739 karma)
+2025-08-10 21:18:24,318 - INFO - Added u/CPMarkets (MICRO, 13,854 karma)
+2025-08-10 21:18:24,319 - INFO - Found 2 elite users from r/solana
+2025-08-10 21:18:24,320 - INFO - 
+CATEGORY: INVESTING_FINANCE_BUSINESS (28 subreddits)
+2025-08-10 21:18:24,320 - INFO - Active keys: 3/3, Credits used: 1085
+2025-08-10 21:18:24,320 - INFO - ELITE scraping r/personalfinance (targeting 25 top users)
+2025-08-10 21:19:21,063 - INFO - Added u/minetf (MAJOR, 109,712 karma)
+2025-08-10 21:20:09,300 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FHyenaPsychological42%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 21:20:25,549 - INFO - Multi-Key Stats: 3/3 active, 1100 credits used
+2025-08-10 21:20:32,390 - INFO - Added u/ZanzerFineSuits (MAJOR, 61,800 karma)
+2025-08-10 21:20:54,224 - INFO - Added u/Several_Razzmatazz51 (MAJOR, 56,015 karma)
+2025-08-10 21:20:57,577 - INFO - Added u/userrnam (RISING, 49,315 karma)
+2025-08-10 21:21:13,977 - INFO - Added u/GawkerRefugee (MAJOR, 162,150 karma)
+2025-08-10 21:22:16,625 - INFO - Added u/Jerney23 (MICRO, 11,166 karma)
+2025-08-10 21:22:41,652 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FRevolutionaryMost958%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 21:22:56,132 - INFO - Added u/bobweaver112 (MICRO, 12,632 karma)
+2025-08-10 21:23:05,875 - INFO - Added u/Cynoid (MAJOR, 56,214 karma)
+2025-08-10 21:23:12,778 - INFO - Found 8 elite users from r/personalfinance
+2025-08-10 21:23:12,778 - INFO - ELITE scraping r/creditcards (targeting 25 top users)
+2025-08-10 21:23:29,930 - INFO - Found 0 elite users from r/creditcards
+2025-08-10 21:23:29,931 - INFO - ELITE scraping r/Economics (targeting 25 top users)
+2025-08-10 21:23:48,096 - INFO - Added u/Barnyard-Sheep (MAJOR, 163,707 karma)
+2025-08-10 21:23:59,299 - INFO - Added u/sufinomo (SUPER, 607,847 karma)
+2025-08-10 21:24:01,731 - INFO - Added u/HellYeahDamnWrite (SUPER, 652,138 karma)
+2025-08-10 21:24:04,643 - INFO - Added u/DarkPriestScorpius (MAJOR, 151,271 karma)
+2025-08-10 21:24:09,514 - INFO - Added u/paxinfernum (SUPER, 555,405 karma)
+2025-08-10 21:24:15,348 - INFO - Added u/x_Lyze (MAJOR, 53,314 karma)
+2025-08-10 21:24:17,857 - INFO - Added u/OtherwiseCanary8971 (MAJOR, 64,417 karma)
+2025-08-10 21:24:24,891 - INFO - Added u/teamyg (MICRO, 15,791 karma)
+2025-08-10 21:24:31,545 - INFO - Added u/Majano57 (MEGA, 1,256,909 karma)
+2025-08-10 21:24:48,805 - INFO - Added u/Conscious-Quarter423 (MEGA, 1,294,166 karma)
+2025-08-10 21:24:59,787 - INFO - Added u/cjwidd (SUPER, 256,048 karma)
+2025-08-10 21:25:06,206 - INFO - Added u/AptitudeSky (MAJOR, 207,629 karma)
+2025-08-10 21:25:10,469 - INFO - Added u/ClassOptimal7655 (SUPER, 694,690 karma)
+2025-08-10 21:25:13,599 - INFO - Added u/Dependent-Log-7246 (RISING, 33,024 karma)
+2025-08-10 21:25:41,408 - INFO - Added u/Happy_Weed (MAJOR, 128,095 karma)
+2025-08-10 21:25:54,492 - INFO - Added u/BTC_is_waterproof (MAJOR, 92,656 karma)
+2025-08-10 21:26:02,922 - INFO - Added u/Imaginary_Emu3462 (MAJOR, 158,180 karma)
+2025-08-10 21:26:11,961 - INFO - Added u/lowsparkedheels (MAJOR, 69,588 karma)
+2025-08-10 21:26:30,872 - INFO - Added u/JuanPabloElSegundo (MAJOR, 145,348 karma)
+2025-08-10 21:26:40,125 - INFO - Added u/helic_vet (MICRO, 22,139 karma)
+2025-08-10 21:26:46,273 - INFO - Added u/bambin0 (MAJOR, 227,476 karma)
+2025-08-10 21:26:52,209 - INFO - Added u/barweis (MAJOR, 210,331 karma)
+2025-08-10 21:26:54,747 - INFO - Added u/hcbaron (MAJOR, 87,009 karma)
+2025-08-10 21:27:00,407 - INFO - Added u/Stuart_Whatley (MICRO, 16,377 karma)
+2025-08-10 21:27:03,154 - INFO - Added u/1-randomonium (SUPER, 279,100 karma)
+2025-08-10 21:27:03,155 - INFO - Found 25 elite users from r/Economics
+2025-08-10 21:27:03,155 - INFO - ELITE scraping r/growmybusiness (targeting 25 top users)
+2025-08-10 21:27:43,062 - INFO - Found 0 elite users from r/growmybusiness
+2025-08-10 21:27:43,062 - INFO - ELITE scraping r/StockMarket (targeting 25 top users)
+2025-08-10 21:28:08,089 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fr%2FStockMarket%2Fhot.json%3Flimit%3D100&render=false&country_code=US&premium=false
+2025-08-10 21:29:13,692 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2Fohell%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 21:29:17,000 - INFO - Added u/ohell (MAJOR, 56,199 karma)
+2025-08-10 21:29:23,929 - INFO - Added u/SpiritBombv2 (RISING, 46,164 karma)
+2025-08-10 21:29:26,521 - INFO - Added u/callsonreddit (SUPER, 266,073 karma)
+2025-08-10 21:29:28,869 - INFO - Added u/za1daman (MICRO, 17,482 karma)
+2025-08-10 21:29:28,874 - INFO - Saved 700 elite influencers to backup_reddit_elite_influencers.csv
+2025-08-10 21:29:28,874 - INFO - Progress saved: 700/5000
+2025-08-10 21:29:31,644 - INFO - Added u/SubstantialRock821 (MAJOR, 95,460 karma)
+2025-08-10 21:29:37,943 - INFO - Added u/Giancarlo_RC (MICRO, 15,845 karma)
+2025-08-10 21:29:41,005 - INFO - Added u/KebabG (MAJOR, 122,221 karma)
+2025-08-10 21:29:51,089 - INFO - Added u/yahoofinance (RISING, 38,008 karma)
+2025-08-10 21:30:16,115 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FUnited-Bluejay-1133%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 21:30:40,649 - INFO - Added u/joe4942 (SUPER, 898,520 karma)
+2025-08-10 21:30:50,514 - INFO - Added u/Plus_Seesaw2023 (RISING, 46,880 karma)
+2025-08-10 21:31:04,758 - INFO - Added u/AffectionateMaize523 (MICRO, 19,725 karma)
+2025-08-10 21:31:35,302 - INFO - Added u/bobolly (RISING, 34,596 karma)
+2025-08-10 21:31:37,447 - INFO - Added u/noonewilltakemealive (RISING, 44,419 karma)
+2025-08-10 21:31:45,902 - INFO - Added u/DrCalFun (SUPER, 266,851 karma)
+2025-08-10 21:31:51,273 - INFO - Added u/bryan-healey (MAJOR, 88,863 karma)
+2025-08-10 21:32:01,810 - INFO - Added u/W0rdWaster (MAJOR, 147,061 karma)
+2025-08-10 21:32:08,832 - INFO - Added u/Gammanomics (MICRO, 19,297 karma)
+2025-08-10 21:32:22,541 - INFO - Added u/ChiGuy6124 (SUPER, 874,562 karma)
+2025-08-10 21:32:28,971 - INFO - Added u/Force_Hammer (MAJOR, 146,875 karma)
+2025-08-10 21:32:35,008 - INFO - Added u/mark000 (MAJOR, 158,022 karma)
+2025-08-10 21:33:04,437 - INFO - Added u/Bobba-Luna (MAJOR, 74,312 karma)
+2025-08-10 21:33:07,719 - INFO - Added u/Dr_Dick_Dastardly (MICRO, 18,570 karma)
+2025-08-10 21:33:17,852 - INFO - Multi-Key Stats: 3/3 active, 1200 credits used
+2025-08-10 21:33:17,852 - INFO - Added u/JustMyOpinionz (SUPER, 271,155 karma)
+2025-08-10 21:33:24,643 - INFO - Added u/notyourregularninja (MAJOR, 119,831 karma)
+2025-08-10 21:33:27,388 - INFO - Added u/ramdomwalk (MAJOR, 64,567 karma)
+2025-08-10 21:33:27,388 - INFO - Found 25 elite users from r/StockMarket
+2025-08-10 21:33:27,388 - INFO - ELITE scraping r/Entrepreneur (targeting 25 top users)
+2025-08-10 21:34:11,810 - INFO - Added u/Nipurn_1234 (MICRO, 24,800 karma)
+2025-08-10 21:34:17,575 - INFO - Added u/thundernutz (MICRO, 12,532 karma)
+2025-08-10 21:34:56,053 - INFO - Found 2 elite users from r/Entrepreneur
+2025-08-10 21:34:56,054 - INFO - ELITE scraping r/investing (targeting 25 top users)
+2025-08-10 21:35:21,330 - INFO - Added u/foosion (MICRO, 24,854 karma)
+2025-08-10 21:35:25,450 - INFO - Added u/Ordell9 (RISING, 30,102 karma)
+2025-08-10 21:35:40,313 - INFO - Added u/veksone (MAJOR, 120,615 karma)
+2025-08-10 21:35:49,084 - INFO - Added u/Andy_parker (MICRO, 18,933 karma)
+2025-08-10 21:36:12,520 - INFO - Added u/MarkusEF (RISING, 38,808 karma)
+2025-08-10 21:37:09,456 - INFO - Added u/makybo91 (MICRO, 16,218 karma)
+2025-08-10 21:37:15,281 - INFO - Added u/cannythecat (RISING, 25,024 karma)
+2025-08-10 21:37:15,282 - INFO - Found 7 elite users from r/investing
+2025-08-10 21:37:15,283 - INFO - ELITE scraping r/finance (targeting 25 top users)
+2025-08-10 21:37:32,446 - INFO - Added u/Constant_Falcon_2175 (MAJOR, 55,486 karma)
+2025-08-10 21:37:38,006 - INFO - Added u/snakkerdudaniel (SUPER, 296,669 karma)
+2025-08-10 21:37:56,588 - INFO - Added u/Delicious_Adeptness9 (MAJOR, 110,746 karma)
+2025-08-10 21:38:02,995 - INFO - Added u/sovalente (MEGA, 1,811,267 karma)
+2025-08-10 21:38:08,687 - INFO - Added u/Cy_098 (MICRO, 21,627 karma)
+2025-08-10 21:38:10,968 - INFO - Added u/ImDoubleB (MAJOR, 213,454 karma)
+2025-08-10 21:38:18,544 - INFO - Added u/Astraeus323 (MAJOR, 139,140 karma)
+2025-08-10 21:38:18,545 - INFO - Found 7 elite users from r/finance
+2025-08-10 21:38:18,545 - INFO - ELITE scraping r/stocks (targeting 25 top users)
+2025-08-10 21:38:46,786 - INFO - Added u/Ok-Amphibian3164 (RISING, 37,114 karma)
+2025-08-10 21:38:49,755 - INFO - Added u/SecretComposer (SUPER, 256,795 karma)
+2025-08-10 21:39:14,782 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FFarrisAT%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 21:39:23,715 - INFO - Added u/FarrisAT (SUPER, 341,300 karma)
+2025-08-10 21:39:35,175 - INFO - Added u/throwaway9gk0k4k569 (MICRO, 22,504 karma)
+2025-08-10 21:39:38,738 - INFO - Added u/ArthurVandelay23 (MAJOR, 72,431 karma)
+2025-08-10 21:39:45,846 - INFO - Added u/RepairmanJack2025 (MICRO, 13,213 karma)
+2025-08-10 21:39:54,493 - INFO - Added u/quant_0 (MAJOR, 59,183 karma)
+2025-08-10 21:40:13,280 - INFO - Added u/WinningWatchlist (MAJOR, 51,561 karma)
+2025-08-10 21:40:19,014 - INFO - Added u/Puginator (SUPER, 511,414 karma)
+2025-08-10 21:40:25,024 - INFO - Added u/Tim_Apple_938 (MICRO, 16,441 karma)
+2025-08-10 21:40:30,799 - INFO - Added u/Progress_8 (RISING, 30,154 karma)
+2025-08-10 21:41:13,818 - INFO - Added u/ZealotOfCannabis (RISING, 25,260 karma)
+2025-08-10 21:41:16,751 - INFO - Added u/SquidFistHK (MAJOR, 129,192 karma)
+2025-08-10 21:41:16,756 - INFO - Saved 750 elite influencers to backup_reddit_elite_influencers.csv
+2025-08-10 21:41:16,756 - INFO - Progress saved: 750/5000
+2025-08-10 21:41:41,782 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2Fnanocapinvestor%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 21:41:47,428 - INFO - Added u/nanocapinvestor (MICRO, 11,650 karma)
+2025-08-10 21:41:57,812 - INFO - Added u/Difficult-Quarter-48 (MICRO, 16,728 karma)
+2025-08-10 21:42:12,301 - INFO - Added u/cxr_cxr2 (MAJOR, 61,806 karma)
+2025-08-10 21:42:15,010 - INFO - Added u/TailungFu (MAJOR, 227,347 karma)
+2025-08-10 21:42:18,269 - INFO - Added u/Cobra25k (MICRO, 12,997 karma)
+2025-08-10 21:42:20,662 - INFO - Added u/LordSnarfington (RISING, 44,681 karma)
+2025-08-10 21:42:27,492 - INFO - Added u/brett_baty_is_him (RISING, 46,643 karma)
+2025-08-10 21:42:40,151 - INFO - Added u/Shoddy_Ad7511 (MAJOR, 211,458 karma)
+2025-08-10 21:42:43,218 - INFO - Added u/Outside-Ad9447 (RISING, 30,634 karma)
+2025-08-10 21:42:48,065 - INFO - Added u/Fidler_2K (SUPER, 394,200 karma)
+2025-08-10 21:43:02,241 - INFO - Added u/renome (SUPER, 564,529 karma)
+2025-08-10 21:43:08,248 - INFO - Added u/_hiddenscout (MEGA, 1,131,694 karma)
+2025-08-10 21:43:08,248 - INFO - Found 25 elite users from r/stocks
+2025-08-10 21:43:08,248 - INFO - ELITE scraping r/realestate (targeting 25 top users)
+2025-08-10 21:43:28,663 - INFO - Added u/Tilt23Degrees (RISING, 42,283 karma)
+2025-08-10 21:43:40,652 - INFO - Added u/Worth-Juice1188 (MICRO, 16,943 karma)
+2025-08-10 21:44:03,740 - INFO - Added u/Informal-Candle (MICRO, 13,563 karma)
+2025-08-10 21:44:14,822 - INFO - Multi-Key Stats: 3/3 active, 1300 credits used
+2025-08-10 21:44:14,822 - INFO - Added u/Cadicoty (MICRO, 19,471 karma)
+2025-08-10 21:44:27,141 - INFO - Added u/Rainafire (MICRO, 12,334 karma)
+2025-08-10 21:44:37,235 - INFO - Added u/silverpalm_ (MICRO, 23,952 karma)
+2025-08-10 21:44:37,237 - INFO - Found 6 elite users from r/realestate
+2025-08-10 21:44:37,237 - INFO - ELITE scraping r/SecurityAnalysis (targeting 25 top users)
+2025-08-10 21:44:51,440 - INFO - Found 0 elite users from r/SecurityAnalysis
+2025-08-10 21:44:51,441 - INFO - ELITE scraping r/SaaS (targeting 25 top users)
+2025-08-10 21:45:28,317 - INFO - Found 0 elite users from r/SaaS
+2025-08-10 21:45:28,318 - INFO - ELITE scraping r/pennystocks (targeting 25 top users)
+2025-08-10 21:46:04,656 - INFO - Added u/SocnorbTheRoman (RISING, 26,346 karma)
+2025-08-10 21:46:04,657 - INFO - Found 1 elite users from r/pennystocks
+2025-08-10 21:46:04,659 - INFO - ELITE scraping r/FinancialCareers (targeting 25 top users)
+2025-08-10 21:46:47,596 - INFO - Added u/thisistherealmee (MICRO, 13,012 karma)
+2025-08-10 21:46:47,597 - INFO - Found 1 elite users from r/FinancialCareers
+2025-08-10 21:46:47,598 - INFO - ELITE scraping r/ValueInvesting (targeting 25 top users)
+2025-08-10 21:47:28,072 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FAdept_Mountain9532%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 21:47:45,730 - INFO - Found 0 elite users from r/ValueInvesting
+2025-08-10 21:47:45,730 - INFO - ELITE scraping r/tax (targeting 25 top users)
+2025-08-10 21:48:12,865 - INFO - Found 0 elite users from r/tax
+2025-08-10 21:48:12,866 - INFO - ELITE scraping r/options (targeting 25 top users)
+2025-08-10 21:48:38,270 - INFO - Added u/esInvests (RISING, 28,691 karma)
+2025-08-10 21:48:55,567 - INFO - Found 1 elite users from r/options
+2025-08-10 21:48:55,568 - INFO - ELITE scraping r/wallstreetbets (targeting 25 top users)
+2025-08-10 21:49:19,499 - INFO - Added u/Jeeperg84 (RISING, 27,609 karma)
+2025-08-10 21:49:32,920 - INFO - Added u/tsalaita (RISING, 27,073 karma)
+2025-08-10 21:49:39,412 - INFO - Added u/Broad-Inspector8905 (MICRO, 15,199 karma)
+2025-08-10 21:50:04,438 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FAvenger_of_Justice%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 21:50:10,415 - INFO - Added u/Avenger_of_Justice (MAJOR, 97,459 karma)
+2025-08-10 21:50:22,710 - INFO - Added u/Solid-Sock-1794 (MICRO, 11,666 karma)
+2025-08-10 21:50:30,751 - INFO - Added u/Danyzinho29 (MICRO, 10,229 karma)
+2025-08-10 21:50:43,297 - INFO - Added u/zoom1132 (MICRO, 14,514 karma)
+2025-08-10 21:50:49,952 - INFO - Added u/Steve_Zissouu2 (MICRO, 10,598 karma)
+2025-08-10 21:50:52,154 - INFO - Added u/PapaMusk1 (MICRO, 12,291 karma)
+2025-08-10 21:50:55,120 - INFO - Added u/Tradergurue (MAJOR, 73,464 karma)
+2025-08-10 21:51:26,903 - INFO - Added u/senecadocet1123 (RISING, 41,675 karma)
+2025-08-10 21:53:22,974 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FKStealthy%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 21:53:31,871 - INFO - Added u/Rook2Rook (RISING, 45,032 karma)
+2025-08-10 21:53:35,974 - INFO - Added u/Beautiful-Cress5695 (MICRO, 24,373 karma)
+2025-08-10 21:53:44,457 - INFO - Added u/skysurfguy1213 (MICRO, 23,186 karma)
+2025-08-10 21:53:53,116 - INFO - Added u/kft99 (RISING, 34,252 karma)
+2025-08-10 21:54:38,831 - INFO - Added u/SummitSloth (RISING, 32,205 karma)
+2025-08-10 21:54:45,710 - INFO - Added u/eudaimonia_dc (MAJOR, 52,921 karma)
+2025-08-10 21:54:48,086 - INFO - Added u/tke248 (MICRO, 12,173 karma)
+2025-08-10 21:54:54,824 - INFO - Added u/Several_Print4633 (MAJOR, 95,893 karma)
+2025-08-10 21:55:00,827 - INFO - Added u/gregw134 (MICRO, 14,041 karma)
+2025-08-10 21:55:24,959 - INFO - Added u/habsmd (MAJOR, 91,026 karma)
+2025-08-10 21:56:00,927 - INFO - Added u/bloomberg (SUPER, 878,201 karma)
+2025-08-10 21:56:13,874 - INFO - Added u/DasherLao (RISING, 35,363 karma)
+2025-08-10 21:56:15,926 - INFO - Added u/kawkface (RISING, 43,038 karma)
+2025-08-10 21:56:19,140 - INFO - Multi-Key Stats: 3/3 active, 1400 credits used
+2025-08-10 21:56:31,889 - INFO - Added u/TyBachler (MICRO, 12,518 karma)
+2025-08-10 21:56:31,889 - INFO - Found 25 elite users from r/wallstreetbets
+2025-08-10 21:56:31,889 - INFO - ELITE scraping r/business (targeting 25 top users)
+2025-08-10 21:56:56,598 - INFO - Added u/MicroSofty88 (MEGA, 1,445,817 karma)
+2025-08-10 21:57:06,704 - INFO - Added u/reflibman (SUPER, 417,906 karma)
+2025-08-10 21:57:10,012 - INFO - Added u/GoranPersson777 (MAJOR, 142,505 karma)
+2025-08-10 21:57:15,960 - INFO - Added u/-Bitches-Be-Trippin- (MAJOR, 52,957 karma)
+2025-08-10 21:57:15,966 - INFO - Saved 800 elite influencers to backup_reddit_elite_influencers.csv
+2025-08-10 21:57:15,966 - INFO - Progress saved: 800/5000
+2025-08-10 21:57:18,506 - INFO - Added u/Doug24 (RISING, 40,269 karma)
+2025-08-10 21:57:18,508 - INFO - Found 5 elite users from r/business
+2025-08-10 21:57:18,509 - INFO - ELITE scraping r/frugal (targeting 25 top users)
+2025-08-10 21:57:34,164 - INFO - Added u/spellsboxing (MICRO, 11,691 karma)
+2025-08-10 21:58:08,527 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FThepopethroway%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 21:58:12,380 - INFO - Added u/Thepopethroway (MICRO, 15,503 karma)
+2025-08-10 21:58:23,813 - INFO - Added u/BonCourageAmis (MICRO, 20,074 karma)
+2025-08-10 21:58:29,853 - INFO - Added u/EffectiveChange5828 (MICRO, 10,058 karma)
+2025-08-10 21:58:59,186 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2FKazungu_Bayo%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 21:59:06,518 - INFO - Added u/Kazungu_Bayo (RISING, 26,317 karma)
+2025-08-10 21:59:09,257 - INFO - Added u/iamwhoiwasnow (MAJOR, 71,743 karma)
+2025-08-10 21:59:15,425 - INFO - Added u/sturgis252 (MAJOR, 219,381 karma)
+2025-08-10 21:59:32,259 - INFO - Added u/Nyx67547 (MICRO, 14,369 karma)
+2025-08-10 21:59:47,776 - INFO - Added u/LuigiSalutati (MICRO, 13,259 karma)
+2025-08-10 21:59:49,934 - INFO - Added u/hopopo (MEGA, 1,094,938 karma)
+2025-08-10 22:00:01,238 - INFO - Added u/QuarterOne1233 (MICRO, 16,311 karma)
+2025-08-10 22:00:13,034 - INFO - Added u/cosmoscrazy (MAJOR, 50,393 karma)
+2025-08-10 22:00:17,882 - INFO - Added u/paspa1801 (MICRO, 14,701 karma)
+2025-08-10 22:00:23,028 - INFO - Added u/Ratazanafofinha (MICRO, 24,681 karma)
+2025-08-10 22:00:32,321 - INFO - Added u/Purlz1st (MAJOR, 195,568 karma)
+2025-08-10 22:00:44,779 - INFO - Added u/Humble-Plankton2217 (MAJOR, 162,231 karma)
+2025-08-10 22:00:44,781 - INFO - Found 16 elite users from r/frugal
+2025-08-10 22:00:44,781 - INFO - ELITE scraping r/retirement (targeting 25 top users)
+2025-08-10 22:01:18,644 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fr%2Fretirement%2Ftop.json%3Flimit%3D100%26t%3Dmonth&render=false&country_code=US&premium=false
+2025-08-10 22:01:34,055 - INFO - Added u/rgg40 (MICRO, 17,075 karma)
+2025-08-10 22:01:36,772 - INFO - Added u/ElectroChuck (MAJOR, 60,597 karma)
+2025-08-10 22:01:41,236 - INFO - Added u/Raymont_Wavelength (MICRO, 10,109 karma)
+2025-08-10 22:02:01,381 - INFO - Added u/Odd_Bodkin (MAJOR, 119,930 karma)
+2025-08-10 22:02:01,382 - INFO - Found 4 elite users from r/retirement
+2025-08-10 22:02:01,383 - INFO - ELITE scraping r/RobinHood (targeting 25 top users)
+2025-08-10 22:02:20,376 - INFO - Found 0 elite users from r/RobinHood
+2025-08-10 22:02:20,377 - INFO - ELITE scraping r/startups (targeting 25 top users)
+2025-08-10 22:02:35,053 - INFO - Found 0 elite users from r/startups
+2025-08-10 22:02:35,054 - INFO - ELITE scraping r/financialplanning (targeting 25 top users)
+2025-08-10 22:03:07,604 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fr%2Ffinancialplanning%2Ftop.json%3Flimit%3D100%26t%3Dmonth&render=false&country_code=US&premium=false
+2025-08-10 22:03:11,970 - INFO - Found 0 elite users from r/financialplanning
+2025-08-10 22:03:11,971 - INFO - ELITE scraping r/GrowthHacking (targeting 25 top users)
+2025-08-10 22:04:08,309 - INFO - Found 0 elite users from r/GrowthHacking
+2025-08-10 22:04:08,309 - INFO - ELITE scraping r/smallbusiness (targeting 25 top users)
+2025-08-10 22:04:54,791 - INFO - Found 0 elite users from r/smallbusiness
+2025-08-10 22:04:54,792 - INFO - ELITE scraping r/financialindependence (targeting 25 top users)
+2025-08-10 22:05:31,910 - INFO - Added u/Neinhaltt (RISING, 34,262 karma)
+2025-08-10 22:05:52,521 - INFO - Added u/betweentourns (RISING, 32,440 karma)
+2025-08-10 22:05:58,859 - INFO - Found 2 elite users from r/financialindependence
+2025-08-10 22:05:58,859 - INFO - ELITE scraping r/dividendinvesting (targeting 25 top users)
+2025-08-10 22:06:21,790 - INFO - Found 0 elite users from r/dividendinvesting
+2025-08-10 22:06:21,791 - INFO - 
+CATEGORY: AI_MACHINE_LEARNING_TECH (26 subreddits)
+2025-08-10 22:06:21,791 - INFO - Active keys: 3/3, Credits used: 1485
+2025-08-10 22:06:21,791 - INFO - ELITE scraping r/statistics (targeting 25 top users)
+2025-08-10 22:06:40,284 - INFO - Found 0 elite users from r/statistics
+2025-08-10 22:06:40,284 - INFO - ELITE scraping r/programming (targeting 25 top users)
+2025-08-10 22:07:11,562 - INFO - Added u/el_muchacho (MAJOR, 141,590 karma)
+2025-08-10 22:07:17,738 - INFO - Added u/mareek (MICRO, 15,708 karma)
+2025-08-10 22:07:47,451 - INFO - Added u/absentmindedjwc (SUPER, 610,413 karma)
+2025-08-10 22:08:29,794 - INFO - Multi-Key Stats: 3/3 active, 1500 credits used
+2025-08-10 22:08:39,891 - INFO - Added u/-grok (MICRO, 11,087 karma)
+2025-08-10 22:09:18,821 - INFO - Added u/donutloop (SUPER, 807,792 karma)
+2025-08-10 22:10:24,066 - INFO - Found 5 elite users from r/programming
+2025-08-10 22:10:24,067 - INFO - ELITE scraping r/cybersecurity (targeting 25 top users)
+2025-08-10 22:11:02,051 - INFO - Added u/Tunivor (MICRO, 17,129 karma)
+2025-08-10 22:11:26,732 - INFO - Added u/N07-2-L33T (MICRO, 12,724 karma)
+2025-08-10 22:11:26,734 - INFO - Found 2 elite users from r/cybersecurity
+2025-08-10 22:11:26,735 - INFO - ELITE scraping r/MachineLearningNews (targeting 25 top users)
+2025-08-10 22:11:45,300 - INFO - Found 0 elite users from r/MachineLearningNews
+2025-08-10 22:11:45,301 - INFO - ELITE scraping r/webdev (targeting 25 top users)
+2025-08-10 22:12:40,511 - INFO - Added u/Pristine-Elevator198 (RISING, 44,377 karma)
+2025-08-10 22:12:43,102 - INFO - Added u/getToTheChopin (MAJOR, 76,450 karma)
+2025-08-10 22:13:01,643 - INFO - Added u/Honest_Equivalent_40 (MICRO, 17,330 karma)
+2025-08-10 22:13:35,439 - INFO - Added u/Armauer (RISING, 49,718 karma)
+2025-08-10 22:13:53,219 - INFO - Added u/Namit2111 (RISING, 45,130 karma)
+2025-08-10 22:13:55,845 - INFO - Added u/Darkoplax (SUPER, 451,468 karma)
+2025-08-10 22:14:02,146 - INFO - Added u/--squidslippers (MICRO, 14,966 karma)
+2025-08-10 22:14:47,712 - INFO - Added u/gmaaz (RISING, 37,893 karma)
+2025-08-10 22:15:14,698 - INFO - Added u/ZGeekie (MAJOR, 62,667 karma)
+2025-08-10 22:15:27,758 - INFO - Added u/therealPaulPlay (MICRO, 14,308 karma)
+2025-08-10 22:15:27,759 - INFO - Found 10 elite users from r/webdev
+2025-08-10 22:15:27,761 - INFO - ELITE scraping r/docker (targeting 25 top users)
+2025-08-10 22:15:59,629 - INFO - Found 0 elite users from r/docker
+2025-08-10 22:15:59,630 - INFO - ELITE scraping r/datascience (targeting 25 top users)
+2025-08-10 22:16:30,564 - INFO - Added u/takenorinvalid (SUPER, 411,897 karma)
+2025-08-10 22:16:36,879 - INFO - Added u/tits_mcgee_92 (MAJOR, 122,274 karma)
+2025-08-10 22:16:59,094 - INFO - Found 2 elite users from r/datascience
+2025-08-10 22:16:59,094 - INFO - ELITE scraping r/LocalLLaMA (targeting 25 top users)
+2025-08-10 22:17:15,675 - INFO - Added u/ILoveMy2Balls (MICRO, 10,934 karma)
+2025-08-10 22:17:17,688 - INFO - Added u/EstablishmentFun3205 (MAJOR, 113,086 karma)
+2025-08-10 22:17:53,572 - INFO - Added u/ResearchCrafty1804 (MICRO, 19,009 karma)
+2025-08-10 22:17:59,170 - INFO - Added u/Final_Wheel_7486 (RISING, 31,360 karma)
+2025-08-10 22:18:11,510 - INFO - Added u/Wrong_User_Logged (MAJOR, 85,501 karma)
+2025-08-10 22:18:32,157 - INFO - Added u/Porespellar (MAJOR, 71,532 karma)
+2025-08-10 22:18:48,451 - INFO - Added u/GoodGuyLafarge (RISING, 40,079 karma)
+2025-08-10 22:18:56,618 - INFO - Added u/__JockY__ (RISING, 26,452 karma)
+2025-08-10 22:18:56,624 - INFO - Saved 850 elite influencers to backup_reddit_elite_influencers.csv
+2025-08-10 22:18:56,624 - INFO - Progress saved: 850/5000
+2025-08-10 22:19:00,553 - INFO - Added u/TheRealSerdra (MICRO, 17,192 karma)
+2025-08-10 22:19:11,666 - INFO - Added u/lyceras (MICRO, 10,590 karma)
+2025-08-10 22:19:15,577 - INFO - Added u/Balance- (MAJOR, 237,427 karma)
+2025-08-10 22:19:21,804 - INFO - Added u/Independent-Wind4462 (RISING, 41,583 karma)
+2025-08-10 22:19:49,841 - INFO - Multi-Key Stats: 3/3 active, 1600 credits used
+2025-08-10 22:19:54,743 - INFO - Added u/tengo_harambe (RISING, 30,316 karma)
+2025-08-10 22:20:18,436 - INFO - Added u/pseudoreddituser (MICRO, 11,487 karma)
+2025-08-10 22:20:43,463 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPConnectionPool(host='api.scraperapi.com', port=80): Read timed out. (read timeout=25)")': /?api_key=001dfb055d3443ea6a8ba1e0d2ac3562&url=https%3A%2F%2Fwww.reddit.com%2Fuser%2Fjacek2023%2Fabout.json&render=false&country_code=US&premium=false
+2025-08-10 22:20:46,854 - INFO - Added u/jacek2023 (RISING, 27,732 karma)
+2025-08-10 22:21:00,322 - INFO - Added u/BoJackHorseMan53 (RISING, 36,439 karma)
+2025-08-10 22:21:44,028 - INFO - Added u/ForsookComparison (MAJOR, 123,762 karma)
+2025-08-10 22:21:46,687 - INFO - Added u/TheLocalDrummer (MICRO, 11,353 karma)
+2025-08-10 22:21:51,918 - INFO - Added u/Wrong-Historian (RISING, 38,708 karma)
+2025-08-10 22:22:01,716 - INFO - Added u/AaronFeng47 (RISING, 34,178 karma)
+2025-08-10 22:22:11,068 - INFO - Added u/fuutott (MICRO, 17,716 karma)
+2025-08-10 22:22:16,866 - INFO - Added u/Dark_Fire_12 (MICRO, 10,281 karma)
+2025-08-10 22:22:35,508 - INFO - Added u/Cool-Chemical-5629 (MICRO, 15,843 karma)
+2025-08-10 22:22:51,645 - INFO - Added u/Paradigmind (RISING, 39,167 karma)
+2025-08-10 22:23:08,692 - INFO - Added u/Charuru (MAJOR, 114,385 karma)
+2025-08-10 22:23:08,692 - INFO - Found 25 elite users from r/LocalLLaMA
+2025-08-10 22:23:08,692 - INFO - ELITE scraping r/ArtificialIntelligence (targeting 25 top users)
+2025-08-10 22:23:10,227 - WARNING - Error 404 with key ...d2ac3562
+2025-08-10 22:23:14,163 - WARNING - Error 404 with key ...d2ac3562
+2025-08-10 22:23:18,909 - WARNING - Error 404 with key ...d2ac3562
+2025-08-10 22:23:18,909 - WARNING - Attempt 1 failed for r/ArtificialIntelligence (hot): All API keys failed or exhausted
+2025-08-10 22:23:26,133 - WARNING - Error 404 with key ...d2ac3562
+2025-08-10 22:23:33,715 - WARNING - Error 404 with key ...d2ac3562
+2025-08-10 22:23:41,323 - WARNING - Error 404 with key ...cb270628
+2025-08-10 22:23:41,323 - WARNING - Attempt 2 failed for r/ArtificialIntelligence (hot): All API keys failed or exhausted
+2025-08-10 22:23:41,323 - ERROR - Failed to get hot posts from r/ArtificialIntelligence
+2025-08-10 22:23:43,652 - WARNING - Error 404 with key ...cb270628
+2025-08-10 22:23:57,039 - WARNING - Error 404 with key ...cb270628
+2025-08-10 22:24:16,087 - WARNING - Error 404 with key ...cb270628
+2025-08-10 22:24:16,087 - WARNING - Attempt 1 failed for r/ArtificialIntelligence (top): All API keys failed or exhausted
+2025-08-10 22:24:33,970 - WARNING - Error 404 with key ...cb270628
+2025-08-10 22:24:36,962 - WARNING - Error 404 with key ...ab3f375e
+2025-08-10 22:24:39,504 - WARNING - Error 404 with key ...ab3f375e
+2025-08-10 22:24:39,504 - WARNING - Attempt 2 failed for r/ArtificialIntelligence (top): All API keys failed or exhausted
+2025-08-10 22:24:39,504 - ERROR - Failed to get top posts from r/ArtificialIntelligence
+2025-08-10 22:24:42,154 - WARNING - Error 404 with key ...ab3f375e
+2025-08-10 22:24:52,501 - WARNING - Error 404 with key ...ab3f375e
+2025-08-10 22:25:02,023 - WARNING - Error 404 with key ...ab3f375e
+2025-08-10 22:25:02,023 - WARNING - Attempt 1 failed for r/ArtificialIntelligence (top): All API keys failed or exhausted
+2025-08-10 22:25:11,462 - WARNING - Error 404 with key ...cb270628
+2025-08-10 22:25:17,017 - WARNING - Error 404 with key ...ab3f375e
+2025-08-10 22:25:23,348 - WARNING - Error 404 with key ...cb270628
+2025-08-10 22:25:23,348 - WARNING - Attempt 2 failed for r/ArtificialIntelligence (top): All API keys failed or exhausted
+2025-08-10 22:25:23,348 - ERROR - Failed to get top posts from r/ArtificialIntelligence
+2025-08-10 22:25:23,349 - INFO - Found 0 elite users from r/ArtificialIntelligence
+2025-08-10 22:25:23,349 - WARNING - All keys exhausted during category processing
+2025-08-10 22:25:23,349 - ERROR - No active API keys remaining!
+2025-08-10 22:25:23,349 - INFO - 
+FINAL CATEGORY BREAKDOWN:
+2025-08-10 22:25:23,349 - INFO -   CRYPTO_DEFI_BLOCKCHAIN        :   65 accounts (7.5%)
+2025-08-10 22:25:23,349 - INFO -   AI_MACHINE_LEARNING_TECH      :   44 accounts (5.1%)
+2025-08-10 22:25:23,349 - INFO -   INVESTING_FINANCE_BUSINESS    :  160 accounts (18.5%)
+2025-08-10 22:25:23,349 - INFO -   CONTENT_CREATOR_INFLUENCER    :    0 accounts (0.0%)
+2025-08-10 22:25:23,349 - INFO -   WELLNESS_FITNESS_LIFESTYLE    :    0 accounts (0.0%)
+2025-08-10 22:25:23,349 - INFO -   MASSIVE_GENERAL_ENGAGEMENT    :  598 accounts (69.0%)
+2025-08-10 22:25:23,349 - INFO -   CREATIVE_ARTS_ENTERTAINMENT   :    0 accounts (0.0%)
+2025-08-10 22:25:23,349 - INFO -   FASHION_TRAVEL_CULTURE        :    0 accounts (0.0%)
+2025-08-10 22:25:23,349 - INFO - 
+FINAL MULTI-KEY STATISTICS:
+2025-08-10 22:25:23,349 - INFO -   Key_1: 1633 requests, 1633 credits, BLOCKED
+2025-08-10 22:25:23,349 - INFO -   Key_2: 7 requests, 7 credits, BLOCKED
+2025-08-10 22:25:23,349 - INFO -   Key_3: 6 requests, 6 credits, BLOCKED
+2025-08-10 22:25:23,354 - INFO - Saved 867 elite influencers to reddit_elite_influencers.csv
+2025-08-10 22:25:23,359 - INFO - Saved 867 elite influencers to backup_reddit_elite_influencers.csv
 
