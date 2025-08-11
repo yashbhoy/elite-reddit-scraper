@@ -35,7 +35,13 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: reddit-scraper-results
-        path: .
+        path: |
+          reddit_elite_influencers.csv
+          backup_reddit_elite_influencers.csv
+          elite_scraper_progress.json
+          elite_scraper.log
+          interrupted_reddit_elite_influencers.csv
+          error_reddit_elite_influencers.csv
       continue-on-error: true
 
     - name: 🐍 Set up Python 3.11
