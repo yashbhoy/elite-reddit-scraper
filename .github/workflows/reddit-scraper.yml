@@ -31,6 +31,13 @@ jobs:
     - name: 📥 Checkout repository
       uses: actions/checkout@v4
       
+    - name: ⬇️ Download previous progress artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: reddit-scraper-results-${{ github.run_number - 1 }} # Downloads artifact from the previous run
+        path: . # Downloads to the current working directory
+      continue-on-error: true # Allow workflow to continue if no previous artifact is found
+
     - name: 🐍 Set up Python 3.11
       uses: actions/setup-python@v4
       with:
@@ -92,7 +99,7 @@ jobs:
       run: |
         if [ -f "elite_scraper_progress.json" ]; then
           echo "🔄 Found previous progress file"
-          python3 -c "import json; data=json.load(open('elite_scraper_progress.json')); print(f'Previous session: {data.get(\"total_scraped\", 0)} accounts scraped')"
+          python3 -c "import json; data=json.load(open(\'elite_scraper_progress.json\')); print(f\'Previous session: {data.get(\"total_scraped\", 0)} accounts scraped\')"
         else
           echo "🆕 Starting fresh scraping session"
         fi
@@ -149,7 +156,7 @@ jobs:
         
         if [ -f "elite_scraper_progress.json" ]; then
           echo "💾 Progress file exists - can resume later"
-          python3 -c "import json; data=json.load(open('elite_scraper_progress.json')); print(f'Progress: {data.get(\"total_scraped\", 0)} accounts processed')"
+          python3 -c "import json; data=json.load(open(\'elite_scraper_progress.json\')); print(f\'Progress: {data.get(\"total_scraped\", 0)} accounts processed\')"
         fi
     
     - name: 📤 Upload Results as Artifacts
