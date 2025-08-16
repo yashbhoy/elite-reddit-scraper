@@ -1,0 +1,226 @@
+# Elite Reddit Scraper - GitLab CI/CD Pipeline
+# Save this as .gitlab-ci.yml in your repository root
+
+stages:
+  - validate
+  - scrape
+  - results
+
+variables:
+  PYTHON_VERSION: "3.11"
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  paths:
+    - .cache/pip/
+    - venv/
+
+# Manual trigger with parameters (equivalent to workflow_dispatch)
+reddit-scraper:
+  stage: scrape
+  image: python:3.11-slim
+  timeout: 8h
+  rules:
+    # Manual trigger only (can set variables when running)
+    - if: $CI_PIPELINE_SOURCE == "web"
+    # Or scheduled run every Sunday at 2 AM UTC  
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    # Or trigger via API/webhook
+    - if: $CI_PIPELINE_SOURCE == "trigger"
+  
+  variables:
+    # Default values - can be overridden when triggering manually
+    TARGET_COUNT: "${TARGET_COUNT:-5000}"
+    GATEWAY_PROVIDER: "${GATEWAY_PROVIDER:-scraperapi}"
+  
+  before_script:
+    - echo "🔥 Setting up Elite Reddit Scraper environment"
+    - apt-get update -qq && apt-get install -y -qq git curl timeout coreutils
+    - python --version
+    - pip install --upgrade pip
+    - pip install requests urllib3
+    - echo "✅ Dependencies installed successfully"
+    
+    # Configure environment variables
+    - export GATEWAY_PROVIDER=${GATEWAY_PROVIDER}
+    - export TARGET_COUNT=${TARGET_COUNT}
+    - echo "🔧 Environment configured with multi-key support"
+    
+    # Validate API keys
+    - |
+      echo "🔑 Checking available API keys..."
+      key_count=0
+      
+      # Check primary key (SCRAPE_KEY)
+      if [ -n "$SCRAPE_KEY" ]; then
+        echo "✅ Primary SCRAPE_KEY: $(echo $SCRAPE_KEY | cut -c1-8)..."
+        key_count=$((key_count + 1))
+      fi
+      
+      # Check ScraperAPI keys
+      if [ -n "$SCRAPERAPI_KEY" ]; then
+        echo "✅ SCRAPERAPI_KEY: $(echo $SCRAPERAPI_KEY | cut -c1-8)..."
+        key_count=$((key_count + 1))
+      fi
+      
+      if [ -n "$SCRAPERAPI_KEY_2" ]; then
+        echo "✅ SCRAPERAPI_KEY_2: $(echo $SCRAPERAPI_KEY_2 | cut -c1-8)..."
+        key_count=$((key_count + 1))
+      fi
+      
+      if [ -n "$SCRAPERAPI_KEY_3" ]; then
+        echo "✅ SCRAPERAPI_KEY_3: $(echo $SCRAPERAPI_KEY_3 | cut -c1-8)..."
+        key_count=$((key_count + 1))
+      fi
+      
+      echo "🎯 Total available keys: $key_count"
+      echo "💰 Estimated capacity: $((key_count * 5000)) credits"
+      
+      if [ "$key_count" -eq 0 ]; then
+        echo "❌ ERROR: No API keys found! Please add SCRAPE_KEY or SCRAPERAPI_KEY variables"
+        exit 1
+      fi
+    
+    # Check previous progress
+    - |
+      if [ -f "elite_scraper_progress.json" ]; then
+        echo "📄 Found previous progress file"
+        python3 -c "import json; data=json.load(open('elite_scraper_progress.json')); print(f'Previous session: {data.get(\"total_scraped\", 0)} accounts scraped')" || true
+      else
+        echo "🆕 Starting fresh scraping session"
+      fi
+
+  script:
+    - echo "🚀 Starting Elite Reddit Scraper..."
+    - echo "Gateway: $GATEWAY_PROVIDER"
+    - echo "Target: $TARGET_COUNT accounts"
+    - echo "API Key: $(echo $SCRAPE_KEY$SCRAPERAPI_KEY | cut -c1-8)..."
+    
+    # Create logs directory
+    - mkdir -p logs
+    
+    # Run the scraper with proper timeout handling
+    - |
+      echo "🚀 Starting Elite Reddit Scraper..."
+      echo "Using Python script: Great_Scraper2_Gateway.py"
+      
+      # Check if script exists
+      if [ ! -f "Great_Scraper2_Gateway.py" ]; then
+        echo "❌ ERROR: Great_Scraper2_Gateway.py not found!"
+        echo "Please ensure the Python script is in your repository root"
+        exit 1
+      fi
+      
+      # Make script executable and run with timeout
+      chmod +x Great_Scraper2_Gateway.py
+      
+      # Use timeout command for better control (6 hour limit)
+      timeout 21600 python3 Great_Scraper2_Gateway.py || {
+        exit_code=$?
+        if [ $exit_code -eq 124 ]; then
+          echo "⏰ Scraper reached 6-hour timeout - progress should be saved"
+          echo "ℹ️  Check artifacts for partial results and resume capability"
+        elif [ $exit_code -eq 130 ]; then
+          echo "⚠️  Scraper was interrupted (SIGINT)"
+        else
+          echo "❌ Scraper exited with code $exit_code"
+          echo "ℹ️  Check logs for error details"
+        fi
+        # Don't exit with error code if we have some results
+        if [ -f "reddit_elite_influencers.csv" ] || [ -f "interrupted_reddit_elite_influencers.csv" ]; then
+          echo "✅ Partial results found - treating as success for artifact collection"
+          exit 0
+        fi
+        exit $exit_code
+      }
+
+  after_script:
+    - |
+      echo "📊 SCRAPING SESSION SUMMARY"
+      echo "=========================="
+      
+      if [ -f "reddit_elite_influencers.csv" ]; then
+        row_count=$(($(wc -l < reddit_elite_influencers.csv) - 1))
+        echo "✅ CSV Export: $row_count elite influencers found"
+        
+        # Show file size
+        file_size=$(ls -lh reddit_elite_influencers.csv | awk '{print $5}')
+        echo "📁 File size: $file_size"
+        
+        # Show top 10 accounts
+        echo "🏆 TOP 10 ACCOUNTS:"
+        head -11 reddit_elite_influencers.csv | tail -10 | while IFS=, read username url tier karma rest; do
+          echo "  u/$username ($tier tier) - $karma karma"
+        done
+      else
+        echo "⚠️ No CSV file found - scraping may have failed"
+      fi
+      
+      if [ -f "elite_scraper.log" ]; then
+        echo "📋 Log file size: $(ls -lh elite_scraper.log | awk '{print $5}')"
+        echo "📝 Last 20 log lines:"
+        tail -20 elite_scraper.log
+      fi
+      
+      if [ -f "elite_scraper_progress.json" ]; then
+        echo "💾 Progress file exists - can resume later"
+        python3 -c "import json; data=json.load(open('elite_scraper_progress.json')); print(f'Progress: {data.get(\"total_scraped\", 0)} accounts processed')" || true
+      fi
+      
+      echo "⏱️ PERFORMANCE METRICS"
+      echo "====================="
+      
+      if [ -f "elite_scraper.log" ]; then
+        # Extract metrics from log
+        total_requests=$(grep -c "request" elite_scraper.log || echo "0")
+        echo "📡 Total API requests: $total_requests"
+        
+        # Check for rate limiting
+        rate_limits=$(grep -c "Rate limited" elite_scraper.log || echo "0")
+        echo "⚠️ Rate limit hits: $rate_limits"
+        
+        # Check for errors
+        errors=$(grep -c "ERROR" elite_scraper.log || echo "0")
+        echo "❌ Errors encountered: $errors"
+        
+        # Check for key rotation events
+        key_rotations=$(grep -c "rotating\|next key" elite_scraper.log || echo "0")
+        echo "🔄 Key rotation events: $key_rotations"
+      fi
+      
+      echo "🎉 Workflow completed at $(date)"
+
+  artifacts:
+    name: "reddit-scraper-results-$CI_PIPELINE_ID"
+    when: always
+    expire_in: 30 days
+    paths:
+      - reddit_elite_influencers.csv
+      - backup_reddit_elite_influencers.csv
+      - elite_scraper_progress.json
+      - elite_scraper.log
+      - interrupted_reddit_elite_influencers.csv
+      - error_reddit_elite_influencers.csv
+    reports:
+      # Optional: Generate a job report
+      junit: results.xml
+
+# Optional: Auto-commit results (be careful with this!)
+commit-results:
+  stage: results
+  image: alpine/git:latest
+  rules:
+    - if: $CI_COMMIT_REF_NAME == "main" && $AUTO_COMMIT == "true"
+  dependencies:
+    - reddit-scraper
+  before_script:
+    - git config --global user.email "gitlab-ci@example.com"
+    - git config --global user.name "GitLab CI"
+  script:
+    - |
+      if [ -f "reddit_elite_influencers.csv" ]; then
+        git add reddit_elite_influencers.csv elite_scraper_progress.json
+        git commit -m "🤖 Auto-update: Reddit scraper results $(date +%Y-%m-%d)" || echo "No changes to commit"
+        git push https://oauth2:${CI_ACCESS_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git HEAD:main || echo "Push failed"
+      fi
+  when: manual
